@@ -21,7 +21,7 @@ public class Contact implements Serializable {
 
 	private Timestamp contactDate;
 
-	private Object contactId1;
+	private String contactId1;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
@@ -47,11 +47,11 @@ public class Contact implements Serializable {
 		this.contactDate = contactDate;
 	}
 
-	public Object getContactId1() {
+	public String getContactId1() {
 		return this.contactId1;
 	}
 
-	public void setContactId1(Object contactId1) {
+	public void setContactId1(String contactId1) {
 		this.contactId1 = contactId1;
 	}
 

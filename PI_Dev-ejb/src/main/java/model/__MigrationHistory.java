@@ -20,7 +20,7 @@ public class __MigrationHistory implements Serializable {
 	private byte[] model;
 
 	@Column(name="ProductVersion")
-	private Object productVersion;
+	private String productVersion;
 
 	public __MigrationHistory() {
 	}
@@ -41,11 +41,11 @@ public class __MigrationHistory implements Serializable {
 		this.model = model;
 	}
 
-	public Object getProductVersion() {
+	public String getProductVersion() {
 		return this.productVersion;
 	}
 
-	public void setProductVersion(Object productVersion) {
+	public void setProductVersion(String productVersion) {
 		this.productVersion = productVersion;
 	}
 

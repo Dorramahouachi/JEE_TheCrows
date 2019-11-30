@@ -20,34 +20,34 @@ public class User implements Serializable {
 	@Column(name="UserId")
 	private int userId;
 
-	private Object address;
+	private String address;
 
-	private Object bio;
+	private String bio;
 
 	private Timestamp birthDate;
 
 	@Column(name="Discriminator")
-	private Object discriminator;
+	private String discriminator;
 
 	@Column(name="Email")
-	private Object email;
+	private String email;
 
-	private Object experience;
+	private String experience;
 
-	private Object lastname;
+	private String lastname;
 
-	private Object login;
+	private String login;
 
-	private Object name;
+	private String name;
 
-	private Object password;
+	private String password;
 
 	private long phoneContact;
 
-	private Object picture;
+	private String picture;
 
 	@Column(name="Skills")
-	private Object skills;
+	private String skills;
 
 	//bi-directional many-to-one association to Candidature
 	@OneToMany(mappedBy="user")
@@ -100,19 +100,19 @@ public class User implements Serializable {
 		this.userId = userId;
 	}
 
-	public Object getAddress() {
+	public String getAddress() {
 		return this.address;
 	}
 
-	public void setAddress(Object address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
-	public Object getBio() {
+	public String getBio() {
 		return this.bio;
 	}
 
-	public void setBio(Object bio) {
+	public void setBio(String bio) {
 		this.bio = bio;
 	}
 
@@ -124,59 +124,59 @@ public class User implements Serializable {
 		this.birthDate = birthDate;
 	}
 
-	public Object getDiscriminator() {
+	public String getDiscriminator() {
 		return this.discriminator;
 	}
 
-	public void setDiscriminator(Object discriminator) {
+	public void setDiscriminator(String discriminator) {
 		this.discriminator = discriminator;
 	}
 
-	public Object getEmail() {
+	public String getEmail() {
 		return this.email;
 	}
 
-	public void setEmail(Object email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public Object getExperience() {
+	public String getExperience() {
 		return this.experience;
 	}
 
-	public void setExperience(Object experience) {
+	public void setExperience(String experience) {
 		this.experience = experience;
 	}
 
-	public Object getLastname() {
+	public String getLastname() {
 		return this.lastname;
 	}
 
-	public void setLastname(Object lastname) {
+	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
 
-	public Object getLogin() {
+	public String getLogin() {
 		return this.login;
 	}
 
-	public void setLogin(Object login) {
+	public void setLogin(String login) {
 		this.login = login;
 	}
 
-	public Object getName() {
+	public String getName() {
 		return this.name;
 	}
 
-	public void setName(Object name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public Object getPassword() {
+	public String getPassword() {
 		return this.password;
 	}
 
-	public void setPassword(Object password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -188,19 +188,19 @@ public class User implements Serializable {
 		this.phoneContact = phoneContact;
 	}
 
-	public Object getPicture() {
+	public String getPicture() {
 		return this.picture;
 	}
 
-	public void setPicture(Object picture) {
+	public void setPicture(String picture) {
 		this.picture = picture;
 	}
 
-	public Object getSkills() {
+	public String getSkills() {
 		return this.skills;
 	}
 
-	public void setSkills(Object skills) {
+	public void setSkills(String skills) {
 		this.skills = skills;
 	}
 

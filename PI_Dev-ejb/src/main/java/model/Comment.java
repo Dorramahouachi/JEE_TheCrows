@@ -21,7 +21,7 @@ public class Comment implements Serializable {
 	private int commentId;
 
 	@Column(name="Contenu")
-	private Object contenu;
+	private String contenu;
 
 	@Column(name="DateComment")
 	private Timestamp dateComment;
@@ -51,11 +51,11 @@ public class Comment implements Serializable {
 		this.commentId = commentId;
 	}
 
-	public Object getContenu() {
+	public String getContenu() {
 		return this.contenu;
 	}
 
-	public void setContenu(Object contenu) {
+	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}
 

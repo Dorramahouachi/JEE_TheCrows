@@ -21,7 +21,7 @@ public class Post implements Serializable {
 	private int postId;
 
 	@Column(name="Contenu")
-	private Object contenu;
+	private String contenu;
 
 	@Column(name="DatePost")
 	private Timestamp datePost;
@@ -52,11 +52,11 @@ public class Post implements Serializable {
 		this.postId = postId;
 	}
 
-	public Object getContenu() {
+	public String getContenu() {
 		return this.contenu;
 	}
 
-	public void setContenu(Object contenu) {
+	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}
 

@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -18,7 +19,7 @@ public class Candidature implements Serializable {
 	@Id
 	private int candidatureId;
 
-	private Timestamp candidatureDate;
+	private Date candidatureDate;
 
 	private int etat;
 
@@ -40,11 +41,11 @@ public class Candidature implements Serializable {
 		this.candidatureId = candidatureId;
 	}
 
-	public Timestamp getCandidatureDate() {
+	public Date getCandidatureDate() {
 		return this.candidatureDate;
 	}
 
-	public void setCandidatureDate(Timestamp candidatureDate) {
+	public void setCandidatureDate(Date candidatureDate) {
 		this.candidatureDate = candidatureDate;
 	}
 

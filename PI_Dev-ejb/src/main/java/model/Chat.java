@@ -20,7 +20,7 @@ public class Chat implements Serializable {
 	private int chatId;
 
 	@Column(name="Contenu")
-	private Object contenu;
+	private String contenu;
 
 	@Column(name="DateSend")
 	private Timestamp dateSend;
@@ -49,11 +49,11 @@ public class Chat implements Serializable {
 		this.chatId = chatId;
 	}
 
-	public Object getContenu() {
+	public String getContenu() {
 		return this.contenu;
 	}
 
-	public void setContenu(Object contenu) {
+	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}
 

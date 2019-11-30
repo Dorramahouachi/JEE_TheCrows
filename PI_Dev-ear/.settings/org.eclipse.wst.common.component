@@ -5,7 +5,7 @@
         <dependent-module archiveName="PI_Dev-web.war" deploy-path="/" handle="module:/resource/PI_Dev-web/PI_Dev-web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="PI_Dev-ejb.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/tn/esprit/PI_Dev-ejb/0.0.1-SNAPSHOT/PI_Dev-ejb-0.0.1-SNAPSHOT.jar">
+        <dependent-module archiveName="PI_Dev-ejb.jar" deploy-path="/" handle="module:/resource/PI_Dev-ejb/PI_Dev-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>

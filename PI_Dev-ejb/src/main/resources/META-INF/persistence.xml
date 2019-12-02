@@ -29,6 +29,10 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 <class>model.__MigrationHistory</class>
 <class>model.__MigrationHistoryPK</class>
 <class>model.Subscribe</class>
+<class>model.Critere</class>
+<class>model.Evaluation</class>
+
+
 
 <properties>
 

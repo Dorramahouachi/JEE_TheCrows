@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+
+		<h:form>
+			<h3>Les critères</h3>
+			<h:outputText value=""></h:outputText>
+			<h:outputText value=""></h:outputText>
+			<h:outputText value=""></h:outputText>
+
+			<h:panelGrid columns="4">
+
+			<h:outputText value="Nom critere"></h:outputText>
+			<h:inputText id="nom" name="nom" type="text" required="true"
+				requiredMessage="champ obligatoire" value="#{critereBean.nom}">
+			</h:inputText>
+			<h:message for="nom" style="color:red" />
+			<h:outputText value=""></h:outputText>
+
+			<h:outputText value="Type"></h:outputText>
+			<h:selectOneMenu id="type" required="true"
+				requiredMessage="champ obligatoire" value="#{critereBean.type}">
+				<f:selectItem itemLabel="Choisir Type" itemValue="" />
+				<f:selectItems value="#{dataCritere.types}" />
+			</h:selectOneMenu>
+			<h:message for="type" style="color:red" />
+			<h:outputText value=""></h:outputText>
+			<h:outputText value=""></h:outputText>
+
+			<h:commandButton id="aa" name="aa" style="margin-bottom: 10px;"
+				value="Ajouter Critere" action="#{critereBean.ajouterCritere()}" />
+			</h:panelGrid>
+			<h:dataTable var="critere" value="#{critereBean.listCriteres}">
+				<h:column headerText="Nom">
+					<f:facet name="header">Candidature</f:facet>
+					<h:outputText value="#{critere.critereName}" />
+				</h:column>
+				<h:column headerText="Type">
+					<f:facet name="header">Type</f:facet>
+					<h:outputText value="#{critere.type}" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

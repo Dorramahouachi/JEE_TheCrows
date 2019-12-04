@@ -15,6 +15,7 @@ public class Critere implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="CritereID")
 	private int critereID;
 
@@ -22,7 +23,6 @@ public class Critere implements Serializable {
 	private String critereName;
 
 	@Column(name="Type")
-	@Enumerated(EnumType.STRING)
 	private CritereType type;
 
 	//bi-directional many-to-one association to Evaluation

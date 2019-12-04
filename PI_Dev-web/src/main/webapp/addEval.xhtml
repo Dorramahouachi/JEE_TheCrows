@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+	
+		<h1>Ajouter Evaluation</h1>
+		<h:form>
+			<h:panelGrid columns="4">
+
+				<h:outputText value="Candidature"></h:outputText>
+				<h:selectOneMenu id="candidature" required="true"
+					requiredMessage="champ obligatoire"
+					value="#{evaluationBean.selectedCandidatureId}">
+					<f:selectItem itemLabel="Choisir Candidature" itemValue="" />
+					<f:selectItems value="#{candidatureBean.candidatures}"
+						var="candidature" itemValue="#{candidature.candidatureId}"
+						itemLabel="#{candidature.candidatureId}" />
+				</h:selectOneMenu>
+				<h:message for="candidature" style="color:red" />
+
+				<br></br>
+				<h:outputText value="Description"></h:outputText>
+				<h:inputTextarea id="description" name="description" type="text"
+					required="true" requiredMessage="champ obligatoire"
+					value="#{evaluationBean.description}">
+				</h:inputTextarea>
+				<h:message for="description" style="color:red" />
+				<h:outputText value=""></h:outputText>
+				
+				<h:outputText value=""></h:outputText>
+				<h:outputText value=""></h:outputText>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<h:commandButton id="j_idt217" name="j_idt217"
+					style="margin-bottom: 10px;" value="Ajouter Evaluation"
+					action="#{evaluationBean.ajouterEval()}" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

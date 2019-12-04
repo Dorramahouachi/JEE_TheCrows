@@ -22,5 +22,10 @@ public class CandidatureService implements CandidatureServiceRemote {
 		
 		return candidatures;
 	}
+	@Override
+	public Candidature getCandidatureById(int id) {
+		// TODO Auto-generated method stub
+		return em.find(Candidature.class, id);
+	}
 
 }

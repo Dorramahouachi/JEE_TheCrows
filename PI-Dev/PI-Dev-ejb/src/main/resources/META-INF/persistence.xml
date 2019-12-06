@@ -25,27 +25,31 @@
          data source, this example data source is just for development and testing! -->
       <!-- The datasource is deployed as <EAR>/META-INF/PI-Dev-ds.xml, you
          can find it in the source at ear/src/main/application/META-INF/PI-Dev-ds.xml -->
-      <jta-data-source>java:jboss/datasources/PI-DevDS</jta-data-source>
-      <class>model.Calendrier</class>
-      <class>model.Candidature</class>
-      <class>model.Chat</class>
-      <class>model.Claim</class>
-      <class>model.Comment</class>
-      <class>model.Contact</class>
-      <class>model.Entrepris</class>
-      <class>model.Entretien</class>
-      <class>model.Offer</class>
-      <class>model.Payment</class>
-      <class>model.Post</class>
-      <class>model.Question</class>
-      <class>model.ReactComment</class>
-      <class>model.ReactPost</class>
-      <class>model.User</class>
-      <class>model.Subscribe</class>
+      <jta-data-source>java:/sqlserver/ds</jta-data-source>
+      <class>models.Calendrier</class>
+      <class>models.Candidature</class>
+      <class>models.Chat</class>
+      <class>models.Claim</class>
+      <class>models.Commentaire</class>
+      <class>models.Comment</class>
+      <class>models.Contact</class>
+      <class>models.Entrepris</class>
+      <class>models.Entretien</class>
+      <class>models.Offer</class>
+      <class>models.Payment</class>
+      <class>models.Post</class>
+      <class>models.Question</class>
+      <class>models.ReactComment</class>
+      <class>models.ReactPost</class>
+      <class>models.User</class>
+      <class>models.Subscribe</class>
       <properties>
          <!-- Properties for Hibernate -->
-         <property name="hibernate.hbm2ddl.auto" value="create-drop" />
-         <property name="hibernate.show_sql" value="false" />
+         <property name="hibernate.hbm2ddl.auto" value="update" />
+         <property name="hibernate.show_sql" value="true" />
+         <property name="hibernate.show_format" value="true" />
+         
+         <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
       </properties>
    </persistence-unit>
 </persistence>

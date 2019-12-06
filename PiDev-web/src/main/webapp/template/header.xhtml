@@ -1,0 +1,82 @@
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template= "/template/template.xhtml"
+		>	
+		<ui:define name="header">
+		<div class="layout-topbar layout-topbar-blue">
+			<a class="layout-right-panel-button layout-topbar-icon" href="#">
+				<i class="fa fa-ellipsis-v"></i>
+			</a> <a class="layout-menu-button layout-topbar-icon" href="#"> <i
+				class="fa fa-bars"></i>
+			</a><a href="dashboard.html" class="layout-topbar-logo"><img
+				id="j_idt15"
+				src="/#{request.contextPath}/javax.faces.resource/images/logo-roma-white.svgbde0.svg?ln=roma-layout"
+				alt="" /></a>
+	
+	
+			<ul class="topbar-menu fadeInDown">
+				<li class="user-profile"><a href="#"><img id="j_idt19"
+						src="#{request.contextPath}/javax.faces.resource/images/avatar/avatar.pngbde0.png?ln=roma-layout"
+						alt="" />
+						<div class="layout-profile-userinfo">
+							<span class="layout-profile-name">Arlene Welch</span> <span
+								class="layout-profile-role">Design Ops</span>
+						</div> </a>
+					<ul>
+						<li><a href="#"> <i class="fa fa-fw fa-user"></i> <span>Profile</span>
+						</a></li>
+						<li><a href="#"> <i class="fa fa-fw fa-cog"></i> <span>Settings</span>
+						</a></li>
+						<li><a href="#"> <i class="fa fa-fw fa-envelope-o"></i> <span>Messages</span>
+						</a></li>
+						<li><a href="#"> <i class="fa fa-fw fa-bell-o"></i> <span>Notifications</span>
+						</a></li>
+					</ul></li>
+				<li><a href="#" class="layout-topbar-icon"> <i
+						class="topbar-icon fa fa-fw fa-bell"></i>
+				</a>
+					<ul>
+						<li role="menuitem"><a href="#"><img id="j_idt22"
+								src="javax.faces.resource/images/avatar/avatar-1.pngbde0.png?ln=roma-layout"
+								alt="" />
+								<div class="topbar-menu-info">
+									<span class="topbar-menu-name">Bithika Abhedananda</span> <span
+										class="topbar-menu-role">User interface review is done.</span>
+								</div> </a></li>
+						<li role="menuitem"><a href="#"><img id="j_idt24"
+								src="#{request.contextPath}/javax.faces.resource/images/avatar/avatar-2.pngbde0.png?ln=roma-layout"
+								alt="" />
+								<div class="topbar-menu-info">
+									<span class="topbar-menu-name">Dai Jiang</span> <span
+										class="topbar-menu-role">Uh, we have sort of a problem
+										here.</span>
+								</div> </a></li>
+						<li role="menuitem"><a href="#"><img id="j_idt26"
+								src="#{request.contextPath}/javax.faces.resource/images/avatar/avatar-3.pngbde0.png?ln=roma-layout"
+								alt="" />
+								<div class="topbar-menu-info">
+									<span class="topbar-menu-name">Karlien Nijhuis</span> <span
+										class="topbar-menu-role">You apparently didn’t put the
+										thing</span>
+								</div> </a></li>
+						<li role="menuitem"><a href="#"><img id="j_idt28"
+								src="#{request.contextPath}/javax.faces.resource/images/avatar/avatar-4.pngbde0.png?ln=roma-layout"
+								alt="" />
+								<div class="topbar-menu-info">
+									<span class="topbar-menu-name">Tom Chun</span> <span
+										class="topbar-menu-role">Please check the files</span>
+								</div> </a></li>
+						<li role="menuitem"><a href="#"><img id="j_idt30"
+								src="#{request.contextPath}/javax.faces.resource/images/avatar/avatar-5.pngbde0.png?ln=roma-layout"
+								alt="" />
+								<div class="topbar-menu-info">
+									<span class="topbar-menu-name">Maria Trofimova</span> <span
+										class="topbar-menu-role">Meeting reports attached.</span>
+								</div> </a></li>
+					</ul></li>
+			</ul>
+		</div>
+		</ui:define>
+</ui:composition>

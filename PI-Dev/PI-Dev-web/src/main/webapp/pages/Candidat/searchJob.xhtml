@@ -10,7 +10,17 @@
 		<div>
 		<h:form>
 			<h:panelGrid>
+			<h:inputText value="#{searchMB.data}" placeholder="search here"></h:inputText>
+			
+			<h:outputText value="#{searchMB.data1}"></h:outputText>
+			
+			<h:selectOneRadio value = "#{searchMB.data1}">
+				<f:selectItem itemValue = "3" itemLabel = "All"/>
+				<f:selectItem itemValue = "1" itemLabel = "Title" /> 
+   				<f:selectItem itemValue = "2" itemLabel = "Location" />
+			</h:selectOneRadio>
 			<h:commandButton action="#{searchMB.search}" value="Search"></h:commandButton>
+			
 			</h:panelGrid>
 		</h:form>
 		</div>
@@ -27,6 +37,12 @@
 						<h:outputText value="reference"></h:outputText>
 					</f:facet>
 					<h:outputText value="#{v.offerId}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="location"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{v.location}"></h:outputText>
 				</h:column>
 			</h:dataTable>
 		</div>		

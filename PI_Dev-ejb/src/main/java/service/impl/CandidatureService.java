@@ -19,7 +19,7 @@ public class CandidatureService implements CandidatureServiceRemote {
 	@Override
 	public List<Candidature> getAllCandidatures() {
 		List<Candidature> candidatures = em.createQuery("Select c from Candidature c", Candidature.class).getResultList();
-		
+
 		return candidatures;
 	}
 	@Override

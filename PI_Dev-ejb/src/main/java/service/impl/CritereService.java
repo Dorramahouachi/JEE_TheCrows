@@ -9,12 +9,13 @@ import javax.persistence.Query;
 
 import model.Critere;
 import model.CritereType;
+import model.Evaluation;
 import service.interf.CritereRemote;
 
 @Stateful
 public class CritereService implements CritereRemote {
 
-	@PersistenceContext(unitName="imputation-ejb")
+	@PersistenceContext(unitName = "imputation-ejb")
 	EntityManager em;
 
 	@Override
@@ -64,6 +65,13 @@ public class CritereService implements CritereRemote {
 		query.setParameter("type", type);
 		Long count = (Long) query.getSingleResult();
 		return count;
+	}
+
+	@Override
+	public List<Critere> getCritereByEval(int id) {
+		// TODO Auto-generated method stub
+		Evaluation eval = em.find(Evaluation.class, id);
+		return eval.getListCriteres();
 	}
 
 }

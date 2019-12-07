@@ -6,43 +6,40 @@
 	<ui:define name="content">
 
 		<h:form>
-			<h3>Les critères</h3>
-			<h:outputText value=""></h:outputText>
-			<h:outputText value=""></h:outputText>
-			<h:outputText value=""></h:outputText>
+			<p:panel header="liste des Critères">
+				<p:dataTable var="critere" id="dtCriteres"
+					value="#{evaluationBean.listCriteres}">
+					<p:column headerText="Nom">
+						<f:facet name="header">Candidature</f:facet>
+						<h:outputText value="#{critere.critereName}" />
+					</p:column>
+					<p:column headerText="Type">
 
-			<h:panelGrid columns="4">
-
-			<h:outputText value="Nom critere"></h:outputText>
-			<h:inputText id="nom" name="nom" type="text" required="true"
-				requiredMessage="champ obligatoire" value="#{critereBean.nom}">
-			</h:inputText>
-			<h:message for="nom" style="color:red" />
-			<h:outputText value=""></h:outputText>
-
-			<h:outputText value="Type"></h:outputText>
-			<h:selectOneMenu id="type" required="true"
-				requiredMessage="champ obligatoire" value="#{critereBean.type}">
-				<f:selectItem itemLabel="Choisir Type" itemValue="" />
-				<f:selectItems value="#{dataCritere.types}" />
-			</h:selectOneMenu>
-			<h:message for="type" style="color:red" />
-			<h:outputText value=""></h:outputText>
-			<h:outputText value=""></h:outputText>
-
-			<h:commandButton id="aa" name="aa" style="margin-bottom: 10px;"
-				value="Ajouter Critere" action="#{critereBean.ajouterCritere()}" />
-			</h:panelGrid>
-			<h:dataTable var="critere" value="#{critereBean.listCriteres}">
-				<h:column headerText="Nom">
-					<f:facet name="header">Candidature</f:facet>
-					<h:outputText value="#{critere.critereName}" />
-				</h:column>
-				<h:column headerText="Type">
-					<f:facet name="header">Type</f:facet>
-					<h:outputText value="#{critere.type}" />
-				</h:column>
-			</h:dataTable>
+						<f:facet name="header">Type</f:facet>
+						<h:outputText value="#{critere.type}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Supprimer" />
+						</f:facet>
+						<p:commandButton
+							action="#{evaluationBean.supprimerCritere(critere.critereID)}"
+							value="Supprimer" style="margin-right:20px;"
+							styleClass="ui-priority-primary" update="dtCriteres" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+			<p:panel>
+				<a href="http://localhost:9080/PI_Dev-web/charts.jsf"
+					onclick="http://localhost:9080/PI_Dev-web/charts.jsf">Aller à
+					Statistiques des critères</a>
+				<p:chart type="pie" responsive="true" model="#{chartJsView.model}"
+					value="#{chartJsView.model}" />
+			</p:panel>
 		</h:form>
+		<br></br>
+		<br></br>
+		<br></br>
+		<br></br>
 	</ui:define>
 </ui:composition>

@@ -7,16 +7,17 @@
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <!-- /Added by HTTrack -->
-<head id="j_idt2">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<link rel="shortcut icon" type="image/x-icon"
-	href="prestige-layout/images/favicon.html" />
-<link type="text/css" rel="stylesheet"
-	href="javax.faces.resource/theme.cssad81.css?ln=primefaces-prestige-deepblue-light" />
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="prestige-layout/images/favicon.html" />
+	<link type="text/css" rel="stylesheet"
+		href="javax.faces.resource/theme.cssad81.css?ln=primefaces-prestige-deepblue-light" />
+	<!-- 
 <link type="text/css" rel="stylesheet"
 	href="javax.faces.resource/fa/font-awesome.css68f8.css?ln=primefaces&amp;v=7.0" />
 <link type="text/css" rel="stylesheet"
@@ -35,15 +36,16 @@
 	src="javax.faces.resource/keyboard/keyboard.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
 <script type="text/javascript"
 	src="javax.faces.resource/touch/touchswipe.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
-<link type="text/css" rel="stylesheet"
-	href="javax.faces.resource/css/primeflex.css390d.css?ln=prestige-layout" />
-<link type="text/css" rel="stylesheet"
-	href="javax.faces.resource/css/layout-canvas.css390d.css?ln=prestige-layout" />
-<script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='en_US';PrimeFaces.settings.projectStage='Development';}</script>
-<title>Sample</title>
-<script type="text/javascript"
-	src="javax.faces.resource/js/layout.js390d.xhtml?ln=prestige-layout"></script>
-<style type="text/css">
+	 -->
+	<link type="text/css" rel="stylesheet"
+		href="javax.faces.resource/css/primeflex.css390d.css?ln=prestige-layout" />
+	<link type="text/css" rel="stylesheet"
+		href="javax.faces.resource/css/layout-canvas.css390d.css?ln=prestige-layout" />
+	<script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='en_US';PrimeFaces.settings.projectStage='Development';}</script>
+	<title>Sample</title>
+	<script type="text/javascript"
+		src="javax.faces.resource/js/layout.js390d.xhtml?ln=prestige-layout"></script>
+	<style type="text/css">
 .ui-panelgrid.form-elements .ui-grc-2 {
 	padding-left: 60px;
 }
@@ -63,9 +65,36 @@
 .dialogDemo label {
 	line-height: 2.1em;
 }
+
+.label {
+	width: 20%;
+	padding: 4px;
+}
+
+.value {
+	width: 80%;
+	padding: 4px;
+}
+
+.grid {
+	width: 100%;
+}
+
+.error {
+	color: red;
+}
+
+.outputLabel {
+	font-weight: bold;
+}
+
+.grid {
+	width: 33%;
+	padding: 4px;
+}
 </style>
-</head>
-<body>
+</h:head>
+<h:body>
 	<div class="layout-wrapper layout-menu-horizontal layout-canvas">
 
 		<div class="layout-topbar">
@@ -97,19 +126,13 @@
 								<div class="layout-quickmenu-tooltip-text">Statistics</div>
 							</div></li>
 						<li><a href="#" class="layout-topbar-icon"> <i
-								class="topbar-icon fa fa-sign-out">
-								
-								</i>
+								class="topbar-icon fa fa-sign-out"> </i>
 						</a>
 							<div class="layout-quickmenu-tooltip">
-								
-								<div class="layout-quickmenu-tooltip-arrow">
-								 
-								</div>
-								<div class="layout-quickmenu-tooltip-text">
-								
-								</div>
-						
+
+								<div class="layout-quickmenu-tooltip-arrow"></div>
+								<div class="layout-quickmenu-tooltip-text"></div>
+
 							</div></li>
 					</ul></li>
 				<li class="layout-topbar-item"><a href="#"
@@ -127,8 +150,8 @@
 				</a> <input type="text" placeholder="Type to search..." /></li>
 				<li class="user-profile" role="menuitem"><a href="#">
 						<div class="user-profile-info profile-link">
-							<span class="user-profile-name">Dorra Mahouachi</span> <span
-								class="user-profile-role">Responsable RH</span>
+							<span class="user-profile-name">Ava Gregoraci</span> <span
+								class="user-profile-role">Design Ops</span>
 						</div> <img id="j_idt15"
 						src="javax.faces.resource/images/avatar/avatar-ava.jpg390d.jpg?ln=prestige-layout"
 						alt="" class="logo" />
@@ -140,15 +163,12 @@
 									src="javax.faces.resource/images/avatar/avatar-ava.jpg390d.jpg?ln=prestige-layout"
 									alt="" class="logo" />
 								<div class="profile-info">
-									<span class="user-profile-name">Dorra Mahouachi</span> <span
-										class="user-profile-role">Responsable RH</span>
+									<span class="user-profile-name">Ava Gregoraci</span> <span
+										class="user-profile-role">Design Ops</span>
 								</div>
-								
-								
-								<a href="#" class="profile-detail-icon">
-								 
-								
-								</a>
+
+
+								<a href="#" class="profile-detail-icon"> </a>
 							</div>
 						</li>
 						<li><a href="#"> <i class="fa fa-user"></i>
@@ -200,32 +220,52 @@
 						<li id="menuform:om_dashboard" role="menuitem"><a
 							href="dashboard.html"><i
 								class="fa fa-fw fa-dashboard fa-fw layout-menuitem-icon"></i><span
-								class="layout-menuitem-text">Candidatures</span></a></li>
-									<li id="menuform:om_default" role="menuitem">
-									<a href="http://localhost:9080/PI_Dev-web/index.jsf"><i
+								class="layout-menuitem-text">Dashboard</span></a></li>
+						<li id="menuform:om_components" role="menuitem"><a href="#"><i
+								class="fa fa-fw fa-bars fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Gestion des employés</span><i
+								class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+							<ul role="menu">
+								<li id="menuform:om_sample" role="menuitem"><a href="#"><i
+										class="fa fa-fw fa-columns fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Liste des employés</span></a></li>
+								<li id="menuform:om_forms" role="menuitem"><a href="#"><i
+										class="fa fa-fw fa-code fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Ajouter un employé</span></a></li>
+								<li id="menuform:om_forms" role="menuitem"><a href="#"><i
+										class="fa fa-fw fa-columns fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Liste des conges</span></a></li>
+								<li id="menuform:om_forms" role="menuitem"><a href="#"><i
+										class="fa fa-fw fa-columns fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Liste des bus</span></a></li>
+								<li id="menuform:om_forms" role="menuitem"><a href="#"><i
+										class="fa fa-fw fa-code fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Ajouter Bus</span></a></li>
+							</ul></li>
+						<li id="menuform:om_default" role="menuitem"><a href="#"><i
 								class="fa fa-fw fa-cube fa-fw layout-menuitem-icon"></i><span
 								class="layout-menuitem-text">Evaluation</span><i
 								class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
 							<ul role="menu">
 								<li id="menuform:om_empty" role="menuitem"><a
 									href="http://localhost:9080/PI_Dev-web/addEval.jsf"
-										onclick="http://localhost:9080/PI_Dev-web/addEval.jsf"><i
+									onclick="http://localhost:9080/PI_Dev-web/addEval.jsf"><i
 										class="fa fa-fw fa-square-o fa-fw layout-menuitem-icon"></i><span
 										class="layout-menuitem-text">add evaluation</span></a></li>
 								<li id="menuform:om_login" role="menuitem"><a
 									href="http://localhost:9080/PI_Dev-web/listEval.jsf"
-									onclick="http://localhost:9080/PI_Dev-web/listEval.jsf"><i
+									onclick="http://localhost:9080/PI_Dev-web/addEval.jsf"><i
 										class="fa fa-fw fa-certificate fa-fw layout-menuitem-icon"></i><span
 										class="layout-menuitem-text">show evaluations</span></a></li>
-								<li id="menuform:om_login" role="menuitem"><a
-									href="#"><i
+
+								<li id="menuform:om_login" role="menuitem"><a href="#"><i
 										class="fa fa-fw fa-area-chart fa-fw layout-menuitem-icon"></i><span
-										class="layout-menuitem-text">  </span></a></li>
-								  	
+										class="layout-menuitem-text">charts</span></a></li>
+
 
 
 							</ul></li>
-						
+
 					</ul>
 					<script id="menuform:j_idt21_s" type="text/javascript">$(function(){PrimeFaces.cw("Prestige","prestigeMenuWidget",{id:"menuform:j_idt21"});});</script>
 				</div>
@@ -237,9 +277,7 @@
 
 		<div class="layout-actionbar">
 			<div class="breadcrumb">
-				<div class="route-bar-breadcrumb">
-					
-				</div>
+				<div class="route-bar-breadcrumb"></div>
 			</div>
 			<div class="actions ">
 				<ul>
@@ -272,7 +310,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="layout-content">
+		<div class="layout-actionbar">
 			<ui:insert name="content" />
 		</div>
 		<div class="layout-footer">
@@ -327,9 +365,9 @@
 			</div>
 		</div>
 
-		
 
-		
+
+
 
 		<div class="layout-mask"></div>
 		<div id="j_idt211" class="layout-ajax-loader">
@@ -341,7 +379,7 @@
 		</div>
 		<script id="j_idt211_s" type="text/javascript">$(function(){PrimeFaces.cw("AjaxStatus","widget_j_idt211",{id:"j_idt211"});});</script>
 	</div>
-</body>
+</h:body>
 
 
 <!-- Mirrored from www.primefaces.org/prestige/sample.xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Oct 2019 18:15:53 GMT -->

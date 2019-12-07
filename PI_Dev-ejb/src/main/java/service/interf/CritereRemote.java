@@ -19,5 +19,6 @@ public interface CritereRemote {
 	public List<Critere> getAllCriteres();
 	public List<Critere> getCritereByType(CritereType type);
 	public Long chartCritere(CritereType type);
+	public List<Critere> getCritereByEval(int id);
 	
 }

@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -27,6 +29,9 @@ public class Evaluation implements Serializable {
 	@JoinColumn(name="candidatureId")
 	private Candidature candidature;
 
+	@OneToMany(mappedBy="evaluation", fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
+	private List<Critere> listCriteres;
+	
 	public Evaluation() {
 	}
 
@@ -52,6 +57,18 @@ public class Evaluation implements Serializable {
 
 	public void setCandidature(Candidature candidature) {
 		this.candidature = candidature;
+	}
+
+	public List<Critere> getListCriteres() {
+		return listCriteres;
+	}
+
+	public void setListCriteres(List<Critere> listCriteres) {
+		this.listCriteres = listCriteres;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

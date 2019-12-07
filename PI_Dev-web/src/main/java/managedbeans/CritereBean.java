@@ -7,8 +7,10 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import model.Candidature;
 import model.Critere;
 import model.CritereType;
+import model.Evaluation;
 import service.interf.CritereRemote;
 
 @ManagedBean(name = "critereBean")
@@ -26,15 +28,18 @@ public class CritereBean implements Serializable {
 	private int id;
 	private String nom;
 	private CritereType type;
+	private int idEval;
 	
 	
 	private List<Critere> listCriteres;
+	private List<Critere> listCriteresByEval;
 	
 	public void ajouterCritere() {
 		Critere c = new Critere();
 		c.setCritereName(nom);
 		c.setType(type);
-		service.AddCritere(c);;
+		service.AddCritere(c);
+
 	}
 	public CritereBean() {
 	}
@@ -81,6 +86,18 @@ public class CritereBean implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public List<Critere> getListCriteresByEval() {
+		return service.getCritereByEval(idEval);
+	}
+	public void setListCriteresByEval(List<Critere> listCriteresByEval) {
+		this.listCriteresByEval = listCriteresByEval;
+	}
+	public int getIdEval() {
+		return idEval;
+	}
+	public void setIdEval(int idEval) {
+		this.idEval = idEval;
 	}
 
 	

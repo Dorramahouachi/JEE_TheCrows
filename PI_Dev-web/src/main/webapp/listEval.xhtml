@@ -7,32 +7,49 @@
 		<h:form>
 			<div class="card card-w-title">
 
-				<h:dataTable var="eval" value="#{evaluationBean.listEval}">
-					<h:column headerText="Candidature">
+				<p:dataTable id="dtEvals" var="eval"
+					value="#{evaluationBean.listEval}">
+					<p:column headerText="Candidature">
 						<f:facet name="header">Candidature</f:facet>
 						<h:outputText value="#{eval.candidature.candidatureDate}" />
-					</h:column>
-					<h:column headerText="Description">
+					</p:column>
+					<p:column headerText="Description">
 						<f:facet name="header">Description</f:facet>
 						<h:outputText value="#{eval.description}" />
-					</h:column>
-					<h:column>
+					</p:column>
+					<p:column>
 						<f:facet name="header">
-							<h:outputText value="Action" />
+							<h:outputText value="Supprimer" />
 						</f:facet>
-						<h:commandButton action="#{evaluationBean.supprimerEval(eval.evaluationID)}"
-							value="Delete" />
-					</h:column>
-					<h:column>
+						<p:commandButton
+							action="#{evaluationBean.supprimerEval(eval.evaluationID)}"
+							value="Supprimer" style="margin-right:20px;"
+							styleClass="ui-priority-primary" update="dtEvals" />
+					</p:column>
+					<p:column>
 						<f:facet name="header">
-							<h:outputText value="Action" />
+							<h:outputText value="Modifier" />
 						</f:facet>
-						<h:commandButton action="#{evaluationBean.goToCriteresList()}"
-							value="Les critères" />
-					</h:column>
-
-				</h:dataTable>
+						<p:commandButton
+							action="#{evaluationBean.toGerer(eval)}"
+							value="Modifier" style="margin-right:20px;"
+							styleClass="ui-priority-primary"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Liste Critères" />
+						</f:facet>
+						<p:commandButton
+							action="#{evaluationBean.goToCriteresList(eval.evaluationID)}"
+							value="Les critères" style="margin-right:20px;"
+							styleClass="ui-priority-primary" />
+					</p:column>
+				</p:dataTable>
 			</div>
 		</h:form>
+		<br></br>
+		<br></br>
+		<br></br>
+		<br></br>
 	</ui:define>
 </ui:composition>

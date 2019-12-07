@@ -1,0 +1,33 @@
+
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:my="http://java.sun.com/jsf/composite/my"
+	 xmlns:p="http://primefaces.org/ui">
+	
+<ui:repeat var="chat" value="#{chatBean.chats}">
+    ...
+    <h:commandLink value="Reply" onclick="messageDialog.show()">
+        <f:param name="chat" value="#{chatBean.chats.contenu}" />     
+    </h:commandLink>
+    ...
+</ui:repeat>
+
+<p:dialog modal="true" widgetVar="messageDialog" resizable="false"
+          width="750" height="200" header="New Message">
+    <h:panelGrid columns="2">
+       
+        <h:column>
+            <h:outputLabel for="contenu" value="contenu"/>
+        </h:column>
+        <h:column>
+            <h:inputTextarea id="msgContents" cols="65" rows="3"
+                             value="#{chatBean.chats.contenu}" />
+        </h:column>
+    </h:panelGrid>
+</p:dialog>
+</ui:composition>

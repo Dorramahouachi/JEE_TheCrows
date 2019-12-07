@@ -5,12 +5,16 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	      xmlns:my="http://java.sun.com/jsf/composite/my">
-	
+	xmlns:my="http://java.sun.com/jsf/composite/my"
+	 xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+
 	<html lang="en" class="no-js" xml:lang="en"
 		xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<script src="../javax.faces.resource/js/jquery-2.2.4.js" />
 <!-- Mobile Specific Meta -->
+<script src="../librairies/ckeditor.js" />
 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -130,44 +134,73 @@
 
 
 		<div
-			style="background-color: white; width: 1032px; float: right; padding-left: 15px; border-color: gray; border-style: ridge;">
+			style=" width: 1032px; float: right; padding-left: 15px; border-color: gray; border-style: ridge;">
 
 
+			<h:form id="a">
 
-			<ui:repeat value="#{chatBean.chats}" var="chat" varStatus="status">
-				<h:outputText value="#{chat.user1.firstName}" /> : 
+				<ui:repeat value="#{chatBean.disc}" var="chat" varStatus="status">
+
+					<h:outputText value="#{chat.user1.firstName}" /> : 
 
 				<h:outputText value="#{chat.contenu}" />
 				 at 
 				<h:outputText value="#{chat.dateSend}" />
-				<h:outputText value="#{chat.vue}" />
+				id 
+				<h:outputText value="#{chat.chatId }" />
 
 
 
-				<button class="btn btn-xs btn-link " type="button"
-					data-toggle="dropdown">
-					<p style="color: black">
-						<h:outputText value="... " />
-					</p>
-				</button>
+					<button class="btn btn-xs btn-link " type="button"
+						data-toggle="dropdown">
+						<p style="color: black">
+							<h:outputText value="... " />
+						</p>
+					</button>
 
-				<ul class="dropdown-menu">
-					<c:if test="#{chat.vue != 0}">
+					<ul class="dropdown-menu">
 
-							<li><a href="chat.jsf"><h:outputText value="modifier" /></a></li>
+						<li><a href="chat.jsf"><h:outputText value="modifier" /></a></li>
 
-					<li><a href="chat.jsf"><h:outputText value="supprimer" /></a></li>
-
-					</c:if>
-
-				</ul>
-				<br />
+						<li><a><h:outputText value="supprimer"	action="#{chatBean.delete(chat.chatId)}" /></a></li>
+									
+						<li><a href="#consumergoods" data-toggle="modal" id="#{chat.chatId }">Consumer
+								goods</a></li>
 
 
-			</ui:repeat>
+					</ul>
+					<br />
+
+				
+
+					<div class="modal fade" id="consumergoods"
+						data-target="#consumergoods">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header orange">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title">
+										<h:outputText update="@form" value="#{chat.chatId }" />
+									</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</ui:repeat>
+
+			</h:form>
+
 
 			<h:form>
-				<h:inputText value="#{chatBean.contenu}"></h:inputText>
+					<!-- <pe:ckeditor value="#{chatBean.contenu}" required="true" id="editor"
+						/> -->
+						<h:inputText value="#{chatBean.contenu}" required="true" id="editor"
+						/>
+
 				<h:commandButton value="Ajouter" action="#{chatBean.add()}" />
 			</h:form>
 
@@ -180,8 +213,9 @@
 
 						<div class="price-bottom">
 							<div class="price-wrap d-flex flex-row justify-content-center">
+								<h:commandButton value="#{user.firstName}"
+									action="#{chatBean.aff()}" />
 
-								<a href="#" style=""><h:outputText value="#{user.firstName}" /></a>
 							</div>
 						</div>
 					</li>
@@ -200,7 +234,16 @@
 	</div>
 	</section>
 
-
+<script>
+CKEDITOR.replace('editor').getData()
+if( $('.ckeditor').length > 0){
+    $('form').on('submit', function(e){
+        for (instance in CKEDITOR.instances) {
+            $('#' + instance).val(CKEDITOR.instances[instance].getData());
+        }
+    });
+}
+</script>
 	<!-- End footer Area -->
 
 	<script src="../javax.faces.resource/js/vendor/jquery-2.2.4.min.js"></script>
@@ -243,3 +286,4 @@
 
 
 </ui:composition>
+

@@ -1,0 +1,13 @@
+               <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+		<h:form id="form">
+		 <label>Username</label>
+		<h:inputText id="j_idt12" name="j_idt12" type="text"  value="#{loginBean.login}" autocomplete="off" />
+		<label>Password</label>
+               <h:inputSecret id="j_idt16" name="j_idt16" type="password" value="#{loginBean.password}"  autocomplete="off" />
+                   <h:commandButton id="btn" value="Connexion"
+					action="#{loginBean.doLogin()}" />
+					</h:form>
+</ui:composition>

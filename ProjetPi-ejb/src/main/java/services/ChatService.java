@@ -2,6 +2,7 @@ package services;
 
 import model.Chat;
 
+
 import model.User;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import interfaces.ChatServiceRemote;
@@ -34,9 +36,22 @@ public class ChatService  implements  ChatServiceRemote {
 	}
 
 	@Override
-	public ArrayList<Chat> getall(int id) {
+	public ArrayList<Chat> getall(int id, int vue) { 
 		ArrayList<Chat> p ;
-		TypedQuery<Chat> query = em.createQuery("select c  from Chat c where c.user1.userId=:id ", Chat.class);
+		TypedQuery<Chat> query = 
+				em.createQuery("select  c  from Chat c  where c.user2.userId=:id and c.vue =:vue  order by c.dateSend desc ", Chat.class);
+		query.setParameter("id",id);
+		query.setParameter("vue",vue);
+
+		p = (ArrayList<Chat>) query.getResultList()	;
+		
+		return p;
+		
+	}
+	@Override
+	public ArrayList<Chat> getDisc(int id) {
+		ArrayList<Chat> p ;
+		TypedQuery<Chat> query = em.createQuery("select c  from Chat c where c.user1.userId=:id", Chat.class);
 		query.setParameter("id",id);
 
 		p = (ArrayList<Chat>) query.getResultList()	;
@@ -69,5 +84,39 @@ public class ChatService  implements  ChatServiceRemote {
 		
 		return p;
 	 }
+
+	@Override
+	public void deleteChatId(int id) {
+		Query query = em.createQuery("delete from Chat c where c.chatId=:id");
+		query.setParameter("id", id);
+		query.executeUpdate();
+		System.out.println("iddd "+id);
+	}
+	public void deleteChatId1(int id)
+	{Chat c=em.find(Chat.class, id);
 	
+		em.remove(c);}
+	
+
+	@Override
+	public void updateChat(Chat e) {
+		em.merge(e);
+		
+	}
+	@Override
+	public  ArrayList<Chat> getchat(int idR, int idS){
+		 
+		ArrayList<Chat> p ;
+		TypedQuery<Chat> query = em.createQuery("select c  from Chat c where c.user1.userId=:idR and c.user2.userId=:idS ", Chat.class);
+		query.setParameter("idR",idR);
+		query.setParameter("idS",idS);
+		p = (ArrayList<Chat>) query.getResultList()	;
+		System.out.println("chatsss");
+		System.out.println(p);
+		System.out.println(idR);
+		System.out.println(idS);
+
+		return p;
+	 }
+
 	}

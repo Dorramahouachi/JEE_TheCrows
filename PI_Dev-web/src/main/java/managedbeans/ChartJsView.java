@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.ws.rs.client.Client;
 
 import org.primefaces.model.chart.PieChartModel;
 
@@ -38,10 +39,10 @@ public class ChartJsView implements Serializable {
 		Long nt=n1+n2+n3+n4;
 		
 		model = new PieChartModel();
-		model.set("Mauvais", n1*100/nt);// jobs in thousands
-		model.set("Moyen", n2*100/nt);
-		model.set("Bien", n3*100/nt);
-		model.set("Parfait", n4*100/nt);
+		model.set("Mauvais", n1);// jobs in thousands
+		model.set("Moyen", n2);
+		model.set("Bien", n3);
+		model.set("Parfait", n4 );
 
 		// followings are some optional customizations:
 		// set title
@@ -56,9 +57,10 @@ public class ChartJsView implements Serializable {
 		// (default). Only one can be used.
 		model.setDataFormat("value");
 		// format: %d for 'value', %s for 'label', %d%% for 'percent'
-		model.setDataLabelFormatString("%d%%");
+		model.setDataLabelFormatString("%d");
 		// pie sector colors
 		model.setSeriesColors("aaf,afa,faa,ffa,aff,faf,ddd");
+		
 	}
 
 	public PieChartModel getModel() {

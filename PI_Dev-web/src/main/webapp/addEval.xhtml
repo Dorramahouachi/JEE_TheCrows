@@ -63,7 +63,7 @@
 							<h:outputText value=""></h:outputText>
 							<p:commandButton id="aa" name="aa" style="margin-bottom: 10px;"
 								value="Ajouter Critere" 
-								action="#{evaluationBean.ajouterCritere()}" update="dtcritere" />
+								action="#{evaluationBean.ajouterCritere()}" update="dtcritere chartcritere" />
 							<h:outputText value=""></h:outputText>
 							<h:outputText value=""></h:outputText>
 							<h:outputText value=""></h:outputText>
@@ -92,7 +92,7 @@
 								<p:commandButton
 									action="#{evaluationBean.supprimerCritere(critere.critereID)}"
 									value="Supprimer" style="margin-right:20px;"
-									styleClass="ui-priority-primary" update="dtcritere" />
+									styleClass="ui-priority-primary" update="dtcritere chartcritere" />
 							</p:column>
 						</p:dataTable>
 					</p:panel>
@@ -100,7 +100,7 @@
 						<a href="http://localhost:9080/PI_Dev-web/charts.jsf"
 							onclick="http://localhost:9080/PI_Dev-web/charts.jsf">Aller à
 							Statistiques des critères</a>
-						<p:chart type="pie" responsive="true" model="#{chartJsView.model}"
+						<p:chart type="pie" responsive="true" id="chartcritere" model="#{chartJsView.model}"
 							value="#{chartJsView.model}" />
 					</p:panel>
 				</p:tab>

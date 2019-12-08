@@ -3,11 +3,16 @@ package managedbeans;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 
 import model.Candidature;
 import model.Critere;
@@ -41,12 +46,20 @@ public class EvaluationBean implements Serializable {
 	private Candidature candidature;
 
 	private Evaluation evaluation;
-	
+
 	////////////////// Critere
 	private String name;
 	private CritereType type;
 
 	private int selectedEvalId;
+
+	@PostConstruct
+	public void init() {
+		System.out.println("requesting....");
+		Client client = ClientBuilder.newClient();
+		WebTarget target= client.target("http://localhost:1911/Calendriers/GetEvents");
+		System.out.println("response  : "+target.request(MediaType.APPLICATION_JSON).get(String.class).toString());
+	}
 
 	public void ajouterCritere() {
 
@@ -55,13 +68,13 @@ public class EvaluationBean implements Serializable {
 		c.setType(type);
 		c.setEvaluation(service.getEvaluationById(selectedEvalId));
 		serviceCritere.AddCritere(c);
-		FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage("Successfull " ));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Successfull "));
 	}
 
 	public void supprimerCritere(int id) {
 		serviceCritere.DeleteCritere(id);
 	}
+
 	private List<Evaluation> listEval;
 	private List<Critere> listCriteres;
 
@@ -70,8 +83,7 @@ public class EvaluationBean implements Serializable {
 		eval.setDescription(description);
 		eval.setCandidature(serviceCandidature.getCandidatureById(selectedCandidatureId));
 		selectedEvalId = service.addEvaluation(eval);
-		FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage("Success"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success"));
 	}
 
 	public String goToEvalsList() {
@@ -103,8 +115,7 @@ public class EvaluationBean implements Serializable {
 		s.setDescription(description);
 		s.setEvaluationID(selectedEvalId);
 		service.updateEvaluation(s);
-		FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage("Successfull " ));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Successfull "));
 	}
 
 	public String toGerer(Evaluation eval) {
@@ -112,8 +123,7 @@ public class EvaluationBean implements Serializable {
 		this.setDescription(eval.getDescription());
 		this.setListCriteres(eval.getListCriteres());
 		this.setSelectedEvalId(eval.getEvaluationID());
-		FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage("Successfull " ));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Successfull "));
 		String navigaTo = null;
 		navigaTo = "updateEval.jsf?faces-redirect=true";
 		return navigaTo;
@@ -191,7 +201,7 @@ public class EvaluationBean implements Serializable {
 	}
 
 	public static int idEvalChart;
-	
+
 	public List<Critere> getListCriteres() {
 		idEvalChart = selectedEvalId;
 		System.out.println("test5 " + selectedEvalId);

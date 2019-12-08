@@ -108,7 +108,9 @@ public class chatBean implements Serializable {
 		super();
 	}
 	public void getall() {
-		chats=ms.getall(1,0);
+		LoginBean lb= new LoginBean();
+
+		chats=ms.getall(lb.getUuser().getUserId(),0);
 	}
 
 	
@@ -171,8 +173,11 @@ public class chatBean implements Serializable {
 			return "/pages/chat/chat.xhtml?face-redirect=true";
 
 		}
+		public void test(int idR) {LoginBean lb= new LoginBean();
+			disc=ms.getchat(idR,lb.getUuser().getUserId());}
+	
 	@PostConstruct
 	public void init() {
 		LoginBean lb= new LoginBean();
-		chats=ms.getall(lb.getUuser().getUserId(),0); users=ms.getUsrs(1); disc=ms.getchat(2,lb.getUuser().getUserId());}
+		chats=ms.getall(lb.getUuser().getUserId(),0); users=ms.getUsrs(1); /*disc=ms.getchat(2,lb.getUuser().getUserId());*/}
 }

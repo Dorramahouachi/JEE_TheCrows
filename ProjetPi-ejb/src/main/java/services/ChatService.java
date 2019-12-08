@@ -65,7 +65,7 @@ public class ChatService  implements  ChatServiceRemote {
 	public ArrayList<Chat> getall(int id, int vue) { 
 		ArrayList<Chat> p ;
 		TypedQuery<Chat> query = 
-				em.createQuery("select  c  from Chat c  where c.user2.userId=:id and c.vue =:vue  order by c.dateSend desc ", Chat.class);
+				em.createQuery("select  c  from Chat c  where c.user1.userId=:id and c.vue =:vue  order by c.dateSend desc ", Chat.class);
 		query.setParameter("id",id);
 		query.setParameter("vue",vue);
 

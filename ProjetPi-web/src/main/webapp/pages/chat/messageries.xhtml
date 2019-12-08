@@ -93,7 +93,7 @@
 						<ui:repeat value="#{chatBean.chats}" var="chat" varStatus="status">
 
 							<li><a href="chat.jsf"><h:outputText 
-							value="#{chat.contenu}" action="#{chatBean.aff(chat.user1.userId)}" />
+							value="#{chat.contenu}" action="#{DiscussionBean.test(2)}" />
 							</a></li>
 
 						</ui:repeat>

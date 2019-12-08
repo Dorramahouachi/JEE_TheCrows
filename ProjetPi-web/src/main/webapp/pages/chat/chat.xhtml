@@ -202,6 +202,10 @@
 				</ui:repeat>
 
 			</h:form>
+				<ui:repeat value="#{chatBean.propo}" var="prop" varStatus="status">
+								<h:outputText value="#{prop.word }" />
+				
+				</ui:repeat>
 
 
 			<h:form>

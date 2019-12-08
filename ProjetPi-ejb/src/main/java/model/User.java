@@ -330,4 +330,13 @@ public class User implements Serializable {
 		return subscribe;
 	}
 
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", firstName=" + firstName + ", lastname=" + lastname + ", username="
+				+ username + "]";
+	}
+	
+	
+	
+
 }

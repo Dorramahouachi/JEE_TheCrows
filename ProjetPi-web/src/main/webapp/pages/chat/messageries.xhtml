@@ -93,7 +93,7 @@
 						<ui:repeat value="#{chatBean.chats}" var="chat" varStatus="status">
 
 							<li><h:commandLink
-										value="#{chat.contenu}" action="#{chatBean.aff(chat.user2.userId)}" /> </li>
+										value="#{chat.contenu}" action="#{chatBean.aff(chat.user2.userId,chat.chatId)}" /> </li>
 							
 						</ui:repeat>
 

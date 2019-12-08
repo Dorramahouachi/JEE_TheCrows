@@ -14,6 +14,8 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
+import org.primefaces.event.FlowEvent;
+
 import model.Candidature;
 import model.Critere;
 import model.CritereType;
@@ -83,6 +85,7 @@ public class EvaluationBean implements Serializable {
 		eval.setDescription(description);
 		eval.setCandidature(serviceCandidature.getCandidatureById(selectedCandidatureId));
 		selectedEvalId = service.addEvaluation(eval);
+		idEvalChart = selectedEvalId;
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success"));
 	}
 
@@ -92,6 +95,7 @@ public class EvaluationBean implements Serializable {
 
 	public String goToCriteresList(int id) {
 		selectedEvalId = id;
+		idEvalChart = selectedEvalId;
 		return "listCriteres.jsf?faces-redirect=true";
 	}
 
@@ -115,6 +119,8 @@ public class EvaluationBean implements Serializable {
 		s.setDescription(description);
 		s.setEvaluationID(selectedEvalId);
 		service.updateEvaluation(s);
+		idEvalChart = selectedEvalId;
+
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Successfull "));
 	}
 
@@ -123,6 +129,7 @@ public class EvaluationBean implements Serializable {
 		this.setDescription(eval.getDescription());
 		this.setListCriteres(eval.getListCriteres());
 		this.setSelectedEvalId(eval.getEvaluationID());
+		idEvalChart = selectedEvalId;
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Successfull "));
 		String navigaTo = null;
 		navigaTo = "updateEval.jsf?faces-redirect=true";
@@ -243,6 +250,59 @@ public class EvaluationBean implements Serializable {
 
 	public void setSelectedEvalId(int selectedEvalId) {
 		this.selectedEvalId = selectedEvalId;
+	}
+
+	private boolean skip;
+
+	public String save() {
+		FacesMessage msg = new FacesMessage("Successful");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		return "listEval.jsf?faces-redirect=true";
+
+	}
+
+	public boolean isSkip() {
+		return skip;
+	}
+
+	public void setSkip(boolean skip) {
+		this.skip = skip;
+	}
+
+	int verif = 0;
+
+	public String onFlowProcess(FlowEvent event) {
+		if (skip) {
+			skip = false; // reset in case user goes back
+			return "confirm";
+		} else {
+			if (verif == 0) {
+				Evaluation eval = new Evaluation();
+				eval.setDescription(description);
+				eval.setCandidature(serviceCandidature.getCandidatureById(selectedCandidatureId));
+				selectedEvalId = service.addEvaluation(eval);
+				idEvalChart = selectedEvalId;
+				verif = 1;
+				return event.getNewStep();
+			}
+			return event.getNewStep();
+		}
+	}
+
+	public static int getIdEvalChart() {
+		return idEvalChart;
+	}
+
+	public static void setIdEvalChart(int idEvalChart) {
+		EvaluationBean.idEvalChart = idEvalChart;
+	}
+
+	public int getVerif() {
+		return verif;
+	}
+
+	public void setVerif(int verif) {
+		this.verif = verif;
 	}
 
 }

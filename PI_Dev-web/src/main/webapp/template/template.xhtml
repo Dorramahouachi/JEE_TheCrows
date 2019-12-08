@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<!-- Mirrored from www.primefaces.org/prestige/sample.xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Oct 2019 18:15:53 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<!-- /Added by HTTrack -->
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="prestige-layout/images/favicon.html" />
+	<link type="text/css" rel="stylesheet"
+		href="javax.faces.resource/theme.cssad81.css?ln=primefaces-prestige-deepblue-light" />
+	<!-- 
+<link type="text/css" rel="stylesheet"
+	href="javax.faces.resource/fa/font-awesome.css68f8.css?ln=primefaces&amp;v=7.0" />
+<link type="text/css" rel="stylesheet"
+	href="javax.faces.resource/components.css68f8.css?ln=primefaces&amp;v=7.0" />
+<script type="text/javascript"
+	src="javax.faces.resource/jquery/jquery.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+<script type="text/javascript"
+	src="javax.faces.resource/core.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+<script type="text/javascript"
+	src="javax.faces.resource/components.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+<script type="text/javascript"
+	src="javax.faces.resource/jquery/jquery-plugins.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+<link type="text/css" rel="stylesheet"
+	href="javax.faces.resource/keyboard/keyboard.css68f8.css?ln=primefaces&amp;v=7.0" />
+<script type="text/javascript"
+	src="javax.faces.resource/keyboard/keyboard.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+<script type="text/javascript"
+	src="javax.faces.resource/touch/touchswipe.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+	 -->
+	<link type="text/css" rel="stylesheet"
+		href="javax.faces.resource/css/primeflex.css390d.css?ln=prestige-layout" />
+	<link type="text/css" rel="stylesheet"
+		href="javax.faces.resource/css/layout-canvas.css390d.css?ln=prestige-layout" />
+	<script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='en_US';PrimeFaces.settings.projectStage='Development';}</script>
+	<title>Sample</title>
+	<script type="text/javascript"
+		src="javax.faces.resource/js/layout.js390d.xhtml?ln=prestige-layout"></script>
+	<style type="text/css">
+.ui-panelgrid.form-elements .ui-grc-2 {
+	padding-left: 60px;
+}
+
+@media ( max-width :1024px) {
+	.ui-panelgrid.form-elements .ui-grc-2 {
+		padding-left: 20px;
+	}
+}
+
+@media ( max-width :640px) {
+	.ui-panelgrid.form-elements .ui-grc-2 {
+		padding-left: 6px;
+	}
+}
+
+.dialogDemo label {
+	line-height: 2.1em;
+}
+
+.label {
+	width: 20%;
+	padding: 4px;
+}
+
+.value {
+	width: 80%;
+	padding: 4px;
+}
+
+.grid {
+	width: 100%;
+}
+
+.error {
+	color: red;
+}
+
+.outputLabel {
+	font-weight: bold;
+}
+
+.grid {
+	width: 33%;
+	padding: 4px;
+}
+</style>
+</h:head>
+<h:body>
+	<div class="layout-wrapper layout-menu-horizontal layout-canvas">
+
+		<div class="layout-topbar">
+			<div class="layout-topbar-logo">
+				<a href="dashboard.html"><img id="j_idt13"
+					src="javax.faces.resource/images/logo.png390d.png?ln=prestige-layout"
+					alt="" class="logo" /></a>
+			</div>
+			<a class="layout-menu-button" href="#"> <i class="fa fa-bars"></i>
+			</a>
+			<ul class="layout-topbar-menu" role="menu">
+				<li class="layout-topbar-item"><a href="#"
+					class="layout-topbar-icon first"> <i
+						class="topbar-icon fa fa-cog"></i>
+				</a>
+					<ul>
+						<li><a href="#" class="layout-topbar-icon"> <i
+								class="topbar-icon fa fa-bookmark"></i>
+						</a>
+							<div class="layout-quickmenu-tooltip">
+								<div class="layout-quickmenu-tooltip-arrow"></div>
+								<div class="layout-quickmenu-tooltip-text">Bookmarks</div>
+							</div></li>
+						<li><a href="#" class="layout-topbar-icon"> <i
+								class="topbar-icon fa fa-bar-chart"></i>
+						</a>
+							<div class="layout-quickmenu-tooltip">
+								<div class="layout-quickmenu-tooltip-arrow"></div>
+								<div class="layout-quickmenu-tooltip-text">Statistics</div>
+							</div></li>
+						<li><a href="#" class="layout-topbar-icon"> <i
+								class="topbar-icon fa fa-sign-out"> </i>
+						</a>
+							<div class="layout-quickmenu-tooltip">
+
+								<div class="layout-quickmenu-tooltip-arrow"></div>
+								<div class="layout-quickmenu-tooltip-text"></div>
+
+							</div></li>
+					</ul></li>
+				<li class="layout-topbar-item"><a href="#"
+					class="layout-topbar-icon first"> <i
+						class="topbar-icon fa fa-calendar"></i>
+				</a>
+					<ul>
+						<li><a href="#" class="layout-topbar-text"> SUN </a></li>
+						<li><a href="#" class="layout-topbar-text"> MON </a></li>
+						<li><a href="#" class="layout-topbar-text"> TUE </a></li>
+					</ul></li>
+				<li role="menuitem" class="topbar-search layout-topbar-item"><a
+					href="#" class="layout-topbar-icon first"> <i
+						class="topbar-icon fa fa-search"></i>
+				</a> <input type="text" placeholder="Type to search..." /></li>
+				<li class="user-profile" role="menuitem"><a href="#">
+						<div class="user-profile-info profile-link">
+							<span class="user-profile-name">Ava Gregoraci</span> <span
+								class="user-profile-role">Design Ops</span>
+						</div> <img id="j_idt15"
+						src="javax.faces.resource/images/avatar/avatar-ava.jpg390d.jpg?ln=prestige-layout"
+						alt="" class="logo" />
+				</a>
+					<ul>
+						<li class="profile-detail">
+							<div class="user-profile-info">
+								<img id="j_idt17"
+									src="javax.faces.resource/images/avatar/avatar-ava.jpg390d.jpg?ln=prestige-layout"
+									alt="" class="logo" />
+								<div class="profile-info">
+									<span class="user-profile-name">Ava Gregoraci</span> <span
+										class="user-profile-role">Design Ops</span>
+								</div>
+
+
+								<a href="#" class="profile-detail-icon"> </a>
+							</div>
+						</li>
+						<li><a href="#"> <i class="fa fa-user"></i>
+								<div class="menu-text">
+									<span class="menu-title">Profile</span> <span
+										class="menu-subtitle">Edit your profile</span>
+								</div> <i class="right-icon fa fa-angle-right"></i>
+						</a></li>
+						<li><a href="#"> <i class="fa fa-cog"></i>
+								<div class="menu-text">
+									<span class="menu-title">Settings</span> <span
+										class="menu-subtitle">Dashboard Settings</span>
+								</div> <i class="right-icon fa fa-angle-right"></i>
+						</a></li>
+						<li><a href="#"> <i class="fa fa-inbox"></i>
+								<div class="menu-text">
+									<span class="menu-title">Messages</span> <span
+										class="menu-subtitle">You have a
+										<div class="blue">3 new</div> messages
+									</span>
+								</div> <i class="right-icon fa fa-angle-right"></i>
+						</a></li>
+						<li><a href="#"> <i class="fa fa-globe"></i>
+								<div class="menu-text">
+									<span class="menu-title">Notification</span> <span
+										class="menu-subtitle">No new notification</span>
+								</div> <i class="right-icon fa fa-angle-right"></i>
+						</a></li>
+					</ul></li>
+			</ul>
+		</div>
+
+		<div class="layout-menu-container">
+			<div class="overlay-menu-button">
+				<div class="overlay-menu-button-bars">
+					<span></span> <span></span> <span></span>
+				</div>
+				<div class="overlay-menu-button-times">
+					<span></span> <span></span>
+				</div>
+			</div>
+			<form id="menuform" name="menuform" method="post"
+				action="https://www.primefaces.org/prestige/sample.xhtml"
+				enctype="application/x-www-form-urlencoded">
+				<input type="hidden" name="menuform" value="menuform" />
+
+				<div class="layout-menu-wrapper">
+					<ul id="menuform:j_idt21" class="layout-menu">
+						<li id="menuform:om_dashboard" role="menuitem"><a
+							href="dashboard.html"><i
+								class="fa fa-fw fa-dashboard fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Dashboard</span></a></li>
+						<li id="menuform:om_components" role="menuitem"><a href="#"><i
+								class="fa fa-fw fa-bars fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Gestion des employés</span><i
+								class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+							<ul role="menu">
+								<li id="menuform:om_sample" role="menuitem"><a href="#"><i
+										class="fa fa-fw fa-columns fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Liste des employés</span></a></li>
+								<li id="menuform:om_forms" role="menuitem"><a href="#"><i
+										class="fa fa-fw fa-code fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Ajouter un employé</span></a></li>
+								<li id="menuform:om_forms" role="menuitem"><a href="#"><i
+										class="fa fa-fw fa-columns fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Liste des conges</span></a></li>
+								<li id="menuform:om_forms" role="menuitem"><a href="#"><i
+										class="fa fa-fw fa-columns fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Liste des bus</span></a></li>
+								<li id="menuform:om_forms" role="menuitem"><a href="#"><i
+										class="fa fa-fw fa-code fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Ajouter Bus</span></a></li>
+							</ul></li>
+						<li id="menuform:om_default" role="menuitem"><a href="#"><i
+								class="fa fa-fw fa-cube fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Evaluation</span><i
+								class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+							<ul role="menu">
+								<li id="menuform:om_empty" role="menuitem"><a
+									href="http://localhost:9080/PI_Dev-web/addEval.jsf"
+									onclick="http://localhost:9080/PI_Dev-web/addEval.jsf"><i
+										class="fa fa-fw fa-square-o fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">add evaluation</span></a></li>
+								<li id="menuform:om_login" role="menuitem"><a
+									href="http://localhost:9080/PI_Dev-web/listEval.jsf"
+									onclick="http://localhost:9080/PI_Dev-web/addEval.jsf"><i
+										class="fa fa-fw fa-certificate fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">show evaluations</span></a></li>
+
+								<li id="menuform:om_login" role="menuitem"><a href="#"><i
+										class="fa fa-fw fa-area-chart fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">charts</span></a></li>
+
+
+
+							</ul></li>
+
+					</ul>
+					<script id="menuform:j_idt21_s" type="text/javascript">$(function(){PrimeFaces.cw("Prestige","prestigeMenuWidget",{id:"menuform:j_idt21"});});</script>
+				</div>
+				<input type="hidden" name="javax.faces.ViewState"
+					id="j_id1:javax.faces.ViewState:0"
+					value="-5332551634193829057:6903227214716099206" autocomplete="off" />
+			</form>
+		</div>
+
+		<div class="layout-actionbar">
+			<div class="breadcrumb">
+				<div class="route-bar-breadcrumb"></div>
+			</div>
+			<div class="actions ">
+				<ul>
+					<li>
+						<button>
+							<i class="fa fa-snowflake-o icon"></i>
+						</button>
+					</li>
+					<li>
+						<button>
+							<i class="fa fa-paper-plane icon"></i>
+						</button>
+					</li>
+					<li>
+						<button>
+							<i class="fa fa-file-code-o icon"></i>
+						</button>
+					</li>
+					<li>
+						<button>
+							<i class="fa fa-life-ring icon"></i>
+						</button>
+					</li>
+					<li>
+						<button>
+							<i class="fa fa-user icon"></i>
+						</button>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+		<div class="layout-actionbar">
+			<ui:insert name="content" />
+		</div>
+		<div class="layout-footer">
+			<div class="p-grid">
+				<div class="p-col-12 p-md-6  p-lg-3">
+					<span class="logo">Prestige</span>
+					<p>PrimeFaces Premium Template</p>
+				</div>
+				<div class="p-col-12 p-md-6 p-lg-3">
+					<span>LATEST TEMPLATES</span>
+					<div class="p-grid templates">
+						<ul>
+							<li><a href="#primefaces">Sapphire</a></li>
+							<li><a href="#primefaces">Roma</a></li>
+							<li><a href="#primefaces">Babylon</a></li>
+							<li><a href="#primefaces">Olympia</a></li>
+						</ul>
+						<ul>
+							<li><a href="#primefaces">Manhattan</a></li>
+							<li><a href="#primefaces">Ecuador</a></li>
+							<li><a href="#primefaces">Harmony</a></li>
+							<li><a href="#primefaces">California</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="p-col-12 p-md-6 p-lg-3">
+					<span>DEMOS</span>
+					<div class="p-grid">
+						<ul class="links">
+							<li><a href="#primefaces">PrimeFaces</a></li>
+							<li><a href="#primefaces">PrimeNG</a></li>
+							<li><a href="#primefaces">PrimeReact</a></li>
+						</ul>
+					</div>
+
+				</div>
+				<div class="p-col-12 p-md-6 p-lg-3">
+					<span>SOCIAL</span>
+					<div class="p-grid">
+						<ul class="links social">
+							<li><a href="#twitter" class="icon-link"><i
+									class="fa fa-twitter icon"></i></a></li>
+							<li><a href="#facebook" class="icon-link"><i
+									class="fa fa-facebook icon"></i></a></li>
+							<li><a href="#github" class="icon-link"><i
+									class="fa fa-github icon"></i></a></li>
+						</ul>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+		<div class="layout-mask"></div>
+		<div id="j_idt211" class="layout-ajax-loader">
+			<div id="j_idt211_start" style="display: none">
+				<i class="fa fa-circle-o-notch fa-spin layout-ajax-loader-icon"
+					aria-hidden="true"></i>
+			</div>
+			<div id="j_idt211_complete" style="display: none"></div>
+		</div>
+		<script id="j_idt211_s" type="text/javascript">$(function(){PrimeFaces.cw("AjaxStatus","widget_j_idt211",{id:"j_idt211"});});</script>
+	</div>
+</h:body>
+
+
+<!-- Mirrored from www.primefaces.org/prestige/sample.xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Oct 2019 18:15:53 GMT -->
+</html>

@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<h:form>
+			<div class="card card-w-title">
+
+				<p:dataTable id="dtEvals" var="eval"
+					value="#{evaluationBean.listEval}">
+					<p:column headerText="Candidature">
+						<f:facet name="header">Candidature</f:facet>
+						<h:outputText value="#{eval.candidature.candidatureDate}" />
+					</p:column>
+					<p:column headerText="Description">
+						<f:facet name="header">Description</f:facet>
+						<h:outputText value="#{eval.description}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Supprimer" />
+						</f:facet>
+						<p:commandButton
+							action="#{evaluationBean.supprimerEval(eval.evaluationID)}"
+							value="Supprimer" style="margin-right:20px;"
+							styleClass="ui-priority-primary" update="dtEvals" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Modifier" />
+						</f:facet>
+						<p:commandButton
+							action="#{evaluationBean.toGerer(eval)}"
+							value="Modifier" style="margin-right:20px;"
+							styleClass="ui-priority-primary"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Liste Critères" />
+						</f:facet>
+						<p:commandButton
+							action="#{evaluationBean.goToCriteresList(eval.evaluationID)}"
+							value="Les critères" style="margin-right:20px;"
+							styleClass="ui-priority-primary" />
+					</p:column>
+				</p:dataTable>
+			</div>
+		</h:form>
+		<br></br>
+		<br></br>
+		<br></br>
+		<br></br>
+	</ui:define>
+</ui:composition>

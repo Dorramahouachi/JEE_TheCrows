@@ -13,7 +13,7 @@ public interface UserServiceRemote {
  
 	public List<User> getAllUsers();
 	public List<String> getAllUserNames();
-	public Long addUser(User user);
+	public int addUser(User user);
 	public void updateUser(User user);
 	public User getUserByEmailAndPassword(String email, String password) ;
 	public User getUserById(int id);

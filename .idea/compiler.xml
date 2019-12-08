@@ -12,10 +12,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="PiJEE" target="1.7" />
-      <module name="PiJEE-ear" target="1.7" />
-      <module name="PiJEE-ejb" target="1.7" />
-      <module name="PiJEE-web" target="1.7" />
+      <module name="PiJEE" target="1.8" />
+      <module name="PiJEE-ear" target="1.8" />
+      <module name="PiJEE-ejb" target="8" />
+      <module name="PiJEE-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

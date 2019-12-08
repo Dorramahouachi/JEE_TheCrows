@@ -2,7 +2,6 @@ package services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -26,7 +25,7 @@ public class UserService implements UserServiceRemote {
 	
 	
 	
-	public Long addUser(User User) {
+	public int addUser(User User) {
 		em.persist(User);
 		return User.getId();
 	}
@@ -65,7 +64,7 @@ public class UserService implements UserServiceRemote {
 	public List<String> getAllUserNames() {
 		List<String> names = new ArrayList<>();
 		for(User u : getAllUsers()) {
-			names.add(u.getFirstName() + " " + u.getLastName());
+			names.add(u.getFirstname() + " " + u.getLastname());
 		}
 		return names;
 	}
@@ -85,7 +84,7 @@ public class UserService implements UserServiceRemote {
 
 	@Override
 	public List<User> getUsesDistinctFromLoggedUser(int id) {
-		List<User> users = em.createQuery("SELECT u FROM User u WHERE u.id != :id",User.class)
+		List<User> users = em.createQuery("SELECT u FROM User u WHERE u.id = :id",User.class)
 				.setParameter("id", id)
 				.getResultList();
 		return users;

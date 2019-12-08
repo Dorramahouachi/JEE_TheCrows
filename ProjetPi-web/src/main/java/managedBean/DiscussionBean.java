@@ -41,14 +41,10 @@ public String test ( int id2)
 {
 		LoginBean lb= new LoginBean();
 
-	chats= ms.getchat(lb.getUuser().getUserId(), id2);
-setIdS(id2);
+	this.chats= ms.getchat(lb.getUuser().getUserId(), id2);
+
 
 return "/pages/chat/chat.xhtml?face-redirect=true";}
-@PostConstruct
-public void init() {
-	LoginBean lb= new LoginBean();
-	chats= ms.getchat(lb.getUuser().getUserId(), getIdS());
-	}
+
 
 }

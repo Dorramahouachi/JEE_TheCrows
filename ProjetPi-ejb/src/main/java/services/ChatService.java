@@ -126,14 +126,18 @@ public class ChatService  implements  ChatServiceRemote {
 
 	@Override
 	public void updateChat(Chat e) {
-		em.merge(e);
+		Chat x = new Chat();
+		x=em.find(Chat.class, e.getChatId());
+	x.setContenu(e.getContenu());
+		em.merge(x);
+		System.out.println("contenu"+e.getContenu());
 		
 	}
 	@Override
 	public  ArrayList<Chat> getchat(int idR, int idS){
 		 
 		ArrayList<Chat> p ;
-		TypedQuery<Chat> query = em.createQuery("select c  from Chat c where c.user1.userId=:idR and c.user2.userId=:idS ", Chat.class);
+		TypedQuery<Chat> query = em.createQuery("select c  from Chat c where ((c.user1.userId=:idR and c.user2.userId=:idS) or ( c.user1.userId=:idS and c.user2.userId=:idR))", Chat.class);
 		query.setParameter("idR",idR);
 		query.setParameter("idS",idS);
 		p = (ArrayList<Chat>) query.getResultList()	;

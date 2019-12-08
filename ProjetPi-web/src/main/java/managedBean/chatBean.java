@@ -18,6 +18,10 @@ import services.ChatService;
 @ManagedBean(name = "chatBean")
 @SessionScoped
 public class chatBean implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int chatId ; 
 	@NotNull
 	private String contenu;
@@ -27,10 +31,16 @@ public class chatBean implements Serializable {
 	private List<Chat> disc ;
 	private List<Chat> ch ;
 	private int idr ;
-	private int ids ; 
+	private  int ids ; 
 	private String reponse ;
-	
+	private String modifier;
 
+	public String getModifier() {
+		return modifier;
+	}
+	public void setModifier(String modifier) {
+		this.modifier = modifier;
+	}
 	public String getReponse() {
 		return reponse;
 	}
@@ -121,7 +131,7 @@ public class chatBean implements Serializable {
 			Chat m = new Chat();
 			m.setContenu(contenu);
 
-			m.setUser1(ms.getUser(1));
+			m.setUser1(lb.getUuser());
 			m.setUser2(lb.getUuser());
 
 		String rep=	ms.envoyerMessage(m);
@@ -137,9 +147,10 @@ public class chatBean implements Serializable {
 		}
 	
 	}
-	public void update()
+	public void update(int id)
 	{Chat e= new Chat();
-	e.setContenu(contenu);
+	e.setChatId(id);
+	e.setContenu(modifier);
 		ms.updateChat(e);
 		
 	}
@@ -166,18 +177,19 @@ public class chatBean implements Serializable {
 		public String aff(int id )
 		{
 			LoginBean lb= new LoginBean();
-			setIdr(id);
-			setIds(ids);
-			disc=ms.getchat(id,lb.getUuser().getUserId());
+		
+			this.disc=ms.getchat(id,lb.getUuser().getUserId());
 			
 			return "/pages/chat/chat.xhtml?face-redirect=true";
 
 		}
-		public void test(int idR) {LoginBean lb= new LoginBean();
-			disc=ms.getchat(idR,lb.getUuser().getUserId());}
+		public void test() {LoginBean lb= new LoginBean();
+			disc=ms.getchat(lb.getUuser().getUserId(),ids);}
+		public void jdida(int id)
+		{this.ids=id;}
 	
 	@PostConstruct
 	public void init() {
 		LoginBean lb= new LoginBean();
-		chats=ms.getall(lb.getUuser().getUserId(),0); users=ms.getUsrs(1); /*disc=ms.getchat(2,lb.getUuser().getUserId());*/}
+		chats=ms.getall(lb.getUuser().getUserId(),0); users=ms.getUsrs(1);}
 }

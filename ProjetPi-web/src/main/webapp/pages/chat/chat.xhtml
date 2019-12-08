@@ -6,9 +6,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:my="http://java.sun.com/jsf/composite/my"
-	 xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
 
+	<f:metadata>
+
+		<f:viewAction action="#{chatBean.test()}" />
+
+	</f:metadata>
 	<html lang="en" class="no-js" xml:lang="en"
 		xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -134,12 +139,12 @@
 
 
 		<div
-			style=" width: 1032px; float: right; padding-left: 15px; border-color: gray; border-style: ridge;">
+			style="width: 1032px; float: right; padding-left: 15px; border-color: gray; border-style: ridge;">
 
 
 			<h:form id="a">
 
-				<ui:repeat value="#{DiscussionBean.chats}" var="chat" varStatus="status">
+				<ui:repeat value="#{chatBean.disc}" var="chat" varStatus="status">
 
 					<h:outputText value="#{chat.user1.firstName}" /> : 
 
@@ -160,18 +165,22 @@
 
 					<ul class="dropdown-menu">
 
-						<li><a href="chat.jsf"><h:outputText value="modifier" /></a></li>
+									<h:inputText value="#{chatBean.modifier}" required="true" id="hkhhkt"  />
+						<li><h:commandButton value="modifier"
+								action="#{chatBean.update(chat.chatId)}" /></li>
 
-						<li><a><h:outputText value="supprimer"	action="#{chatBean.delete(chat.chatId)}" /></a></li>
-									
-						<li><a href="#consumergoods" data-toggle="modal" id="#{chat.chatId }">Consumer
-								goods</a></li>
+						<li><h:commandLink value="supprimer"
+								action="#{chatBean.delete(chat.chatId)}" /></li>
+
+						<li><a href="#consumergoods" data-toggle="modal"
+							id="#{chat.chatId }">Consumer goods</a></li>
 
 
 					</ul>
+					
 					<br />
+					
 
-				
 
 					<div class="modal fade" id="consumergoods"
 						data-target="#consumergoods">
@@ -196,16 +205,23 @@
 
 
 			<h:form>
-					<!-- <pe:ckeditor value="#{chatBean.contenu}" required="true" id="editor"
+				<!-- <pe:ckeditor value="#{chatBean.contenu}" required="true" id="editor"
 						/> -->
-						<h:inputText value="#{chatBean.contenu}" required="true" id="editor"
-						/>
+				<h:inputText value="#{chatBean.contenu}"  id="ad"
+				required="true"
+		requiredMessage="Veuillez ecrire quelque chose :) "
+		validatorMessage="le message doit etre de longueur entre 3 et 8 " >
+				<f:validateLength minimum="3" maximum="8"></f:validateLength>
+			</h:inputText>
+			<br />
+		<h:message for="ad" style="color:red"></h:message>
 
 				<h:commandButton value="Ajouter" action="#{chatBean.add()}" />
-				<br/>
+				<br />
 				<h:panelGroup rendered="#{chatBean.reponse eq 'refus' }">
-  <p style="color:red">  Veuillez ne pas envoyer des gros mots :) </p>
-</h:panelGroup>
+					<p style="color: red">Veuillez ne pas envoyer des gros mots :)
+					</p>
+				</h:panelGroup>
 			</h:form>
 
 		</div>
@@ -238,16 +254,19 @@
 	</div>
 	</section>
 
-<script>
-CKEDITOR.replace('editor').getData()
-if( $('.ckeditor').length > 0){
-    $('form').on('submit', function(e){
-        for (instance in CKEDITOR.instances) {
-            $('#' + instance).val(CKEDITOR.instances[instance].getData());
-        }
-    });
-}
-</script>
+	<script>
+		CKEDITOR.replace('editor').getData()
+		if ($('.ckeditor').length > 0) {
+			$('form').on(
+					'submit',
+					function(e) {
+						for (instance in CKEDITOR.instances) {
+							$('#' + instance).val(
+									CKEDITOR.instances[instance].getData());
+						}
+					});
+		}
+	</script>
 	<!-- End footer Area -->
 
 	<script src="../javax.faces.resource/js/vendor/jquery-2.2.4.min.js"></script>

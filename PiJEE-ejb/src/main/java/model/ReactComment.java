@@ -20,7 +20,7 @@ public class ReactComment implements Serializable {
 	private int reactCommentId;
 
 	@Column(name="TypeReact")
-	private Object typeReact;
+	private String typeReact;
 
 	//bi-directional many-to-one association to Comment
 	@ManyToOne
@@ -30,7 +30,7 @@ public class ReactComment implements Serializable {
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="UserId")
-	private User user;
+	private Userz user;
 
 	public ReactComment() {
 	}
@@ -43,11 +43,11 @@ public class ReactComment implements Serializable {
 		this.reactCommentId = reactCommentId;
 	}
 
-	public Object getTypeReact() {
+	public String getTypeReact() {
 		return this.typeReact;
 	}
 
-	public void setTypeReact(Object typeReact) {
+	public void setTypeReact(String typeReact) {
 		this.typeReact = typeReact;
 	}
 
@@ -59,11 +59,11 @@ public class ReactComment implements Serializable {
 		this.comment = comment;
 	}
 
-	public User getUser() {
+	public Userz getUser() {
 		return this.user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Userz user) {
 		this.user = user;
 	}
 

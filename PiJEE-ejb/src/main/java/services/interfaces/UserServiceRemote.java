@@ -4,18 +4,18 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
-import model.User;
+import model.Userz;
 
 
 
 @Remote
 public interface UserServiceRemote {
  
-	public List<User> getAllUsers();
+	public List<Userz> getAllUsers();
 	public List<String> getAllUserNames();
-	public int addUser(User user);
-	public void updateUser(User user);
-	public User getUserByEmailAndPassword(String email, String password) ;
-	public User getUserById(int id);
-	public List<User> getUsesDistinctFromLoggedUser(int id);
+	public int addUser(Userz user);
+	public void updateUser(Userz user);
+	public Userz getUserByEmailAndPassword(String email, String password) ;
+	public Userz getUserById(int id);
+	public List<Userz> getUsesDistinctFromLoggedUser(int id);
 }

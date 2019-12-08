@@ -20,7 +20,7 @@ public class ReactPost implements Serializable {
 	private int reactPostId;
 
 	@Column(name="TypeReact")
-	private Object typeReact;
+	private String typeReact;
 
 	//bi-directional many-to-one association to Post
 	@ManyToOne
@@ -30,7 +30,7 @@ public class ReactPost implements Serializable {
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="UserId")
-	private User user;
+	private Userz user;
 
 	public ReactPost() {
 	}
@@ -43,11 +43,11 @@ public class ReactPost implements Serializable {
 		this.reactPostId = reactPostId;
 	}
 
-	public Object getTypeReact() {
+	public String getTypeReact() {
 		return this.typeReact;
 	}
 
-	public void setTypeReact(Object typeReact) {
+	public void setTypeReact(String typeReact) {
 		this.typeReact = typeReact;
 	}
 
@@ -59,11 +59,11 @@ public class ReactPost implements Serializable {
 		this.post = post;
 	}
 
-	public User getUser() {
+	public Userz getUser() {
 		return this.user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Userz user) {
 		this.user = user;
 	}
 

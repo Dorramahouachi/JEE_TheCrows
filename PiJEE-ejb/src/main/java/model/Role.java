@@ -20,10 +20,10 @@ public class Role implements Serializable {
 	private int roleId;
 
 	@Column(name="Description")
-	private Object description;
+	private String description;
 
 	@Column(name="RoleName")
-	private Object roleName;
+	private String roleName;
 
 	public Role() {
 	}
@@ -36,19 +36,19 @@ public class Role implements Serializable {
 		this.roleId = roleId;
 	}
 
-	public Object getDescription() {
+	public String getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(Object description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public Object getRoleName() {
+	public String getRoleName() {
 		return this.roleName;
 	}
 
-	public void setRoleName(Object roleName) {
+	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
 

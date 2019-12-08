@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -21,7 +22,7 @@ public class EntretienPhysique implements Serializable {
 	private int entretienPhysiqueId;
 
 	@Column(name="DateEntretien")
-	private Timestamp dateEntretien;
+	private Date dateEntretien;
 
 	public EntretienPhysique() {
 	}
@@ -34,11 +35,11 @@ public class EntretienPhysique implements Serializable {
 		this.entretienPhysiqueId = entretienPhysiqueId;
 	}
 
-	public Timestamp getDateEntretien() {
+	public Date getDateEntretien() {
 		return this.dateEntretien;
 	}
 
-	public void setDateEntretien(Timestamp dateEntretien) {
+	public void setDateEntretien(Date dateEntretien) {
 		this.dateEntretien = dateEntretien;
 	}
 

@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 
@@ -22,17 +23,17 @@ public class Post implements Serializable {
 	private int postId;
 
 	@Column(name="Contenu")
-	private Object contenu;
+	private String contenu;
 
 	@Column(name="DatePost")
-	private Timestamp datePost;
+	private Date datePost;
 
 	private int vue;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="UserId")
-	private User user;
+	private Userz user;
 
 	//bi-directional many-to-one association to ReactPost
 	@OneToMany(mappedBy="post")
@@ -49,19 +50,19 @@ public class Post implements Serializable {
 		this.postId = postId;
 	}
 
-	public Object getContenu() {
+	public String getContenu() {
 		return this.contenu;
 	}
 
-	public void setContenu(Object contenu) {
+	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}
 
-	public Timestamp getDatePost() {
+	public Date getDatePost() {
 		return this.datePost;
 	}
 
-	public void setDatePost(Timestamp datePost) {
+	public void setDatePost(Date datePost) {
 		this.datePost = datePost;
 	}
 
@@ -73,11 +74,11 @@ public class Post implements Serializable {
 		this.vue = vue;
 	}
 
-	public User getUser() {
+	public Userz getUser() {
 		return this.user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Userz user) {
 		this.user = user;
 	}
 

@@ -1,6 +1,6 @@
 package ManagedBeans;
 
-import model.User;
+import model.Userz;
 import services.impl.UserService;
 
 import java.io.Serializable;
@@ -25,10 +25,10 @@ public class LoginBean implements Serializable {
 
     private String login;
     private String password;
-    static User user;
+    private Userz user;
     private Boolean loggedIn;
     private String message;
-    private User loggedUser;
+    private Userz loggedUser;
 
 
     @EJB
@@ -98,11 +98,11 @@ public class LoginBean implements Serializable {
 
 
 
-    public User getLoggedUser() {
+    public Userz getLoggedUser() {
         return user;
     }
 
-    public void setLoggedUser(User loggedUser) {
+    public void setLoggedUser(Userz loggedUser) {
         this.loggedUser = loggedUser;
     }
 

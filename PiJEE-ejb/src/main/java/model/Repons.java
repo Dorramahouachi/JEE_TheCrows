@@ -20,12 +20,12 @@ public class Repons implements Serializable {
 	private int reponseID;
 
 	@Column(name="AnswerQ")
-	private Object answerQ;
+	private String answerQ;
 
 	private boolean isCorrect;
 
 	@Column(name="ReponseText")
-	private Object reponseText;
+	private String reponseText;
 
 	//bi-directional many-to-one association to Question
 
@@ -41,11 +41,11 @@ public class Repons implements Serializable {
 		this.reponseID = reponseID;
 	}
 
-	public Object getAnswerQ() {
+	public String getAnswerQ() {
 		return this.answerQ;
 	}
 
-	public void setAnswerQ(Object answerQ) {
+	public void setAnswerQ(String answerQ) {
 		this.answerQ = answerQ;
 	}
 
@@ -57,11 +57,11 @@ public class Repons implements Serializable {
 		this.isCorrect = isCorrect;
 	}
 
-	public Object getReponseText() {
+	public String getReponseText() {
 		return this.reponseText;
 	}
 
-	public void setReponseText(Object reponseText) {
+	public void setReponseText(String reponseText) {
 		this.reponseText = reponseText;
 	}
 

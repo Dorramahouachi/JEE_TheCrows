@@ -23,7 +23,7 @@ public class Entrepris implements Serializable {
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="Candidat_UserId")
-	private User user;
+	private Userz user;
 
 	//bi-directional many-to-one association to Subscribe
 	@OneToMany(mappedBy="entrepris")
@@ -40,11 +40,11 @@ public class Entrepris implements Serializable {
 		this.entrepriseId = entrepriseId;
 	}
 
-	public User getUser() {
+	public Userz getUser() {
 		return this.user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Userz user) {
 		this.user = user;
 	}
 

@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -20,14 +21,14 @@ public class Contact implements Serializable {
 	@Column(name="ContactId")
 	private int contactId;
 
-	private Timestamp contactDate;
+	private Date contactDate;
 
-	private Object contactId1;
+	private String contactId1;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="UserId")
-	private User user;
+	private Userz user;
 
 	public Contact() {
 	}
@@ -40,27 +41,27 @@ public class Contact implements Serializable {
 		this.contactId = contactId;
 	}
 
-	public Timestamp getContactDate() {
+	public Date getContactDate() {
 		return this.contactDate;
 	}
 
-	public void setContactDate(Timestamp contactDate) {
+	public void setContactDate(Date contactDate) {
 		this.contactDate = contactDate;
 	}
 
-	public Object getContactId1() {
+	public String getContactId1() {
 		return this.contactId1;
 	}
 
-	public void setContactId1(Object contactId1) {
+	public void setContactId1(String contactId1) {
 		this.contactId1 = contactId1;
 	}
 
-	public User getUser() {
+	public Userz getUser() {
 		return this.user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Userz user) {
 		this.user = user;
 	}
 

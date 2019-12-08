@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 
@@ -22,15 +23,15 @@ public class Comment implements Serializable {
 	private int commentId;
 
 	@Column(name="Contenu")
-	private Object contenu;
+	private String contenu;
 
 	@Column(name="DateComment")
-	private Timestamp dateComment;
+	private Date dateComment;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="UserId")
-	private User user;
+	private Userz user;
 
 	//bi-directional many-to-one association to ReactComment
 	@OneToMany(mappedBy="comment")
@@ -47,27 +48,27 @@ public class Comment implements Serializable {
 		this.commentId = commentId;
 	}
 
-	public Object getContenu() {
+	public String getContenu() {
 		return this.contenu;
 	}
 
-	public void setContenu(Object contenu) {
+	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}
 
-	public Timestamp getDateComment() {
+	public Date getDateComment() {
 		return this.dateComment;
 	}
 
-	public void setDateComment(Timestamp dateComment) {
+	public void setDateComment(Date dateComment) {
 		this.dateComment = dateComment;
 	}
 
-	public User getUser() {
+	public Userz getUser() {
 		return this.user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Userz user) {
 		this.user = user;
 	}
 

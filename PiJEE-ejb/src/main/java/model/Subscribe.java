@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -19,7 +20,7 @@ public class Subscribe implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int subscribeId;
 
-	private Timestamp subscribeDate;
+	private Date subscribeDate;
 
 	//bi-directional many-to-one association to Entrepris
 	@ManyToOne
@@ -29,7 +30,7 @@ public class Subscribe implements Serializable {
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="UserId")
-	private User user;
+	private Userz user;
 
 	public Subscribe() {
 	}
@@ -42,11 +43,11 @@ public class Subscribe implements Serializable {
 		this.subscribeId = subscribeId;
 	}
 
-	public Timestamp getSubscribeDate() {
+	public Date getSubscribeDate() {
 		return this.subscribeDate;
 	}
 
-	public void setSubscribeDate(Timestamp subscribeDate) {
+	public void setSubscribeDate(Date subscribeDate) {
 		this.subscribeDate = subscribeDate;
 	}
 
@@ -58,11 +59,11 @@ public class Subscribe implements Serializable {
 		this.entrepris = entrepris;
 	}
 
-	public User getUser() {
+	public Userz getUser() {
 		return this.user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Userz user) {
 		this.user = user;
 	}
 

@@ -10,7 +10,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import model.User;
+import model.Userz;
 import services.interfaces.UserServiceRemote;
 
 
@@ -25,21 +25,21 @@ public class UserService implements UserServiceRemote {
 	
 	
 	
-	public int addUser(User User) {
+	public int addUser(Userz User) {
 		em.persist(User);
 		return User.getId();
 	}
 
 	@Override
-	public void updateUser(User User) { 
+	public void updateUser(Userz User) { 
 		
 	}
 	
 	@Override
-	public User getUserByEmailAndPassword(String email, String password) {
-		User employe; 
+	public Userz getUserByEmailAndPassword(String email, String password) {
+		Userz employe; 
 		System.out.println("logggggggggggiiiiiiiiiiiiiiin " + email);
-		TypedQuery<User> query = em.createQuery("SELECT e FROM User e WHERE e.email = :email and e.password = :password ", User.class) 
+		TypedQuery<Userz> query = em.createQuery("SELECT e FROM Userz e WHERE e.email = :email and e.password = :password ", Userz.class) 
 				.setParameter("email", email) 
 				.setParameter("password", password); 
 		
@@ -55,25 +55,25 @@ public class UserService implements UserServiceRemote {
 	}
 
 	@Override
-	public List<User> getAllUsers() {
-		List<User> users = em.createQuery("SELECT u FROM User u",User.class).getResultList();
+	public List<Userz> getAllUsers() {
+		List<Userz> users = em.createQuery("SELECT u FROM Userz u",Userz.class).getResultList();
 		return users;
 	}
 
 	@Override
 	public List<String> getAllUserNames() {
 		List<String> names = new ArrayList<>();
-		for(User u : getAllUsers()) {
+		for(Userz u : getAllUsers()) {
 			names.add(u.getFirstname() + " " + u.getLastname());
 		}
 		return names;
 	}
 
 	@Override
-	public User getUserById(int id) {
-		User user = null;
+	public Userz getUserById(int id) {
+		Userz user = null;
 		try {
-			user = em.find(User.class, id);
+			user = em.find(Userz.class, id);
 			
 		}
 		catch(Exception e) {
@@ -83,8 +83,8 @@ public class UserService implements UserServiceRemote {
 	}
 
 	@Override
-	public List<User> getUsesDistinctFromLoggedUser(int id) {
-		List<User> users = em.createQuery("SELECT u FROM User u WHERE u.id = :id",User.class)
+	public List<Userz> getUsesDistinctFromLoggedUser(int id) {
+		List<Userz> users = em.createQuery("SELECT u FROM Userz u WHERE u.id = :id",Userz.class)
 				.setParameter("id", id)
 				.getResultList();
 		return users;

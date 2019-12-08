@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -21,10 +22,10 @@ public class Chat implements Serializable {
 	private int chatId;
 
 	@Column(name="Contenu")
-	private Object contenu;
+	private String contenu;
 
 	@Column(name="DateSend")
-	private Timestamp dateSend;
+	private Date dateSend;
 
 	@Column(name="Vue")
 	private int vue;
@@ -32,12 +33,12 @@ public class Chat implements Serializable {
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="RecieveId")
-	private User user1;
+	private Userz user1;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="SendId")
-	private User user2;
+	private Userz user2;
 
 	public Chat() {
 	}
@@ -50,19 +51,19 @@ public class Chat implements Serializable {
 		this.chatId = chatId;
 	}
 
-	public Object getContenu() {
+	public String getContenu() {
 		return this.contenu;
 	}
 
-	public void setContenu(Object contenu) {
+	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}
 
-	public Timestamp getDateSend() {
+	public Date getDateSend() {
 		return this.dateSend;
 	}
 
-	public void setDateSend(Timestamp dateSend) {
+	public void setDateSend(Date dateSend) {
 		this.dateSend = dateSend;
 	}
 
@@ -74,19 +75,19 @@ public class Chat implements Serializable {
 		this.vue = vue;
 	}
 
-	public User getUser1() {
+	public Userz getUser1() {
 		return this.user1;
 	}
 
-	public void setUser1(User user1) {
+	public void setUser1(Userz user1) {
 		this.user1 = user1;
 	}
 
-	public User getUser2() {
+	public Userz getUser2() {
 		return this.user2;
 	}
 
-	public void setUser2(User user2) {
+	public void setUser2(Userz user2) {
 		this.user2 = user2;
 	}
 

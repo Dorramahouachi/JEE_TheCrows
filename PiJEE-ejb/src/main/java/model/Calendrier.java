@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -20,9 +21,9 @@ public class Calendrier implements Serializable {
 	@Column(name="CalendrierId")
 	private int calendrierId;
 
-	private Timestamp date;
+	private Date date;
 
-	private Object disponibilite;
+	private String disponibilite;
 
 	private float heure;
 
@@ -37,19 +38,19 @@ public class Calendrier implements Serializable {
 		this.calendrierId = calendrierId;
 	}
 
-	public Timestamp getDate() {
+	public Date getDate() {
 		return this.date;
 	}
 
-	public void setDate(Timestamp date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
-	public Object getDisponibilite() {
+	public String getDisponibilite() {
 		return this.disponibilite;
 	}
 
-	public void setDisponibilite(Object disponibilite) {
+	public void setDisponibilite(String disponibilite) {
 		this.disponibilite = disponibilite;
 	}
 

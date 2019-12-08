@@ -17,11 +17,11 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <name>PiDev</name>
+    <name>PiJEE</name>
     <modelVersion>4.0.0</modelVersion>
     <groupId>tn.esprit</groupId>
-    <artifactId>PiDev</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>PiJEE</artifactId>
+    <version>1.0</version>
     <packaging>pom</packaging>
 
     <url>http://wildfly.org</url>
@@ -33,9 +33,9 @@
         </license>
     </licenses>
     <modules>
-        <module>PiDev-ejb</module>
-        <module>PiDev-web</module>
-        <module>PiDev-ear</module>
+        <module>PiJEE-ejb</module>
+        <module>PiJEE-web</module>
+        <module>PiJEE-ear</module>
     </modules>
 
     <properties>
@@ -73,7 +73,7 @@
                 to repeat ourselves in every module -->
             <dependency>
                 <groupId>tn.esprit</groupId>
-                <artifactId>PiDev-ejb</artifactId>
+                <artifactId>PiJEE-ejb</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>
             </dependency>
@@ -82,7 +82,7 @@
                 ourselves in every module -->
             <dependency>
                 <groupId>tn.esprit</groupId>
-                <artifactId>PiDev-web</artifactId>
+                <artifactId>PiJEE-web</artifactId>
                 <version>${project.version}</version>
                 <type>war</type>
                 <scope>compile</scope>

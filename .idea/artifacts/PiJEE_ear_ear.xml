@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="PiJEE-ear:ear">
+    <output-path>$PROJECT_DIR$/PiJEE-ear/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>PiJEE-ear</module>
+        <packaging>ear</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="PiJEE-ear.ear">
+      <element id="artifact" artifact-name="PiJEE-ear:ear exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/javax.faces.resource/theme.css1898.css?ln=primefaces-roma-blue" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/javax.faces.resource/fa/font-awesome.css68f8.css?ln=primefaces&amp;v=7.0" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/javax.faces.resource/components.css68f8.css?ln=primefaces&amp;v=7.0" /> 
+	<!--  <script type="text/javascript"
+		src="#{request.contextPath}/javax.faces.resource/jquery/jquery.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/javax.faces.resource/core.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/javax.faces.resource/components.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/javax.faces.resource/jquery/jquery-plugins.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+	 --><link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/javax.faces.resource/css/primeflex.cssbde0.css?ln=roma-layout" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/javax.faces.resource/css/layout-blue.cssbde0.css?ln=roma-layout" />
+	
+	<!-- <script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='en_US';PrimeFaces.settings.projectStage='Development';}</script>
+
+ -->	<title>#{page_name}</title>
+
+<style type="text/css">
+body{
+	font-size:16px;
+}
+
+</style>
+
+</h:head>
+
+
+
+<h:body>
+	<div class="layout-wrapper layout-slim layout-menu-light layout-topbar-blue " >
+
+		<div class="layout-topbar">
+			<a class="layout-right-panel-button layout-topbar-icon" href="#{request.contextPath}/login.jsf">
+				<i class="fa fa-power-off  "></i>
+			</a>
+			<!-- <a class="layout-right-panel-button layout-topbar-icon" href="#"> -->
+				
+			 <a class="layout-menu-button layout-topbar-icon" href="#"> <i
+				class="fa fa-bars"></i>
+			</a><a href="#" class="layout-topbar-logo"><img
+				id="j_idt15"
+				src="#{request.contextPath}/javax.faces.resource/images/logo-roma-white.svgbde0.svg?ln=roma-layout"
+				alt="" /></a>
+
+
+			<ul class="topbar-menu fadeInDown">
+				<li class="user-profile"><a href="#"><img id="j_idt19"
+						src="#{request.contextPath}/javax.faces.resource/images/avatar/avatar.pngbde0.png?ln=roma-layout"
+						alt="" />
+						<div class="layout-profile-userinfo">
+							<span class="layout-profile-name">#{loginBean.loggedUser.firstname} #{loginBean.loggedUser.lastname}</span> <span
+								class="layout-profile-role"></span>
+						</div> </a>
+				</li>
+			</ul>
+					
+		</div>
+
+		<div class="layout-menu-container">
+			<div class="nano">
+				<div class="nano-content menu-scroll-content">
+					<form id="menuform" name="menuform" method="post"
+						action="https://www.primefaces.org/roma/dashboard.xhtml"
+						enctype="application/x-www-form-urlencoded">
+						<input type="hidden" name="menuform" value="menuform" />
+						<ul id="menuform:j_idt37" class="layout-menu">
+							<li id="menuform:om_dashboard" role="menuitem"><a
+								href="#{request.contextPath}/pages/admin/evaluation.jsf"><i
+									class="fa fa-fw fa-dashboard fa-fw layout-menuitem-icon"></i><span
+									class="layout-menuitem-text">Dashboard</span></a>
+								<div class="layout-menu-tooltip">
+									<div class="layout-menu-tooltip-arrow"></div>
+									<div class="layout-menu-tooltip-text">Dashboard</div>
+								</div></li>
+							<li id="menuform:om_dashboard" role="menuitem"><a
+							href="#{request.contextPath}/pages/admin/receivedEvaluation.jsf"><i
+								class="fa fa-fw fa-sitemap fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Mes Evaluations</span></a>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Mes Evaluations</div>
+							</div></li>
+							<li id="menuform:om_customization" role="menuitem"><a
+								href="#{request.contextPath}/pages/admin/listeEvaluations.jsf"> <i
+									class="fa fa-fw fa-list fa-fw layout-menuitem-icon"></i> <span
+									class="layout-menuitem-text">Layouts</span> <i
+									class="fa fa-fw layout-submenu-toggler fa-angle-down"></i>
+							</a></li>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="fa fa-fw fa-list fa-fw layout-menuitem-icon">Layouts</div>
+							</div>
+						</ul>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<div class="layout-main">
+			<ui:insert name="content" />
+		</div>
+	</div>
+</h:body>
+
+</html>

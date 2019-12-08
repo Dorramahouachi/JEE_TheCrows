@@ -1,0 +1,74 @@
+<body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+		<ui:include src="template/header.xhtml" />
+		<ui:param name="page_name" value="Formulaire Evaluation" />
+		<ui:define name="content">
+			<div class="layout-content">
+				<div class="p-grid ui-fluid">
+					<div class="p-col-12 p-lg-9">
+						<div class=" card p-grid">
+							<div class="p-col-12 p-lg-9">
+								<h1>Evaluation</h1>
+								<h:form>
+									
+									<p:panelGrid columns="2" columnClasses="ui-g-12 ui-md-6,ui-g-12 ui-md-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+										<h3>Nom Du manager:</h3>
+										 <p:outputLabel value="#{myEvaluationsBean.myEvaluation.sender.firstname}" />
+										<h3>Type de l'evaluation:</h3>
+											<h:outputText value="AUTO EVALUATION" />
+										<h3>Commentaire:</h3>
+										<p:inputText  value="#{myEvaluationsBean.description}" />
+									</p:panelGrid>
+										<h:form>
+											<div class="card p-lg-12" style="margin-top: 15px; border: 1px solid black">
+												<h2>Critéres:</h2>												
+												<p:repeat value="#{myEvaluationsBean.myEvaluationCriterias}" var="criteria">
+														<h:outputText id="area" value="#{criteria.criteria}:"
+															style="font-weight:bold" />
+														<p:selectOneRadio 
+															value="#{myEvaluationsBean.criteriaNote}"
+															 converter="javax.faces.Integer"
+															  >
+															 <f:ajax event="change" listener="#{myEvaluationsBean.setNote(criteria.id)}" />  
+															<f:selectItem itemLabel="Niveau 1" itemValue="1" />
+															<f:selectItem itemLabel="Niveau 2" itemValue="2" />
+															<f:selectItem itemLabel="Niveau 3" itemValue="3" />
+															<f:selectItem itemLabel="Niveau 4" itemValue="4" />
+															<f:selectItem itemLabel="Niveau 5" itemValue="5" />
+														</p:selectOneRadio>													
+												</p:repeat>
+											</div>
+											<p:commandButton value="Envoyer Evaluation"
+											class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left secondary-button"
+											action="#{myEvaluationsBean.addEvaluation()}"
+											style="margin-top:20px;">
+											<p:confirm header="Confirmation" message="Vous etes sure?"
+												icon="pi pi-exclamation-triangle" />
+										</p:commandButton>
+										<p:confirmDialog global="true" showEffect="fade"
+											hideEffect="fade">
+											<p:commandButton value="OUI"
+												styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+											<p:commandButton value="NON" type="button"
+												styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+										</p:confirmDialog>
+										</h:form>
+										
+									
+								</h:form>
+											
+										
+									
+							</div>
+					
+						</div>
+					</div>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</body>

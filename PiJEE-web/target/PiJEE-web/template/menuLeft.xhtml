@@ -1,0 +1,747 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+
+	<ui:define name="menuLeft">
+		<div class="nano">
+			<div class="nano-content menu-scroll-content">
+				<form id="menuform" name="menuform" method="post"
+					action="https://www.primefaces.org/roma/dashboard.xhtml"
+					enctype="application/x-www-form-urlencoded">
+					<input type="hidden" name="menuform" value="menuform" />
+					<ul id="menuform:j_idt37" class="layout-menu">
+						<li id="menuform:om_dashboard" role="menuitem"><a
+							href="dashboard.html"><i
+								class="fa fa-fw fa-dashboard fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Dashboard</span></a>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Dashboard</div>
+							</div></li>
+						<li id="menuform:om_customization" role="menuitem"><a
+							href="#"><i
+								class="fa fa-fw fa-desktop fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Layouts</span><i
+								class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Layouts</div>
+							</div>
+							<ul role="menu">
+								<li id="menuform:om_customization_1" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_1':'menuform:om_customization_1'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-bars fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Static</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Static</div>
+									</div></li>
+								<li id="menuform:om_customization_2" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_2':'menuform:om_customization_2'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-bars fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Overlay</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Overlay</div>
+									</div></li>
+								<li id="menuform:om_customization_3" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_3':'menuform:om_customization_3'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-bars fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Slim</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Slim</div>
+									</div></li>
+								<li id="menuform:om_customization_4" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_4':'menuform:om_customization_4'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-bars fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Horizontal</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Horizontal</div>
+									</div></li>
+								<li id="menuform:om_orientation" role="menuitem"><a
+									href="#"><i
+										class="fa fa-align-left fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Orientation</span><i
+										class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Orientation</div>
+									</div>
+									<ul role="menu">
+										<li id="menuform:om_ltr" role="menuitem"><a href="#"
+											onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_ltr':'menuform:om_ltr'}).submit('menuform');return false;"><i
+												class="fa fa-align-left fa-fw layout-menuitem-icon"></i><span
+												class="layout-menuitem-text">LTR</span></a>
+											<div class="layout-menu-tooltip">
+												<div class="layout-menu-tooltip-arrow"></div>
+												<div class="layout-menu-tooltip-text">LTR</div>
+											</div></li>
+										<li id="menuform:om_rtl" role="menuitem"><a href="#"
+											onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_rtl':'menuform:om_rtl'}).submit('menuform');return false;"><i
+												class="fa fa-align-right fa-fw layout-menuitem-icon"></i><span
+												class="layout-menuitem-text">RTL</span></a>
+											<div class="layout-menu-tooltip">
+												<div class="layout-menu-tooltip-arrow"></div>
+												<div class="layout-menu-tooltip-text">RTL</div>
+											</div></li>
+									</ul></li>
+							</ul></li>
+						<li id="menuform:om_topbar_mode" role="menuitem"><a href="#"><i
+								class="fa fa-fw fa-magic fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Topbar Colors</span><i
+								class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Topbar Colors</div>
+							</div>
+							<ul role="menu">
+								<li id="menuform:om_customization_topbar_mode_1" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_1':'menuform:om_customization_topbar_mode_1'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Light</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Light</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_2" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_2':'menuform:om_customization_topbar_mode_2'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Dark</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Dark</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_3" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_3':'menuform:om_customization_topbar_mode_3'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Blue</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Blue</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_4" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_4':'menuform:om_customization_topbar_mode_4'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Green</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Green</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_5" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_5':'menuform:om_customization_topbar_mode_5'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Orange</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Orange</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_6" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_6':'menuform:om_customization_topbar_mode_6'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Magenta</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Magenta</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_7" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_7':'menuform:om_customization_topbar_mode_7'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Blue Grey</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Blue Grey</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_8" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_8':'menuform:om_customization_topbar_mode_8'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Deep Purple</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Deep Purple</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_9" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_9':'menuform:om_customization_topbar_mode_9'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Brown</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Brown</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_10"
+									role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_10':'menuform:om_customization_topbar_mode_10'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Lime</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Lime</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_11"
+									role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_11':'menuform:om_customization_topbar_mode_11'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Rose</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Rose</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_12"
+									role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_12':'menuform:om_customization_topbar_mode_12'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Cyan</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Cyan</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_13"
+									role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_13':'menuform:om_customization_topbar_mode_13'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Teal</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Teal</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_14"
+									role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_14':'menuform:om_customization_topbar_mode_14'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Deep Orange</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Deep Orange</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_15"
+									role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_15':'menuform:om_customization_topbar_mode_15'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Indigo</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Indigo</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_16"
+									role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_16':'menuform:om_customization_topbar_mode_16'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Pink</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Pink</div>
+									</div></li>
+								<li id="menuform:om_customization_topbar_mode_17"
+									role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_topbar_mode_17':'menuform:om_customization_topbar_mode_17'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Purple</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Purple</div>
+									</div></li>
+							</ul></li>
+						<li id="menuform:om_customization_mode" role="menuitem"><a
+							href="#"><i
+								class="fa fa-fw fa-list fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Menu Colors</span><i
+								class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Menu Colors</div>
+							</div>
+							<ul role="menu">
+								<li id="menuform:om_customization_mode_1" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_mode_1':'menuform:om_customization_mode_1'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-circle-o fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Light</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Light</div>
+									</div></li>
+								<li id="menuform:om_customization_mode_2" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_customization_mode_2':'menuform:om_customization_mode_2'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-circle fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Dark</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Dark</div>
+									</div></li>
+							</ul></li>
+						<li id="menuform:omx_userprofile_mode" role="menuitem"><a
+							href="#"><i
+								class="fa fa-fw fa-user fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">User Profile</span><i
+								class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">User Profile</div>
+							</div>
+							<ul role="menu">
+								<li id="menuform:omx_userprofile_mode_1" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:omx_userprofile_mode_1':'menuform:omx_userprofile_mode_1'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-user fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Popup</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Popup</div>
+									</div></li>
+								<li id="menuform:omx_userprofile_mode_2" role="menuitem"><a
+									href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:omx_userprofile_mode_2':'menuform:omx_userprofile_mode_2'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-user fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Inline</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Inline</div>
+									</div></li>
+							</ul></li>
+						<li id="menuform:om_themes" role="menuitem"><a href="#"><i
+								class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Themes</span><i
+								class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Themes</div>
+							</div>
+							<ul role="menu">
+								<li id="menuform:om_theme_1" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_1':'menuform:om_theme_1'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Blue</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Blue</div>
+									</div></li>
+								<li id="menuform:om_theme_2" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_2':'menuform:om_theme_2'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Green</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Green</div>
+									</div></li>
+								<li id="menuform:om_theme_3" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_3':'menuform:om_theme_3'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Orange</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Orange</div>
+									</div></li>
+								<li id="menuform:om_theme_4" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_4':'menuform:om_theme_4'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Magenta</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Magenta</div>
+									</div></li>
+								<li id="menuform:om_theme_5" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_5':'menuform:om_theme_5'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Blue Grey</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Blue Grey</div>
+									</div></li>
+								<li id="menuform:om_theme_6" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_6':'menuform:om_theme_6'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Deep Purple</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Deep Purple</div>
+									</div></li>
+								<li id="menuform:om_theme_7" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_7':'menuform:om_theme_7'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Brown</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Brown</div>
+									</div></li>
+								<li id="menuform:om_theme_8" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_8':'menuform:om_theme_8'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Lime</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Lime</div>
+									</div></li>
+								<li id="menuform:om_theme_9" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_9':'menuform:om_theme_9'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Rose</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Rose</div>
+									</div></li>
+								<li id="menuform:om_theme_10" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_10':'menuform:om_theme_10'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Cyan</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Cyan</div>
+									</div></li>
+								<li id="menuform:om_theme_11" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_11':'menuform:om_theme_11'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Teal</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Teal</div>
+									</div></li>
+								<li id="menuform:om_theme_12" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_12':'menuform:om_theme_12'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Deep Orange</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Deep Orange</div>
+									</div></li>
+								<li id="menuform:om_theme_13" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_13':'menuform:om_theme_13'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Indigo</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Indigo</div>
+									</div></li>
+								<li id="menuform:om_theme_14" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_14':'menuform:om_theme_14'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Pink</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Pink</div>
+									</div></li>
+								<li id="menuform:om_theme_15" role="menuitem"><a href="#"
+									onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:om_theme_15':'menuform:om_theme_15'}).submit('menuform');return false;"><i
+										class="fa fa-fw fa-paint-brush fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Purple</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Purple</div>
+									</div></li>
+							</ul></li>
+						<li id="menuform:om_components" role="menuitem"><a href="#"><i
+								class="fa fa-fw fa-bars fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Components</span><i
+								class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Components</div>
+							</div>
+							<ul role="menu">
+								<li id="menuform:om_sample" role="menuitem"><a
+									href="sample.html"><i
+										class="fa fa-fw fa-columns fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Sample Page</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Sample Page</div>
+									</div></li>
+								<li id="menuform:om_forms" role="menuitem"><a
+									href="forms.html"><i
+										class="fa fa-fw fa-code fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Forms</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Forms</div>
+									</div></li>
+								<li id="menuform:om_data" role="menuitem"><a
+									href="data.html"><i
+										class="fa fa-fw fa-table fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Data</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Data</div>
+									</div></li>
+								<li id="menuform:om_panels" role="menuitem"><a
+									href="panel.html"><i
+										class="fa fa-fw fa-list-alt fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Panels</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Panels</div>
+									</div></li>
+								<li id="menuform:om_overlays" role="menuitem"><a
+									href="overlay.html"><i
+										class="fa fa-fw fa-square fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Overlays</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Overlays</div>
+									</div></li>
+								<li id="menuform:om_menus" role="menuitem"><a
+									href="menu.html"><i
+										class="fa fa-fw fa-minus-square-o fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Menus</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Menus</div>
+									</div></li>
+								<li id="menuform:om_messages" role="menuitem"><a
+									href="messages.html"><i
+										class="fa fa-fw fa-circle-o-notch fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Messages</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Messages</div>
+									</div></li>
+								<li id="menuform:om_charts" role="menuitem"><a
+									href="charts.html"><i
+										class="fa fa-fw fa-area-chart fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Charts</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Charts</div>
+									</div></li>
+								<li id="menuform:om_file" role="menuitem"><a
+									href="file.html"><i
+										class="fa fa-fw fa-arrow-circle-o-up fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">File</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">File</div>
+									</div></li>
+								<li id="menuform:om_misc" role="menuitem"><a
+									href="misc.html"><i
+										class="fa fa-fw fa-user-secret fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Misc</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Misc</div>
+									</div></li>
+							</ul></li>
+						<li id="menuform:om_default" role="menuitem"><a href="#"><i
+								class="fa fa-fw fa-cube fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Pages</span><i
+								class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Pages</div>
+							</div>
+							<ul role="menu">
+								<li id="menuform:om_empty" role="menuitem"><a
+									href="empty.html"><i
+										class="fa fa-fw fa-square-o fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Empty</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Empty</div>
+									</div></li>
+								<li id="menuform:om_login" role="menuitem"><a
+									href="login.html"><i
+										class="fa fa-fw fa-sign-in fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Login</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Login</div>
+									</div></li>
+								<li id="menuform:om_db_landing" role="menuitem"><a
+									href="landing.html"><i
+										class="fa fa-fw fa-certificate fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Landing</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Landing</div>
+									</div></li>
+								<li id="menuform:om_error" role="menuitem"><a
+									href="error.html"><i
+										class="fa fa-fw fa-exclamation-circle fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Error</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Error</div>
+									</div></li>
+								<li id="menuform:om_404" role="menuitem"><a href="404.html"><i
+										class="fa fa-fw fa-times fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">404</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">404</div>
+									</div></li>
+								<li id="menuform:om_access" role="menuitem"><a
+									href="access.html"><i
+										class="fa fa-fw fa-exclamation-triangle fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Access Denied</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Access Denied</div>
+									</div></li>
+							</ul></li>
+						<li id="menuform:om_hierarchy" role="menuitem"><a href="#"><i
+								class="fa fa-fw fa-sitemap fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Hierarchy</span><i
+								class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Hierarchy</div>
+							</div>
+							<ul role="menu">
+								<li id="menuform:om_sm1" role="menuitem"><a href="#"><i
+										class="fa fa-fw fa-sign-in fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Submenu 1</span><i
+										class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Submenu 1</div>
+									</div>
+									<ul role="menu">
+										<li id="menuform:om_sm11" role="menuitem"><a href="#"><i
+												class="fa fa-fw fa-sign-in fa-fw layout-menuitem-icon"></i><span
+												class="layout-menuitem-text">Submenu 1.1</span><i
+												class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+											<div class="layout-menu-tooltip">
+												<div class="layout-menu-tooltip-arrow"></div>
+												<div class="layout-menu-tooltip-text">Submenu 1.1</div>
+											</div>
+											<ul role="menu">
+												<li id="menuform:om_lnk111" role="menuitem"><a href="#"><i
+														class="fa fa-fw fa-sign-in fa-fw layout-menuitem-icon"></i><span
+														class="layout-menuitem-text">Link 1.1.1</span></a>
+													<div class="layout-menu-tooltip">
+														<div class="layout-menu-tooltip-arrow"></div>
+														<div class="layout-menu-tooltip-text">Link 1.1.1</div>
+													</div></li>
+												<li id="menuform:om_lnk112" role="menuitem"><a href="#"><i
+														class="fa fa-fw fa-sign-in fa-fw layout-menuitem-icon"></i><span
+														class="layout-menuitem-text">Link 1.1.2</span></a>
+													<div class="layout-menu-tooltip">
+														<div class="layout-menu-tooltip-arrow"></div>
+														<div class="layout-menu-tooltip-text">Link 1.1.2</div>
+													</div></li>
+												<li id="menuform:om_lnk113" role="menuitem"><a href="#"><i
+														class="fa fa-fw fa-sign-in fa-fw layout-menuitem-icon"></i><span
+														class="layout-menuitem-text">Link 1.1.3</span></a>
+													<div class="layout-menu-tooltip">
+														<div class="layout-menu-tooltip-arrow"></div>
+														<div class="layout-menu-tooltip-text">Link 1.1.3</div>
+													</div></li>
+											</ul></li>
+										<li id="menuform:om_sm12" role="menuitem"><a href="#"><i
+												class="fa fa-fw fa-sign-in fa-fw layout-menuitem-icon"></i><span
+												class="layout-menuitem-text">Submenu 1.2</span><i
+												class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+											<div class="layout-menu-tooltip">
+												<div class="layout-menu-tooltip-arrow"></div>
+												<div class="layout-menu-tooltip-text">Submenu 1.2</div>
+											</div>
+											<ul role="menu">
+												<li id="menuform:om_lnk121" role="menuitem"><a href="#"><i
+														class="fa fa-fw fa-sign-in fa-fw layout-menuitem-icon"></i><span
+														class="layout-menuitem-text">Link 1.2.1</span></a>
+													<div class="layout-menu-tooltip">
+														<div class="layout-menu-tooltip-arrow"></div>
+														<div class="layout-menu-tooltip-text">Link 1.2.1</div>
+													</div></li>
+											</ul></li>
+									</ul></li>
+								<li id="menuform:om_sm2" role="menuitem"><a href="#"><i
+										class="fa fa-fw fa-sign-in fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Submenu 2</span><i
+										class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Submenu 2</div>
+									</div>
+									<ul role="menu">
+										<li id="menuform:om_sm21" role="menuitem"><a href="#"><i
+												class="fa fa-fw fa-sign-in fa-fw layout-menuitem-icon"></i><span
+												class="layout-menuitem-text">Submenu 2.1</span><i
+												class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+											<div class="layout-menu-tooltip">
+												<div class="layout-menu-tooltip-arrow"></div>
+												<div class="layout-menu-tooltip-text">Submenu 2.1</div>
+											</div>
+											<ul role="menu">
+												<li id="menuform:om_lnk211" role="menuitem"><a href="#"><i
+														class="fa fa-fw fa-sign-in fa-fw layout-menuitem-icon"></i><span
+														class="layout-menuitem-text">Link 2.1.1</span></a>
+													<div class="layout-menu-tooltip">
+														<div class="layout-menu-tooltip-arrow"></div>
+														<div class="layout-menu-tooltip-text">Link 2.1.1</div>
+													</div></li>
+												<li id="menuform:om_lnk212" role="menuitem"><a href="#"><i
+														class="fa fa-fw fa-sign-in fa-fw layout-menuitem-icon"></i><span
+														class="layout-menuitem-text">Link 2.1.2</span></a>
+													<div class="layout-menu-tooltip">
+														<div class="layout-menu-tooltip-arrow"></div>
+														<div class="layout-menu-tooltip-text">Link 2.1.2</div>
+													</div></li>
+											</ul></li>
+										<li id="menuform:om_sm22" role="menuitem"><a href="#"><i
+												class="fa fa-fw fa-sign-in fa-fw layout-menuitem-icon"></i><span
+												class="layout-menuitem-text">Submenu 2.2</span><i
+												class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+											<div class="layout-menu-tooltip">
+												<div class="layout-menu-tooltip-arrow"></div>
+												<div class="layout-menu-tooltip-text">Submenu 2.2</div>
+											</div>
+											<ul role="menu">
+												<li id="menuform:om_lnk221" role="menuitem"><a href="#"><i
+														class="fa fa-fw fa-sign-in fa-fw layout-menuitem-icon"></i><span
+														class="layout-menuitem-text">Link 2.2.1</span></a>
+													<div class="layout-menu-tooltip">
+														<div class="layout-menu-tooltip-arrow"></div>
+														<div class="layout-menu-tooltip-text">Link 2.2.1</div>
+													</div></li>
+											</ul></li>
+									</ul></li>
+							</ul></li>
+						<li id="menuform:om_doc" role="menuitem"><a href="docs.html"><i
+								class="fa fa-fw fa-file-code-o fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Docs</span></a>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Docs</div>
+							</div></li>
+						<li id="menuform:om_buy" role="menuitem"><a
+							href="https://www.primefaces.org/store"><i
+								class="fa fa-fw fa-credit-card-alt fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Buy Now</span></a>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Buy Now</div>
+							</div></li>
+					</ul>
+					<script id="menuform:j_idt37_s" type="text/javascript">
+								$(function() {
+									PrimeFaces.cw("Roma",
+											"widget_menuform_j_idt37", {
+												id : "menuform:j_idt37"
+											});
+								});
+							</script>
+					<input type="hidden" name="javax.faces.ViewState"
+						id="j_id1:javax.faces.ViewState:0"
+						value="-4249114617615268827:3094678607339395231"
+						autocomplete="off" />
+				</form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

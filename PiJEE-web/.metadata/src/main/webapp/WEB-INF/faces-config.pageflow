@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15757448685170" configfile="/PiJEE-web/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="415" y="265" id="pf15757460723141" path="/login.xhtml"/>
+</pageflow:Pageflow>

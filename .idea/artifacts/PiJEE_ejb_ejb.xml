@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="PiJEE-ejb:ejb">
+    <output-path>$PROJECT_DIR$/PiJEE-ejb/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>PiJEE-ejb</module>
+        <packaging>ejb</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="PiJEE-ejb.jar">
+      <element id="artifact" artifact-name="PiJEE-ejb:ejb exploded" />
+    </root>
+  </artifact>
+</component>

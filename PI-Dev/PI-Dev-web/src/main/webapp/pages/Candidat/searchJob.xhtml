@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<h:head>
+	<title>Search For Job</title>
+	</h:head>
+	<h:body>
+		<div>
+		<h:form>
+			<h:panelGrid>
+			<h:inputText value="#{searchMB.data}" placeholder="search here"></h:inputText>
+			
+			<h:outputText value="#{searchMB.data1}"></h:outputText>
+			
+			<h:selectOneRadio value = "#{searchMB.data1}">
+				<f:selectItem itemValue = "3" itemLabel = "All"/>
+				<f:selectItem itemValue = "1" itemLabel = "Title" /> 
+   				<f:selectItem itemValue = "2" itemLabel = "Location" />
+			</h:selectOneRadio>
+			<h:commandButton action="#{searchMB.search}" value="Search"></h:commandButton>
+			
+			</h:panelGrid>
+		</h:form>
+		</div>
+		<div>
+			<h:dataTable value="#{searchMB.listOffers}" var="v" class="table1">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="offer"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{v.titleOffer}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="reference"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{v.offerId}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="location"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{v.location}"></h:outputText>
+				</h:column>
+			</h:dataTable>
+		</div>		
+	</h:body>
+</html>

@@ -28,7 +28,15 @@ public class chatBean implements Serializable {
 	private List<Chat> ch ;
 	private int idr ;
 	private int ids ; 
+	private String reponse ;
+	
 
+	public String getReponse() {
+		return reponse;
+	}
+	public void setReponse(String reponse) {
+		this.reponse = reponse;
+	}
 	@EJB
 	ChatService ms;
 	
@@ -105,17 +113,7 @@ public class chatBean implements Serializable {
 
 	
 	public String add() {
-		int i=0;
-		while(contenu.contains("fuck"))
-		{
-			i++;
-		}
-		if(contenu.contains("fuck"))
-		{
-					return "contenu indesirable ";
-
-		}
-		else {
+		
 			LoginBean lb= new LoginBean();
 
 			Chat m = new Chat();
@@ -124,10 +122,18 @@ public class chatBean implements Serializable {
 			m.setUser1(ms.getUser(1));
 			m.setUser2(lb.getUuser());
 
-			ms.envoyerMessage(m);
+		String rep=	ms.envoyerMessage(m);
 
-			return "/pages/chat/messageries.xhtml?face-redirect=true";
+		if(rep.contains("refus"))
+		{
+			setReponse("refus");
+			return "refus";
 		}
+		else {
+			return "/pages/chat/messageries.xhtml?face-redirect=true";
+
+		}
+	
 	}
 	public void update()
 	{Chat e= new Chat();

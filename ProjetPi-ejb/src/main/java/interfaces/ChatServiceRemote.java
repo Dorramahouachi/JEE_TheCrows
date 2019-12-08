@@ -11,7 +11,7 @@ import model.User;
 
 @Remote
 public interface ChatServiceRemote {
-	void envoyerMessage(Chat c) ;
+	String envoyerMessage(Chat c) ;
 	 ArrayList<Chat> getall(int id , int vue);
 	public User getUser(int id);
 	 ArrayList<User> getUsrs(int id);

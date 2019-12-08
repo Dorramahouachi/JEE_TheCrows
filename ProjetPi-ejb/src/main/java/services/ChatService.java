@@ -27,11 +27,37 @@ public class ChatService  implements  ChatServiceRemote {
 	EntityManager em;
 
 	@Override
-	public void envoyerMessage(Chat c) {
-		c.setDateSend(Calendar.getInstance().getTime());
-		c.setVue(0);
+	public String envoyerMessage(Chat c) {
 		
-		em.persist(c);
+		
+		TypedQuery<String> query = em.createQuery("select b.word from Word b where b.type=:type",String.class);
+		query.setParameter("type","bad");
+		 List<String>ls=new ArrayList<>();
+		
+		 ls=query.getResultList();
+		 System.out.println(ls);
+		 String message = c.getContenu();
+		 String[] splited = message.split("\\s+");
+		 Boolean b =false;
+		 for (int x=0; x<splited.length; x++){
+             for (int i=0;i<ls.size();i++){
+                 if (ls.get(i).equals(splited[x])){
+                 b=true;
+                 break;
+                 }}}
+		 if (b==false){
+				c.setDateSend(Calendar.getInstance().getTime());
+				c.setVue(0);
+				
+				em.persist(c);
+			 return "ajout avec sucées";
+			 }
+		 else
+		 {
+			 return("refus");}
+		
+		
+	
 		
 	}
 

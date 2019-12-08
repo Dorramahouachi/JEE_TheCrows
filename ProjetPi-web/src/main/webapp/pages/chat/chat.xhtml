@@ -202,6 +202,10 @@
 						/>
 
 				<h:commandButton value="Ajouter" action="#{chatBean.add()}" />
+				<br/>
+				<h:panelGroup rendered="#{chatBean.reponse eq 'refus' }">
+  <p style="color:red">  Veuillez ne pas envoyer des gros mots :) </p>
+</h:panelGroup>
 			</h:form>
 
 		</div>

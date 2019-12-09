@@ -142,15 +142,11 @@ public class SearchMB {
 	}
 	
 	public List<Offer> getListOffers() {
+		this.setListOffers(this.metier.getAll());
 		return listOffers;
 	}
-
+ 
 	public void setListOffers(List<Offer> listOffers) {
-		
-		
-		
-		this.setListOffers(metier.getAll());
-
 		this.listOffers = listOffers;
 	}
 
@@ -171,14 +167,12 @@ public class SearchMB {
 	}
 
 	public String search() {
-		
 		if(this.getData1().equals("1"))
 			this.setListOffers(metier.getByName(this.getData()));
 		else if(this.getData1().equals("2"))
 			this.setListOffers(metier.getByLocation(this.getData()));
 		else if(this.getData1().equals("3"))
-			this.AllOffers();
-		
+			this.setListOffers(metier.getAll());
 		return "success" ;
 	}
 	
@@ -187,10 +181,10 @@ public class SearchMB {
 		return "success" ;
 	}
 
-	public List<Offer> AllOffers(){
+	/*public List<Offer> AllOffers(){
 		this.setListOffers(metier.getAll());
 		return this.getListOffers();
-	}
+	}*/
 	public OfferServiceRemote getMetier() {
 		return metier;
 	}

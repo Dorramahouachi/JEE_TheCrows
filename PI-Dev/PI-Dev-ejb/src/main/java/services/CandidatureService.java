@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import models.Candidature;
+import models.Entrepris;
 import models.Offer;
 import models.User;
 
@@ -20,13 +21,14 @@ public class CandidatureService implements CandidatureServiceRemote{
 	EntityManager em;
 	@Override
 	public void AddCandidature(int idOffer, int idUser) {
+		System.out.println("hhhhhhhhhhhhhhhhh");
 		Offer o = new Offer();
 		User u = new User();
 		TypedQuery<User> query = em.createQuery("select u from User u WHERE u.userId=:idUser", User.class); 
 		query.setParameter("idUser", idUser); 
 		u=query.getSingleResult();
-		TypedQuery<Offer> query1 = em.createQuery("select o from Offer p WHERE o.offerId=:idOffer", Offer.class); 
-		query.setParameter("idOffer", idOffer); 
+		TypedQuery<Offer> query1 = em.createQuery("select o from Offer o WHERE o.offerId=:idOffer", Offer.class); 
+		query1.setParameter("idOffer", idOffer); 
 		o=query1.getSingleResult();
 		Candidature c = new Candidature();
 		c.setOffer(o);
@@ -43,5 +45,9 @@ public class CandidatureService implements CandidatureServiceRemote{
 	public void RemoveCandidature(int idOffer) {
 		em.createQuery("DELETE FROM Candidature c WHERE c.offer.offerId=:idOffer").setParameter("idOffer", idOffer).executeUpdate();
 	}
-
+	@Override
+	public Candidature getOne(int id) {
+		Candidature can = em.createQuery("Select e from Candidature e where e.candidatureId=:id",Candidature.class).setParameter("id", id).getSingleResult();
+		return can;
+	}
 }

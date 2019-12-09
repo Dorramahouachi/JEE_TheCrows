@@ -339,7 +339,7 @@
 </style>
 <style class="cp-pen-styles">
 body {
-	padding-left: 70px;
+	padding-left: 0px;
 	padding-top: 0px;
 	align-items: center;
 	justify-content: center;
@@ -1147,12 +1147,14 @@ body {
 	outline: none;
 }
 </style>
+<body>
 
+	<header id="header" style="background-color:#222222;height:60px" >
 
 <div
-	style="background-color: rgba(0, 0, 0, 0.8); padding-top: 3px; width: 1200px; height: 50px">
+	class="container">
 
-	<div class="row align-items-center justify-content-between d-flex">
+	<div class="row align-items-center justify-content-between d-flex" style="padding-top: 20px">
 
 		<div id="logo">
 			<a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
@@ -1197,16 +1199,12 @@ body {
 	</div>
 
 </div>
+</header>
+
+<div style="padding-left: 80px">
 
 
-
-
-<!-- #header -->
-
-
-<body>
-
-	<div id="frame">
+	<div id="frame" >
 
 		<div id="sidepanel">
 
@@ -1318,7 +1316,7 @@ body {
 									<button class="btn btn-xs btn-link " type="button"
 										data-toggle="dropdown">
 
-										<h:commandButton value="..." />
+										<h:outputText value="..." />
 
 									</button>
 
@@ -1351,9 +1349,13 @@ body {
 												<li><h:outputText value="suppression invalide" style="color:red"/></li>
 
 											</h:panelGroup>
-											<li style="background-color: #435f7a;height: 25px">
-											<h:commandLink
-													value="supprimer" action="#{chatBean.delete(chat.chatId)}" />
+											<li style="background-color: #435f7a; height:30px">
+											<h:commandLink update=":one :two :three :four :five"
+												 action="#{chatBean.delete(chat.chatId)}" >
+												 <div style="background-color:#435f7a;height: 10px"></div>
+												<h:outputText style="color:white; padding-left:60px;padding-top:60px;"	value="supprimer" />
+												
+												</h:commandLink>
 											</li>
 										
 											</h:form>
@@ -1396,17 +1398,20 @@ body {
 					style="padding-left: 150px; height: 40px; display: inline-block; text-align: center;">
 					<h:form id="four">
 						<ui:repeat value="#{chatBean.propo}" var="prop" varStatus="status">
-
-							<button class="submit"
-								style="height: 30px; width: 150px; border-color: #435f7a; border-radius: 20%; background-color: #f5f5f5">
+								<button class="submit"
+								style="height: 30px; width: 150px; border-radius: 20px; background-color:  #435f7a;">
 
 								<h:commandLink
 									action="#{chatBean.addP(chatBean.receiver, prop.word)}">
 
-									<h:outputText value="#{prop.word }" />
+									<h:outputText style="color:white" value="#{prop.word }" />
 								</h:commandLink>
 
 							</button>
+
+
+
+							
 
 						</ui:repeat>
 					</h:form>
@@ -1419,7 +1424,7 @@ body {
 						</p>
 					</h:panelGroup>
 					<div class="wrap">
-						<h:inputText style="width:770px" value="#{chatBean.contenu}"
+						<h:inputText style="width:760px" value="#{chatBean.contenu}"
 							id="ad" required="true"
 							a:placeholder="ecrire votre message ici . . ."
 							requiredMessage="Veuillez ecrire quelque chose :) "
@@ -1432,7 +1437,7 @@ body {
 						<button class="submit" style="width: 80px">
 
 							<h:commandLink action="#{chatBean.add(chatBean.receiver)}"
-								style="width:80px">
+								update=":one :two :three :four :five" style="width:80px">
 
 								<i class="fa fa-paper-plane" aria-hidden="true" />
 							</h:commandLink>
@@ -1446,6 +1451,8 @@ body {
 
 		</div>
 	</div>
+
+</div>
 </body>
 <script
 	src="//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js" />

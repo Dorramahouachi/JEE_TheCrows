@@ -62,7 +62,7 @@ public class ChatService implements ChatServiceRemote {
 	public ArrayList<Chat> getall(int id, int vue) {
 		ArrayList<Chat> p;
 		TypedQuery<Chat> query = em.createQuery(
-				"select  c  from Chat c  where c.user1.userId=:id and c.vue =:vue  order by c.dateSend desc ",
+				"select  c  from Chat c  where c.user1.userId=:id and c.vue =:vue  order by c.dateSend asc ",
 				Chat.class);
 		query.setParameter("id", id);
 		query.setParameter("vue", vue);
@@ -71,6 +71,47 @@ public class ChatService implements ChatServiceRemote {
 
 		return p;
 
+	}
+	
+
+	@Override
+	public ArrayList<Chat> dropList(int id) {
+		ArrayList<Chat> p;
+		TypedQuery<Chat> query = em.createQuery(
+				"select  c  from Chat c  where c.user1.userId=:id order by c.dateSend asc ",
+				Chat.class);
+		query.setParameter("id", id);
+
+		p = (ArrayList<Chat>) query.getResultList();
+		
+		System.out.println("p = "+p);
+		ArrayList<User> u;
+		TypedQuery<User> queryu = em.createQuery(
+				"select  c  from User c  where c.userId !=:id ",
+				User.class);
+		queryu.setParameter("id", id);
+
+
+		u = (ArrayList<User>) queryu.getResultList();
+		System.out.println("u = "+u);
+
+		ArrayList<Chat> mo = new ArrayList<>();
+
+		Chat ch=null ;
+		for(int j=0 ; j<u.size();j++)
+		{
+			mo.add(ch);
+		for(int i=0 ; i< p.size();i++)
+		{
+			
+			if(p.get(i).getUser2().getUserId()==u.get(j).getUserId())
+			{
+				mo.set(j,p.get(i));
+			}
+			}
+		}
+
+		return mo;
 	}
 
 	@Override
@@ -93,8 +134,8 @@ public class ChatService implements ChatServiceRemote {
 		query.setParameter("id", id);
 
 		User e = null;
-		p = (ArrayList<User>)query.getResultList();
-		e=p.get(0);
+		p = (ArrayList<User>) query.getResultList();
+		e = p.get(0);
 		e.toString();
 		return e;
 	}
@@ -102,7 +143,8 @@ public class ChatService implements ChatServiceRemote {
 	@Override
 	public ArrayList<User> getUsrs(int id) {
 		ArrayList<User> p;
-		TypedQuery<User> query = em.createQuery("select c  from User c   ", User.class);
+		TypedQuery<User> query = em.createQuery("select c  from User c  where c.userId !=:id ", User.class);
+		query.setParameter("id", id);
 
 		p = (ArrayList<User>) query.getResultList();
 
@@ -174,12 +216,9 @@ public class ChatService implements ChatServiceRemote {
 		ls = query.getResultList().get(0);
 
 		String[] splited = ls.split("\\s+");
-		System.out.println("contenu = "+ls);
+		System.out.println("contenu = " + ls);
 
-		
-		ArrayList<Word> p= new ArrayList<>();
-
-		
+		ArrayList<Word> p = new ArrayList<>();
 
 		for (int x = 0; x < splited.length; x++) {
 			TypedQuery<String> query4 = em.createQuery("select  w.type from Word w where w.word=:mot", String.class);
@@ -187,35 +226,33 @@ public class ChatService implements ChatServiceRemote {
 			List<String> types = new ArrayList<>();
 
 			types = query4.getResultList();
-			System.out.println("splitted = "+splited[x]);
-			System.out.println("type du mot du mgs = "+types);
+			System.out.println("splitted = " + splited[x]);
+			System.out.println("type du mot du mgs = " + types);
 
-				//la liste des mgs de meme types 
-			//s7y7a ama comm pour le test 
+			// la liste des mgs de meme types
+			// s7y7a ama comm pour le test
 			/*
-			TypedQuery<String> queryt = em.createQuery("select b.word from Word b where b.type=:type ", String.class);*/
+			 * TypedQuery<String> queryt =
+			 * em.createQuery("select b.word from Word b where b.type=:type ",
+			 * String.class);
+			 */
 			TypedQuery<Word> queryt = em.createQuery("select  b from Word b where b.type=:type ", Word.class);
 			queryt.setParameter("type", types);
 
 			List<Word> wls = new ArrayList<>();
 
 			wls = queryt.getResultList();
-			System.out.println("liste de meme type  = "+wls);
-
-
-			
+			System.out.println("liste de meme type  = " + wls);
 
 			p = (ArrayList<Word>) queryt.getResultList();
 
-
 		}
-int j ; 
-ArrayList<Word> mo = new ArrayList<>();
+		int j;
+		ArrayList<Word> mo = new ArrayList<>();
 
-		for(j=0; j < 3 ;j++)
-		{
+		for (j = 0; j < 3; j++) {
 			mo.add(p.get(j));
-	}
+		}
 
 		return mo;
 
@@ -224,12 +261,12 @@ ArrayList<Word> mo = new ArrayList<>();
 	@Override
 	public String getRecei(int idr) {
 		TypedQuery<String> query = em.createQuery("select u.firstName from User u  where u.userId=:idr", String.class);
-		query.setParameter("idr",idr);
-		String ls ;
+		query.setParameter("idr", idr);
+		String ls;
 
 		ls = query.getSingleResult();
-		System.out.println("nom = "+ls);
-		return ls ;
+		System.out.println("nom = " + ls);
+		return ls;
 	}
 
 	@Override
@@ -237,16 +274,16 @@ ArrayList<Word> mo = new ArrayList<>();
 		ArrayList<Integer> p;
 
 		TypedQuery<Integer> query = em.createQuery("select u.userId from User u  where u.userId=:idr", Integer.class);
-		query.setParameter("idr",idr);
-		int ls ;
-		p = (ArrayList<Integer>)query.getResultList();
-		ls=p.get(0);
+		query.setParameter("idr", idr);
+		int ls;
+		p = (ArrayList<Integer>) query.getResultList();
+		ls = p.get(0);
 
 		ls = query.getSingleResult();
-		System.out.println("id receiver = "+ls);
-		return ls ;
-		
-	
+		System.out.println("id receiver = " + ls);
+		return ls;
+
 	}
+
 
 }

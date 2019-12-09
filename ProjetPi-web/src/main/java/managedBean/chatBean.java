@@ -38,10 +38,19 @@ public class chatBean implements Serializable {
 	private int idconnect; 
 	private String nomR ;
 	private int receiver ;
+	private List<Chat> drop ; 
 	
 
 
 	
+	public List<Chat> getDrop() {
+		return drop;
+	}
+
+	public void setDrop(List<Chat> drop) {
+		this.drop = drop;
+	}
+
 	public int getReceiver() {
 		return receiver;
 	}
@@ -231,7 +240,9 @@ public class chatBean implements Serializable {
 	}
 
 	public void getUsrs() {
-		users = ms.getUsrs(1);
+		LoginBean lb = new LoginBean();
+
+		users = ms.getUsrs(lb.getUuser().getUserId());
 	}
 
 	public void getDis(int id) {
@@ -251,6 +262,17 @@ public class chatBean implements Serializable {
 
 	}
 
+	public String OneDisc(int id) {
+		LoginBean lb = new LoginBean();
+
+		this.disc = ms.getchat(id, lb.getUuser().getUserId());
+		propo = ms.getProp(id,lb.getUuser().getUserId());
+		nomR=ms.getRecei(id);
+		receiver=ms.getidRecei(id);
+
+		return "/pages/chat/temp.xhtml?face-redirect=true";
+
+	}
 	public void test() {
 		LoginBean lb = new LoginBean();
 		disc = ms.getchat(lb.getUuser().getUserId(), ids);
@@ -270,6 +292,7 @@ public class chatBean implements Serializable {
 		chats = ms.getall(lb.getUuser().getUserId(), 0);
 		users = ms.getUsrs(1);
 		this.idconnect=lb.getUuser().getUserId();
+		drop=ms.dropList(lb.getUuser().getUserId());
 
 
 	}

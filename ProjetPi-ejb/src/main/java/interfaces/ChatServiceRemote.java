@@ -24,6 +24,8 @@ public interface ChatServiceRemote {
 	 ArrayList<Word> getProp(int ids , int idr);
 	 String getRecei ( int idr);
 	 int getidRecei ( int idr);
+	 ArrayList<Chat> dropList(int id );
+
 
 
 

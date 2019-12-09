@@ -1254,11 +1254,12 @@ body {
 									src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
 
 								<div class="meta">
-
+<h:form>
 									<p class="name">
-										<h:outputText value="#{user.firstName}"
-											action="#{chatBean.aff()}" />
+										<h:commandLink value="#{user.firstName}"
+											action="#{chatBean.OneDisc(user.userId)}" />
 									</p>
+									</h:form>
 
 									<p class="preview">You just got LITT up, Mike.</p>
 								</div>

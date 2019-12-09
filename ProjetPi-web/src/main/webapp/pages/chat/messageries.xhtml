@@ -90,10 +90,10 @@
 					</button>
 <h:form>
 					<ul class="dropdown-menu">
-						<ui:repeat value="#{chatBean.chats}" var="chat" varStatus="status">
+						<ui:repeat value="#{chatBean.drop}" var="drop" varStatus="status">
 
 							<li><h:commandLink
-										value="#{chat.contenu}" action="#{chatBean.aff(chat.user2.userId,chat.chatId)}" /> </li>
+										value="#{drop.contenu}" action="#{chatBean.aff(drop.user2.userId,drop.chatId)}" /> </li>
 							
 						</ui:repeat>
 

@@ -48,6 +48,7 @@ public class EvaluationBean implements Serializable {
 	EntretienPhysiqueRemote serviceEntretienPhysique;
 	@EJB
 	CritereRemote serviceCritere;
+	
 	private int id;
 	private String ponctuality;
 	private String description;
@@ -55,7 +56,6 @@ public class EvaluationBean implements Serializable {
 	private int selectedEntretienPhysiqueId;
 	private Date EntretienPhysiqueDate;
 	private int NoteEval;
-
 	private Candidature candidature;
 	private Evaluation evaluation;
 	private EntretienPhysique EntretienPhysique;
@@ -71,6 +71,7 @@ public class EvaluationBean implements Serializable {
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target("http://localhost:1911/Calendriers/GetEvents");
 		System.out.println("response  : " + target.request(MediaType.APPLICATION_JSON).get(String.class).toString());
+		String val = target.request(MediaType.APPLICATION_JSON).get(String.class).toString();
 	}
 
 	public String getPonctuality() {
@@ -367,9 +368,10 @@ public class EvaluationBean implements Serializable {
 			if (verif == 0) {
 				Evaluation eval = new Evaluation();
 				eval.setDescription(description);
-				eval.setEntretienPhysique(serviceEntretienPhysique.getEntretienPhysiqueById(14));
+				eval.setEntretienPhysique(serviceEntretienPhysique.getEntretienPhysiqueById(selectedEntretienPhysiqueId));
 				eval.setCandidature(serviceCandidature.getCandidatureById(selectedCandidatureId));
 				eval.setNoteEval(NoteEval);
+				eval.setPonctuality(ponctuality);
 				if (eval.getDescription() != null && eval.getCandidature() != null
 						&& eval.getEntretienPhysique() != null) {
 					selectedEvalId = service.addEvaluation(eval);
@@ -377,13 +379,13 @@ public class EvaluationBean implements Serializable {
 					selectedCandidatureId = 0;
 					idEvalChart = selectedEvalId;
 					verif = 1;
-					System.out.println(selectedEvalId + "test201");
+					//System.out.println(selectedEvalId + "test201");
 				}
-				System.out.println(selectedEvalId + "test201");
+				//System.out.println(selectedEvalId + "test201");
 
 				return event.getNewStep();
 			}
-			System.out.println(selectedEvalId + "test201");
+			//System.out.println(selectedEvalId + "test201");
 
 			return event.getNewStep();
 		}

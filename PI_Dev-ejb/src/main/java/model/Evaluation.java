@@ -21,8 +21,10 @@ public class Evaluation implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="EvaluationID")
 	private int evaluationID;
+	
 	@Column(name="ponctuality")
 	private String ponctuality ;
+	
 	@Column(name="Description")
 	private String description;
 	
@@ -31,6 +33,14 @@ public class Evaluation implements Serializable {
 	
 	
 	
+	public String getPonctuality() {
+		return ponctuality;
+	}
+
+	public void setPonctuality(String ponctuality) {
+		this.ponctuality = ponctuality;
+	}
+
 	public int getNoteEval() {
 		return NoteEval;
 	}

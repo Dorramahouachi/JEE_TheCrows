@@ -19,18 +19,30 @@
 								placeholder="enter your keyword" />
 						</p:outputPanel>
 					</f:facet>
+					<p:column headerText="Nom du Candidat">
+						<f:facet name="header">Nom du Candidat</f:facet>
+						<h:outputText value="#{eval.candidature.user.name}" />
+					</p:column>
 					<p:column filterBy="#{eval.description}">
 						<f:facet name="header">
 							<h:outputText value="Description" />
 						</f:facet>
 						<h:outputText value="#{eval.description}" />
 					</p:column>
-					<p:column headerText="Candidature">
+					<p:column headerText="ponctuality">
+						<f:facet name="header">Ponctuality</f:facet>
+						<h:outputText value="#{eval.ponctuality}" />
+					</p:column>
+				 <p:column headerText="NoteEval">
+						<f:facet name="header">Note Général</f:facet>
+						<h:outputText value="#{eval.noteEval}" />
+					</p:column>
+				<!-- <p:column headerText="Candidature">
 						<f:facet name="header">Candidature</f:facet>
 						<h:outputText value="#{eval.candidature.candidatureDate}" />
-					</p:column>
+					</p:column> -->
 					<p:column headerText="date">
-						<f:facet name="header">date</f:facet>
+						<f:facet name="header">Date de L'Entretien</f:facet>
 						<h:outputText value="#{eval.entretienPhysique.dateEntretien}" />
 					</p:column>
 
@@ -42,6 +54,13 @@
 							action="#{evaluationBean.supprimerEval(eval.evaluationID)}"
 							value="Supprimer" style="margin-right:20px;"
 							styleClass="ui-priority-primary" update="dtEvals" />
+							<!-- <p:confirmDialog global="true" showEffect="fade"
+										hideEffect="fade">
+										<p:commandButton value="Yes" type="button"
+											styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+										<p:commandButton value="No" type="button"
+											styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+									</p:confirmDialog> -->	
 					</p:column>
 					<p:column>
 						<f:facet name="header">

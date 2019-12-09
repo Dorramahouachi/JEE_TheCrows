@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-	
+
 	<f:metadata>
 
 		<f:viewAction action="#{chatBean.test()}" />
@@ -340,7 +340,8 @@
 <style class="cp-pen-styles">
 body {
 	padding-left: 70px;
-	padding-top: 0px; align-items : center;
+	padding-top: 0px;
+	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
 	background: url(../javax.faces.resource/img/header-bg.jpg) center;
@@ -1286,8 +1287,9 @@ body {
 			<div class="contact-profile">
 				<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
 
-				<p><h:outputText value="#{chatBean.nomR}" />
-</p>
+				<p>
+					<h:outputText value="#{chatBean.nomR}" />
+				</p>
 
 				<div class="social-media">
 					<i class="fa fa-facebook" aria-hidden="true" /> <i
@@ -1298,73 +1300,139 @@ body {
 
 			<div class="messages">
 
-			<ul>
-			<ui:repeat value="#{chatBean.disc}" var="chat" varStatus="status">
-					
-				
-				<h:panelGroup rendered="#{chatBean.idconnect != chat.user2.userId }">
-					<li class="sent">
-						<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+				<ul>
+					<ui:repeat value="#{chatBean.disc}" var="chat" varStatus="status">
 
-							
-								<p  ><h:outputText value="#{chat.contenu}" />
-								<br />
-								<h:outputText value="#{chat.dateSend}"  /></p>
+						<h:form>
+							<h:panelGroup
+								rendered="#{chatBean.idconnect == chat.user2.userId }">
+								<li class="sent"><img
+									src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
 
-							
-						</li>
-				</h:panelGroup>
-					<h:panelGroup rendered="#{chatBean.idconnect == chat.user2.userId }">
-					<li class="replies">
-						<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
 
-							
-								<p  ><h:outputText value="#{chat.contenu}" />
-								<br />
-								<h:outputText value="#{chat.dateSend}"  /></p>
+									<p>
+										<h:outputText value="#{chat.contenu}" />
+										<br />
+										<h:outputText value="#{chat.dateSend}" />
+									</p>
+									<button class="btn btn-xs btn-link " type="button"
+										data-toggle="dropdown">
 
-							
-						</li>
-				</h:panelGroup>
-				
-						
-						
+										<h:outputText value="... " />
+
+									</button>
+
+
+
+									<ul class="dropdown-menu" style=" border-radius: 10%;">
+
+										<li><h:inputText value="#{chatBean.modifier}"
+												required="true" id="hkhhkt" a:placeholder="#{chat.contenu}">
+											</h:inputText>
+
+											<button class="submit" style="background-color: #435f7a">
+												<h:commandLink
+													style="background-color:#435f7a; width:140px; height:30px"
+													action="#{chatBean.update(chat.chatId)}">
+													<i class="fa fa-edit" aria-hidden="true"
+														style="color: white" />
+												</h:commandLink>
+																							</button>
+												</li>
+
+										<li style="background-color: #435f7a">
+										
+
+												<h:commandLink value="supprimer"
+													action="#{chatBean.delete(chat.chatId)}" />
+										</li>
+
+
+
+
+									</ul>
+									</li>
+
+							</h:panelGroup>
+							<h:panelGroup
+								rendered="#{chatBean.idconnect != chat.user2.userId }">
+								<li class="replies"><img
+									src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+
+
+									<p>
+										<h:outputText value="#{chat.contenu}" />
+										<br />
+										<h:outputText value="#{chat.dateSend}">
+											<f:convertDateTime type="date" pattern="dd MMMM yyyy" />
+										</h:outputText>
+									</p></li>
+
+							</h:panelGroup>
+
+						</h:form>
+
 					</ui:repeat>
-					
-			
-			</ul>
 
-											<h:outputText value="#{chatBean.receiver}"  />
-			
+
+				</ul>
+
 				
-			</div>
-		<h:message for="ad" style="color:red"></h:message>
 
-			<div class="message-input" style="padding-top:10px">
+
+
+			</div>
+
+			<div class="message-input" style="padding-top: 10px">
+			<div style="padding-left:150px; height: 40px; display:inline-block;text-align: center;" > 
 			<h:form>
+			<ui:repeat value="#{chatBean.propo}" var="prop" varStatus="status">
+								
+								<button class="submit" style="height:30px ;width:150px; border-color: #435f7a;border-radius: 20%;background-color: #f5f5f5">
 
-				<div class="wrap"  >
-					<h:inputText style="width:770px"  value="#{chatBean.contenu}"  id="ad"
-				required="true" a:placeholder="ecrire votre message ici . . ."
-		requiredMessage="Veuillez ecrire quelque chose :) "
-		validatorMessage="le message doit etre de longueur entre 3 et 8 " >
-				<f:validateLength minimum="3" maximum="8"></f:validateLength>
-			</h:inputText>
-					
-					
-					<button class="submit" style="width:80px">
-					
-							<h:commandLink action="#{chatBean.add(chatBean.receiver)}" style="width:80px"  >
-					
-						<i class="fa fa-paper-plane" aria-hidden="true" />
-					</h:commandLink>
-					</button>
-				</div>
-							</h:form>
+							<h:commandLink action="#{chatBean.addP(chatBean.receiver, prop.word)}">
+
+								<h:outputText value="#{prop.word }" />
+							</h:commandLink>
+
+						</button>
 				
+				</ui:repeat>
+				</h:form>
+			 </div>
+			
+				<h:form>
+					<h:message for="ad" style="color:red"></h:message>
+					<h:panelGroup rendered="#{chatBean.reponse eq 'refus' }">
+						<p style="color: red">Veuillez ne pas envoyer des gros mots :)
+						</p>
+					</h:panelGroup>
+					<div class="wrap">
+						<h:inputText style="width:770px" value="#{chatBean.contenu}"
+							id="ad" required="true"
+							a:placeholder="ecrire votre message ici . . ."
+							requiredMessage="Veuillez ecrire quelque chose :) "
+							validatorMessage="le message doit etre de longueur entre 3 et 8 ">
+							<f:validateLength minimum="3" maximum="150"></f:validateLength>
+
+						</h:inputText>
+
+
+						<button class="submit" style="width: 80px">
+
+							<h:commandLink action="#{chatBean.add(chatBean.receiver)}"
+								style="width:80px">
+
+								<i class="fa fa-paper-plane" aria-hidden="true" />
+							</h:commandLink>
+
+						</button>
+					</div>
+				</h:form>
+
 			</div>
-			
-			
+
+
 		</div>
 	</div>
 </body><script

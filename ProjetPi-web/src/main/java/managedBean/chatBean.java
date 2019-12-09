@@ -195,6 +195,26 @@ public class chatBean implements Serializable {
 		}
 
 	}
+	
+	
+	public String addP(int idrev, String cont) {
+
+		LoginBean lb = new LoginBean();
+
+		Chat m = new Chat();
+		m.setContenu(cont);
+		User r =ms.getUser(idrev);
+		m.setUser1(r);
+		m.setUser2(lb.getUuser());
+
+		String rep = ms.envoyerMessage(m);
+
+		
+			return "/pages/chat/messageries.xhtml?face-redirect=true";
+
+		
+
+	}
 
 	public void update(int id) {
 		Chat e = new Chat();

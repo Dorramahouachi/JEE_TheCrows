@@ -176,7 +176,6 @@ public class ChatService implements ChatServiceRemote {
 		String[] splited = ls.split("\\s+");
 		System.out.println("contenu = "+ls);
 
-		List<String> mo = new ArrayList<>();
 		
 		ArrayList<Word> p= new ArrayList<>();
 
@@ -195,7 +194,7 @@ public class ChatService implements ChatServiceRemote {
 			//s7y7a ama comm pour le test 
 			/*
 			TypedQuery<String> queryt = em.createQuery("select b.word from Word b where b.type=:type ", String.class);*/
-			TypedQuery<Word> queryt = em.createQuery("select b from Word b where b.type=:type ", Word.class);
+			TypedQuery<Word> queryt = em.createQuery("select  b from Word b where b.type=:type ", Word.class);
 			queryt.setParameter("type", types);
 
 			List<Word> wls = new ArrayList<>();
@@ -210,10 +209,15 @@ public class ChatService implements ChatServiceRemote {
 
 
 		}
-			
+int j ; 
+ArrayList<Word> mo = new ArrayList<>();
 
+		for(j=0; j < 3 ;j++)
+		{
+			mo.add(p.get(j));
+	}
 
-		return p;
+		return mo;
 
 	}
 

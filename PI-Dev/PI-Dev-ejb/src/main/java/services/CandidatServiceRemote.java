@@ -2,9 +2,11 @@ package services;
 
 import javax.ejb.Remote;
 
+import models.User;
+
 
 @Remote
 public interface CandidatServiceRemote {
 
-	public int getUser(int id);
+	public User getUser(int id);
 }

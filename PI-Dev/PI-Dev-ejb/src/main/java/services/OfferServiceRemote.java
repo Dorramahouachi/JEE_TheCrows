@@ -11,4 +11,5 @@ public interface OfferServiceRemote {
 	public List<Offer> getAll();
 	public List<Offer> getByName(String s);
 	public List<Offer> getByLocation(String s);
+	public void RemoveCandidature(int idOffer);
 }

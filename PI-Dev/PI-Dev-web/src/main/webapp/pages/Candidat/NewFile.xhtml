@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<body>
+  
+			<h:outputText value="#{searchMB.userCncte.login}"></h:outputText>
+				<h:form>
+					<h:panelGrid>
+					<p>Search by</p>
+					<h:selectOneRadio value = "#{searchMB.data1}">
+						<f:selectItem itemValue = "3" itemLabel = "All"/>
+						<f:selectItem itemValue = "1" itemLabel = "Title" /> 
+		   				<f:selectItem itemValue = "2" itemLabel = "Location" />
+					</h:selectOneRadio>
+					<h:inputText value="#{searchMB.data}" placeholder="search here"></h:inputText>
+					<h:commandButton action="#{searchMB.search()}" value="Search"></h:commandButton>
+					</h:panelGrid>
+				<c:forEach var="v" items="#{searchMB.listOffers}">
+							<div>
+								<a>
+									<h4><h:outputText value="#{v.titleOffer}"></h:outputText></h4>
+									<h4><h:outputText value="#{v.offerId}"></h:outputText></h4>
+								</a>
+							</div>
+
+							<c:set var = "salary" value="0" />	
+								<c:forEach var="c" items="#{searchMB.listCandidature}">
+									<c:if test = "#{v.offerId == c.offer.offerId}">
+										<c:set var = "salary" value="1" />
+									</c:if>
+								</c:forEach>
+								<c:if test = "${salary == 0}">
+									<h:commandButton action="#{searchMB.apply()}" value="APLLY" ></h:commandButton>	
+								</c:if>
+								<c:if test = "${salary == 1}">
+									<h:commandButton action="#{searchMB.ignore(v.offerId)}" value="IGNORE" ></h:commandButton>
+								</c:if>
+						<p>
+							<span></span> <h:outputText value="#{v.location}"></h:outputText>
+						</p>
+				<p>**********************************</p> 
+			</c:forEach> 
+			</h:form>
+</body>
+</html>

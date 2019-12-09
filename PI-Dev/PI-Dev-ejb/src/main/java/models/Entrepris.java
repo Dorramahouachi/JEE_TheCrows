@@ -10,7 +10,7 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="Entreprises")
+@Table(name="Entreprise")
 @NamedQuery(name="Entrepris.findAll", query="SELECT e FROM Entrepris e")
 public class Entrepris implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -19,6 +19,10 @@ public class Entrepris implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="EntrepriseId")
 	private int entrepriseId;
+	
+	private String name;
+	
+	private String Country;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
@@ -28,6 +32,23 @@ public class Entrepris implements Serializable {
 	//bi-directional many-to-one association to Subscribe
 	@OneToMany(mappedBy="entrepris")
 	private List<Subscribe> subscribes;
+
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCountry() {
+		return Country;
+	}
+
+	public void setCountry(String country) {
+		Country = country;
+	}
 
 	public Entrepris() {
 	}

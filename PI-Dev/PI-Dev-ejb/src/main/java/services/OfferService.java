@@ -37,5 +37,9 @@ public class OfferService implements OfferServiceRemote {
 		off = query.getResultList();
 		return off;
 	}
+	@Override
+	public void RemoveCandidature(int idOffer) {
+		em.createQuery("DELETE FROM Candidature c WHERE c.OfferId=:idOffer").setParameter("idOffer", idOffer).executeUpdate();
+	}
 
 }

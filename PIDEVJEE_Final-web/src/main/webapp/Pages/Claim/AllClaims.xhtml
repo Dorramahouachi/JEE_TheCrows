@@ -1,0 +1,100 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templatecondidate/template.xhtml">
+   <meta charset="utf-8"/>
+      
+     <meta charset="utf-8"/>
+    <title>taraji</title>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+     
+      <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources1/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      
+      <ui:define name="content">
+      
+	   <h:form>
+
+<h:dataTable id="table" class=" centered bordered white lighten-2 col s6" value="#{ReclamationBean.listClaims}" filteredValue="#{ReclamationBean.listClaims}" var="c" widgetVar="claims"  >
+				    
+		<f:facet name="header" ><p:outputPanel>
+                <h:outputText value="Search Claims : " />
+                                <h:inputText id="filter" style="width:150px" placeholder="Enter keyword"/>
+                
+            </p:outputPanel></f:facet>
+		
+		<h:column filterBy="#{c.name}"  filterMatchMode="contains" >
+			<f:facet name="header">Name </f:facet>
+			<h:outputText value="#{c.name}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Description </f:facet>
+			<h:outputText value="#{c.description}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">dateClaim </f:facet>
+			<h:outputText value="#{c.dateClaim}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Delete Claim</f:facet>		
+				<h:commandButton value="Delete  "  actionListener="#{ReclamationBean.removeClaim(c)}" styleClass="btn-small red darken-4" >	
+				</h:commandButton>
+
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Update Claim</f:facet>		
+				<h:commandButton value="Update  "  actionListener="#{ReclamationBean.removeClaim(c)}" styleClass="btn-small green darken-4" >	
+				</h:commandButton>
+
+		</h:column>
+		
+		
+	</h:dataTable>
+	
+	
+   
+ <script type="text/javascript" src="#{request.contextPath}/resources1/js/jquery.min.js"></script>
+      
+      <script type="text/javascript" src="#{request.contextPath}/resources1/js/materialize.js"></script>
+ <script>
+ $(document).ready(function(){
+	 $('.modal').modal();
+	 $("input").on("change paste keyup", function(e) {
+		 if(e.keyCode==8) location.reload();
+
+		 var claimsTable = $("tbody").children();
+		 var value = document.getElementById(this.id).value.trim() ;
+		 if(!value) {
+			 location.reload();
+		 }
+		 for(i=0 ; i &lt; claimsTable.length  ; i++) {
+			 found = false ;
+			 var cells = $(claimsTable[i]).find('td') ;
+			 for(j=0 ; j &lt; 3  ; j++) {
+				 if(cells[j].innerHTML.includes(value)) {
+					 found = true;
+				 }
+			 }
+			 if(!found) {
+				 claimsTable[i].remove();
+			 }
+			 console.log(found);
+		 }
+	});
+  });
+ </script>
+    	   </h:form>
+    
+</ui:define>
+      
+	
+</ui:composition>

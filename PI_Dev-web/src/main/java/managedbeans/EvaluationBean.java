@@ -8,6 +8,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -29,7 +30,7 @@ import service.interf.EntretienPhysiqueRemote;
 import service.interf.EvaluationRemote;
 
 @ManagedBean(name = "evaluationBean")
-@SessionScoped
+@ApplicationScoped
 public class EvaluationBean implements Serializable {
 
 	/**
@@ -48,12 +49,13 @@ public class EvaluationBean implements Serializable {
 	@EJB
 	CritereRemote serviceCritere;
 	private int id;
+	private String ponctuality;
 	private String description;
 	private int selectedCandidatureId;
 	private int selectedEntretienPhysiqueId;
 	private Date EntretienPhysiqueDate;
 	private int NoteEval;
-	
+
 	private Candidature candidature;
 	private Evaluation evaluation;
 	private EntretienPhysique EntretienPhysique;
@@ -70,7 +72,15 @@ public class EvaluationBean implements Serializable {
 		WebTarget target = client.target("http://localhost:1911/Calendriers/GetEvents");
 		System.out.println("response  : " + target.request(MediaType.APPLICATION_JSON).get(String.class).toString());
 	}
-	
+
+	public String getPonctuality() {
+		return ponctuality;
+	}
+
+	public void setPonctuality(String ponctuality) {
+		this.ponctuality = ponctuality;
+	}
+
 	public Date getEntretienPhysiqueDate() {
 		return EntretienPhysiqueDate;
 	}
@@ -81,11 +91,14 @@ public class EvaluationBean implements Serializable {
 
 	public void ajouterCritere() {
 
+		System.out.println(selectedEvalId + "test200");
 		Critere c = new Critere();
 		c.setCritereName(name);
 		c.setType(type);
 		c.setEvaluation(service.getEvaluationById(selectedEvalId));
 		serviceCritere.AddCritere(c);
+		name = null;
+		type = null;
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Successfull "));
 	}
 
@@ -96,17 +109,16 @@ public class EvaluationBean implements Serializable {
 	private List<Evaluation> listEval;
 	private List<Critere> listCriteres;
 
-	public void ajouterEval() {
-		Evaluation eval = new Evaluation();
-		eval.setDescription(description);
-		eval.setEntretienPhysique(serviceEntretienPhysique.getEntretienPhysiqueById(14));
-		eval.setCandidature(serviceCandidature.getCandidatureById(selectedCandidatureId));
-		selectedEvalId = service.addEvaluation(eval);
-		idEvalChart = selectedEvalId;
-		eval.setNoteEval(NoteEval);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success"));
-	}
-
+	/*
+	 * public void ajouterEval() { Evaluation eval = new Evaluation();
+	 * eval.setDescription(description);
+	 * eval.setEntretienPhysique(serviceEntretienPhysique.getEntretienPhysiqueById(
+	 * 14)); eval.setCandidature(serviceCandidature.getCandidatureById(
+	 * selectedCandidatureId)); selectedEvalId = service.addEvaluation(eval);
+	 * idEvalChart = selectedEvalId; eval.setNoteEval(NoteEval);
+	 * FacesContext.getCurrentInstance().addMessage(null, new
+	 * FacesMessage("Success")); }
+	 */
 	public String goToEvalsList() {
 		return "listEval.jsf?faces-redirect=true";
 	}
@@ -131,15 +143,30 @@ public class EvaluationBean implements Serializable {
 		this.evalToBeUpdatedID = evalToBeUpdatedID;
 	}
 
-	public void modifier() {
-		Evaluation s = new Evaluation();
-		s.setCandidature(candidature);
-		s.setDescription(description);
-		s.setEvaluationID(selectedEvalId);
-		service.updateEvaluation(s);
-		idEvalChart = selectedEvalId;
+	public String modifier(FlowEvent event) {
 
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Successfull "));
+		if (verif == 0) {
+			Evaluation s = new Evaluation();
+			s.setDescription(description);
+			s.setEvaluationID(selectedEvalId);
+			s.setCandidature(candidature);
+			if (s.getDescription() != null && s.getCandidature() != null) {
+				service.updateEvaluation(s);
+
+				description = null;
+				selectedCandidatureId = 0;
+				idEvalChart = selectedEvalId;
+				verif2 = 1;
+				System.out.println(selectedEvalId + "test201");
+			}
+			System.out.println(selectedEvalId + "test201");
+
+			return event.getNewStep();
+		}
+		System.out.println(selectedEvalId + "test201");
+
+		return event.getNewStep();
+
 	}
 
 	public String toGerer(Evaluation eval) {
@@ -200,6 +227,7 @@ public class EvaluationBean implements Serializable {
 	}
 
 	public EvaluationBean() {
+
 	}
 
 	public CandidatureServiceRemote getServiceCandidature() {
@@ -230,7 +258,7 @@ public class EvaluationBean implements Serializable {
 
 	public List<Critere> getListCriteres() {
 		idEvalChart = selectedEvalId;
-		System.out.println("test5 " + selectedEvalId);
+		System.out.println("test1000 " + selectedEvalId);
 		System.out.println("test6 " + idEvalChart);
 		return serviceCritere.getCritereByEval(selectedEvalId);
 	}
@@ -274,17 +302,41 @@ public class EvaluationBean implements Serializable {
 	private boolean skip;
 
 	public String save() {
+		description = null;
+		selectedCandidatureId = 0;
+		verif = 0;
+		// listCriteres.clear();
+		name = null;
+		type = null;
+		// selectedEvalId=0;
 		FacesMessage msg = new FacesMessage("Successful");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 		return "listEval.jsf?faces-redirect=true";
 
 	}
+
+	public String save2() {
+		description = null;
+		selectedCandidatureId = 0;
+		verif2 = 0;
+		// listCriteres.clear();
+		name = null;
+		type = null;
+		// selectedEvalId=0;
+		FacesMessage msg = new FacesMessage("Successful");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		return "listEval.jsf?faces-redirect=true";
+
+	}
+
 	public EntretienPhysique getEntretienPhysique() {
 		return EntretienPhysique;
 	}
+
 	public void setEntretienPhysique(EntretienPhysique entretienPhysique) {
 		EntretienPhysique = entretienPhysique;
 	}
+
 	public boolean isSkip() {
 		return skip;
 	}
@@ -302,8 +354,12 @@ public class EvaluationBean implements Serializable {
 	}
 
 	int verif = 0;
+	int verif2 = 0;
 
 	public String onFlowProcess(FlowEvent event) {
+
+		System.out.println(description + "test100");
+		System.out.println(selectedCandidatureId + "test100");
 		if (skip) {
 			skip = false; // reset in case user goes back
 			return "confirm";
@@ -314,19 +370,25 @@ public class EvaluationBean implements Serializable {
 				eval.setEntretienPhysique(serviceEntretienPhysique.getEntretienPhysiqueById(14));
 				eval.setCandidature(serviceCandidature.getCandidatureById(selectedCandidatureId));
 				eval.setNoteEval(NoteEval);
-				if(eval.getDescription() != null && eval.getCandidature() != null && eval.getEntretienPhysique() != null) {
+				if (eval.getDescription() != null && eval.getCandidature() != null
+						&& eval.getEntretienPhysique() != null) {
 					selectedEvalId = service.addEvaluation(eval);
+					description = null;
+					selectedCandidatureId = 0;
 					idEvalChart = selectedEvalId;
-					verif = 1;	
+					verif = 1;
+					System.out.println(selectedEvalId + "test201");
 				}
-				
+				System.out.println(selectedEvalId + "test201");
+
 				return event.getNewStep();
 			}
+			System.out.println(selectedEvalId + "test201");
+
 			return event.getNewStep();
 		}
 	}
 
-	
 	public static int getIdEvalChart() {
 		return idEvalChart;
 	}
@@ -342,11 +404,13 @@ public class EvaluationBean implements Serializable {
 	public void setVerif(int verif) {
 		this.verif = verif;
 	}
+
 	public int getSelectedEntretienPhysiqueId() {
 		return selectedEntretienPhysiqueId;
 	}
+
 	public void setSelectedEntretienPhysiqueId(int selectedEntretienPhysiqueId) {
 		this.selectedEntretienPhysiqueId = selectedEntretienPhysiqueId;
 	}
-	
+
 }

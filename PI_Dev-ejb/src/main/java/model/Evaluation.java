@@ -21,7 +21,8 @@ public class Evaluation implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="EvaluationID")
 	private int evaluationID;
-
+	@Column(name="ponctuality")
+	private String ponctuality ;
 	@Column(name="Description")
 	private String description;
 	

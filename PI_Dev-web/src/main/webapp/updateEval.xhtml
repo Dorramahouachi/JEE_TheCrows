@@ -5,7 +5,7 @@
 	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
 	<ui:define name="content">
 		<h:form>
-			<p:wizard>
+			<p:wizard flowListener="#{evaluationBean.modifier}">
 				<p:tab id="personal" title="Evaluation">
 					<p:panel h:header="Update Evaluation">
 						<p:messages />
@@ -19,7 +19,7 @@
 								<f:selectItem itemLabel="Choisir Candidature" itemValue="" />
 								<f:selectItems value="#{candidatureBean.candidatures}"
 									var="candidature" itemValue="#{candidature.candidatureId}"
-									itemLabel="id: #{candidature.candidatureId} date: #{candidature.candidatureDate} etat: #{candidature.etat} score: #{candidature.score}" />
+									itemLabel=" #{candidature.user.name}" />
 							</p:selectOneMenu>
 							<h:message for="candidature" style="color:red" />
 							<br></br>
@@ -29,10 +29,6 @@
 								value="#{evaluationBean.description}" style="width:300px">
 							</p:inputTextarea>
 							<h:message for="description" style="color:red" />
-							<h:outputText value=""></h:outputText>
-							<h:outputText value=""></h:outputText>
-							<p:commandButton id="bb" name="bb" style="margin-bottom: 10px;"
-								value="Update Evaluation" action="#{evaluationBean.modifier()}" />
 							<h:outputText value=""></h:outputText>
 							<h:outputText value=""></h:outputText>
 						</h:panelGrid>
@@ -62,7 +58,8 @@
 							<h:outputText value=""></h:outputText>
 							<p:commandButton id="aa" name="aa" style="margin-bottom: 10px;"
 								value="Ajouter Critere"
-								action="#{evaluationBean.ajouterCritere()}" update="dtcritere chartcritere"/>
+								action="#{evaluationBean.ajouterCritere()}"
+								update="dtcritere" />
 							<h:outputText value=""></h:outputText>
 							<h:outputText value=""></h:outputText>
 							<h:outputText value=""></h:outputText>
@@ -90,19 +87,20 @@
 								</f:facet>
 								<p:commandButton
 									action="#{evaluationBean.supprimerCritere(critere.critereID)}"
-									value="Supprimer" style="margin-right:20px;"
-									styleClass="ui-priority-primary" update="dtcritere chartcritere" />
+									value="Supprimer" style="margin-right:20px;" update="dtcritere"
+									styleClass="ui-priority-primary"
+									/>
 							</p:column>
 						</p:dataTable>
 					</p:panel>
-					<p:panel>
-						<a href="http://localhost:9080/PI_Dev-web/charts.jsf"
-							onclick="http://localhost:9080/PI_Dev-web/charts.jsf">Aller à
-							Statistiques des critères</a>
-						<p:chart type="pie" responsive="true" id="chartcritere" model="#{chartJsView.model}"
-							value="#{chartJsView.model}" />
-					</p:panel>
-				</p:tab>
+					</p:tab>
+					<p:tab id="confirm" title="Statistiques"> 
+						<p:panel>
+							<p:chart type="pie" responsive="true" id="chartcritere"
+							model="#{chartJsView.model}" value="#{chartJsView.model}" />
+							<p:commandButton value="Submit" action="#{evaluationBean.save2()}" update="dtcritere"/>
+						</p:panel> 
+					</p:tab>
 			</p:wizard>
 		</h:form>
 		<br></br>

@@ -42,14 +42,14 @@ public class Userz implements Serializable  {
 	private Post post;
 
 
-	// @OneToMany(mappedBy="sender")
-	//@JsonBackReference(value = "sender")
-	//private List<Evaluation> evaluationsSent;
+	 @OneToMany(mappedBy="sender")
+	@JsonBackReference(value = "sender")
+	private List<Evaluation> evaluationsSent;
 
 
-	//@OneToMany(mappedBy="receiver")
-	//@JsonBackReference(value = "receiver")
-	//private List<Evaluation> evaluationsReceived;
+	@OneToMany(mappedBy="receiver")
+	@JsonBackReference(value = "receiver")
+	private List<Evaluation> evaluationsReceived;
 
 
 
@@ -123,21 +123,21 @@ public class Userz implements Serializable  {
 
 	}
 
-	//public List<Evaluation> getEvaluationsSent() {
-	//	return evaluationsSent;
-	//}
+	public List<Evaluation> getEvaluationsSent() {
+		return evaluationsSent;
+	}
 
-	//public void setEvaluationsSent(List<Evaluation> evaluationsSent) {
-	//	this.evaluationsSent = evaluationsSent;
-	//}
+	public void setEvaluationsSent(List<Evaluation> evaluationsSent) {
+		this.evaluationsSent = evaluationsSent;
+	}
 
-	//public List<Evaluation> getEvaluationsReceived() {
-	//	return evaluationsReceived;
-	//}
+	public List<Evaluation> getEvaluationsReceived() {
+		return evaluationsReceived;
+	}
 
-	//public void setEvaluationsReceived(List<Evaluation> evaluationsReceived) {
-	//	this.evaluationsReceived = evaluationsReceived;
-	//}
+	public void setEvaluationsReceived(List<Evaluation> evaluationsReceived) {
+		this.evaluationsReceived = evaluationsReceived;
+	}
 
 	public Userz(int id, String firstname, String lastname, String email, String password, String phoneNumber, Role role,
 				Post post) {

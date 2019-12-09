@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -20,9 +21,45 @@ public class Evaluation implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="EvaluationID")
 	private int evaluationID;
-
+	
+	@Column(name="ponctuality")
+	private String ponctuality ;
+	
 	@Column(name="Description")
 	private String description;
+	
+	@Column(name="NoteEval")
+	private int NoteEval;
+	
+	
+	
+	public String getPonctuality() {
+		return ponctuality;
+	}
+
+	public void setPonctuality(String ponctuality) {
+		this.ponctuality = ponctuality;
+	}
+
+	public int getNoteEval() {
+		return NoteEval;
+	}
+
+	public void setNoteEval(int noteEval) {
+		NoteEval = noteEval;
+	}
+
+	public EntretienPhysique getEntretienPhysique() {
+		return entretienPhysique;
+	}
+
+	public void setEntretienPhysique(EntretienPhysique entretienPhysique) {
+		this.entretienPhysique = entretienPhysique;
+	}
+
+	@OneToOne
+	@JoinColumn(name="EntretienPhysiqueId")
+	private EntretienPhysique entretienPhysique;
 
 	//bi-directional one-to-one association to Candidature
 	@OneToOne

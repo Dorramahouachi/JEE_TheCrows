@@ -8,15 +8,44 @@
 			<div class="card card-w-title">
 
 				<p:dataTable id="dtEvals" var="eval"
-					value="#{evaluationBean.listEval}">
-					<p:column headerText="Candidature">
-						<f:facet name="header">Candidature</f:facet>
-						<h:outputText value="#{eval.candidature.candidatureDate}" />
+					value="#{evaluationBean.listEval}" rows="5" paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropDown}"
+					rowsPerPageTemplate="5,10,15" widgetVar="reclaamtion">
+					<f:facet name="header">
+						<p:outputPanel>
+							<h:outputText value="search " />
+							<p:inputText id="globalFilter"
+								onkeyup="PF('reclaamtion').filter()" style="width:150px"
+								placeholder="enter your keyword" />
+						</p:outputPanel>
+					</f:facet>
+					<p:column headerText="Nom du Candidat">
+						<f:facet name="header">Nom du Candidat</f:facet>
+						<h:outputText value="#{eval.candidature.user.name}" />
 					</p:column>
-					<p:column headerText="Description">
-						<f:facet name="header">Description</f:facet>
+					<p:column filterBy="#{eval.description}">
+						<f:facet name="header">
+							<h:outputText value="Description" />
+						</f:facet>
 						<h:outputText value="#{eval.description}" />
 					</p:column>
+					<p:column headerText="ponctuality">
+						<f:facet name="header">Ponctuality</f:facet>
+						<h:outputText value="#{eval.ponctuality}" />
+					</p:column>
+				 <p:column headerText="NoteEval">
+						<f:facet name="header">Note Général</f:facet>
+						<h:outputText value="#{eval.noteEval}" />
+					</p:column>
+				<!-- <p:column headerText="Candidature">
+						<f:facet name="header">Candidature</f:facet>
+						<h:outputText value="#{eval.candidature.candidatureDate}" />
+					</p:column> -->
+					<p:column headerText="date">
+						<f:facet name="header">Date de L'Entretien</f:facet>
+						<h:outputText value="#{eval.entretienPhysique.dateEntretien}" />
+					</p:column>
+
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Supprimer" />
@@ -25,15 +54,21 @@
 							action="#{evaluationBean.supprimerEval(eval.evaluationID)}"
 							value="Supprimer" style="margin-right:20px;"
 							styleClass="ui-priority-primary" update="dtEvals" />
+							<!-- <p:confirmDialog global="true" showEffect="fade"
+										hideEffect="fade">
+										<p:commandButton value="Yes" type="button"
+											styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+										<p:commandButton value="No" type="button"
+											styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+									</p:confirmDialog> -->	
 					</p:column>
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Modifier" />
 						</f:facet>
-						<p:commandButton
-							action="#{evaluationBean.toGerer(eval)}"
+						<p:commandButton action="#{evaluationBean.toGerer(eval)}"
 							value="Modifier" style="margin-right:20px;"
-							styleClass="ui-priority-primary"/>
+							styleClass="ui-priority-primary" />
 					</p:column>
 					<p:column>
 						<f:facet name="header">

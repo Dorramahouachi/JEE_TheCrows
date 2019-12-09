@@ -31,6 +31,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 <class>model.Subscribe</class>
 <class>model.Critere</class>
 <class>model.Evaluation</class>
+<class>model.Sysdiagram</class>
 
 
 

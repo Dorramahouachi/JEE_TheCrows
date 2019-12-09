@@ -1,5 +1,7 @@
 package service.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -18,9 +20,12 @@ public class CandidatureService implements CandidatureServiceRemote {
 	EntityManager em;
 	@Override
 	public List<Candidature> getAllCandidatures() {
+		List<Candidature> list =new ArrayList<Candidature>();
 		List<Candidature> candidatures = em.createQuery("Select c from Candidature c", Candidature.class).getResultList();
-
-		return candidatures;
+		for(Candidature c : candidatures)
+			if(c.getEtat()==5)
+				list.add(c);
+		return list;
 	}
 	@Override
 	public Candidature getCandidatureById(int id) {

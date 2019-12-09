@@ -1,6 +1,8 @@
 package managedbeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,14 +16,16 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
+import org.primefaces.PrimeFaces;
 import org.primefaces.event.FlowEvent;
-
 import model.Candidature;
+import model.EntretienPhysique;
 import model.Critere;
 import model.CritereType;
 import model.Evaluation;
 import service.interf.CandidatureServiceRemote;
 import service.interf.CritereRemote;
+import service.interf.EntretienPhysiqueRemote;
 import service.interf.EvaluationRemote;
 
 @ManagedBean(name = "evaluationBean")
@@ -40,15 +44,19 @@ public class EvaluationBean implements Serializable {
 	CandidatureServiceRemote serviceCandidature;
 
 	@EJB
+	EntretienPhysiqueRemote serviceEntretienPhysique;
+	@EJB
 	CritereRemote serviceCritere;
-
 	private int id;
 	private String description;
 	private int selectedCandidatureId;
+	private int selectedEntretienPhysiqueId;
+	private Date EntretienPhysiqueDate;
+	private int NoteEval;
+	
 	private Candidature candidature;
-
 	private Evaluation evaluation;
-
+	private EntretienPhysique EntretienPhysique;
 	////////////////// Critere
 	private String name;
 	private CritereType type;
@@ -59,8 +67,16 @@ public class EvaluationBean implements Serializable {
 	public void init() {
 		System.out.println("requesting....");
 		Client client = ClientBuilder.newClient();
-		WebTarget target= client.target("http://localhost:1911/Calendriers/GetEvents");
-		System.out.println("response  : "+target.request(MediaType.APPLICATION_JSON).get(String.class).toString());
+		WebTarget target = client.target("http://localhost:1911/Calendriers/GetEvents");
+		System.out.println("response  : " + target.request(MediaType.APPLICATION_JSON).get(String.class).toString());
+	}
+	
+	public Date getEntretienPhysiqueDate() {
+		return EntretienPhysiqueDate;
+	}
+
+	public void setEntretienPhysiqueDate(Date entretienPhysiqueDate) {
+		EntretienPhysiqueDate = entretienPhysiqueDate;
 	}
 
 	public void ajouterCritere() {
@@ -83,9 +99,11 @@ public class EvaluationBean implements Serializable {
 	public void ajouterEval() {
 		Evaluation eval = new Evaluation();
 		eval.setDescription(description);
+		eval.setEntretienPhysique(serviceEntretienPhysique.getEntretienPhysiqueById(14));
 		eval.setCandidature(serviceCandidature.getCandidatureById(selectedCandidatureId));
 		selectedEvalId = service.addEvaluation(eval);
 		idEvalChart = selectedEvalId;
+		eval.setNoteEval(NoteEval);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success"));
 	}
 
@@ -126,6 +144,7 @@ public class EvaluationBean implements Serializable {
 
 	public String toGerer(Evaluation eval) {
 		this.setCandidature(eval.getCandidature());
+		this.setEntretienPhysique(eval.getEntretienPhysique());
 		this.setDescription(eval.getDescription());
 		this.setListCriteres(eval.getListCriteres());
 		this.setSelectedEvalId(eval.getEvaluationID());
@@ -260,9 +279,22 @@ public class EvaluationBean implements Serializable {
 		return "listEval.jsf?faces-redirect=true";
 
 	}
-
+	public EntretienPhysique getEntretienPhysique() {
+		return EntretienPhysique;
+	}
+	public void setEntretienPhysique(EntretienPhysique entretienPhysique) {
+		EntretienPhysique = entretienPhysique;
+	}
 	public boolean isSkip() {
 		return skip;
+	}
+
+	public int getNoteEval() {
+		return NoteEval;
+	}
+
+	public void setNoteEval(int noteEval) {
+		NoteEval = noteEval;
 	}
 
 	public void setSkip(boolean skip) {
@@ -279,16 +311,22 @@ public class EvaluationBean implements Serializable {
 			if (verif == 0) {
 				Evaluation eval = new Evaluation();
 				eval.setDescription(description);
+				eval.setEntretienPhysique(serviceEntretienPhysique.getEntretienPhysiqueById(14));
 				eval.setCandidature(serviceCandidature.getCandidatureById(selectedCandidatureId));
-				selectedEvalId = service.addEvaluation(eval);
-				idEvalChart = selectedEvalId;
-				verif = 1;
+				eval.setNoteEval(NoteEval);
+				if(eval.getDescription() != null && eval.getCandidature() != null && eval.getEntretienPhysique() != null) {
+					selectedEvalId = service.addEvaluation(eval);
+					idEvalChart = selectedEvalId;
+					verif = 1;	
+				}
+				
 				return event.getNewStep();
 			}
 			return event.getNewStep();
 		}
 	}
 
+	
 	public static int getIdEvalChart() {
 		return idEvalChart;
 	}
@@ -304,5 +342,11 @@ public class EvaluationBean implements Serializable {
 	public void setVerif(int verif) {
 		this.verif = verif;
 	}
-
+	public int getSelectedEntretienPhysiqueId() {
+		return selectedEntretienPhysiqueId;
+	}
+	public void setSelectedEntretienPhysiqueId(int selectedEntretienPhysiqueId) {
+		this.selectedEntretienPhysiqueId = selectedEntretienPhysiqueId;
+	}
+	
 }

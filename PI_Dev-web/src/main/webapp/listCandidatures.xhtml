@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<h:form>
+			<div class="card card-w-title">
+
+				<p:dataTable id="dtEvals" var="can"
+					value="#{candidatureBean.candidatures}">
+					<p:column headerText="Date Depôt">
+						<f:facet name="header">Date Depôt</f:facet>
+						<h:outputText value="#{can.candidatureDate}" />
+					</p:column>
+					<p:column headerText="Nom du Candidat">
+						<f:facet name="header">Nom du Candidat</f:facet>
+						<h:outputText value="#{can.user.name}" />
+					</p:column>
+					<p:column headerText="Score Quizz">
+						<f:facet name="header">Score Quizz</f:facet>
+						<h:outputText value="#{can.score}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Entretien Physique " />
+						</f:facet>
+						<p:commandButton
+							action="#{evaluationBean.supprimerEval(eval.evaluationID)}"
+							value="Supprimer" style="margin-right:20px;"
+							styleClass="ui-priority-primary" update="dtEvals" />
+							<p:commandButton
+							action="#{evaluationBean.supprimerEval(eval.evaluationID)}"
+							value="Passé" style="margin-right:20px;"
+							styleClass="ui-priority-primary" update="dtEvals" />
+					</p:column>
+				</p:dataTable>
+			</div><br>
+			</br>
+							<BUTTON> 	<a 
+									href="http://localhost:9080/PI_Dev-web/calendrier.jsf"
+									onclick="http://localhost:9080/PI_Dev-web/calendrier.jsf">Voir le Calendrier des Entretiens</a> </BUTTON>
+							<h:outputText value=""></h:outputText>
+							<h:outputText value=""></h:outputText> 
+		</h:form>
+		<br></br>
+		<br></br>
+		<br></br>
+		<br></br>
+	</ui:define>
+</ui:composition>

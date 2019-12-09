@@ -12,17 +12,32 @@
 						<h:panelGrid columns="4" layout="flex"
 							columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4"
 							styleClass="customPanelGrid" contentStyleClass="ui-fluid">
-							<h:outputText value="La candidature à évaluer ..."></h:outputText>
+							<h:outputText value="La candidat à évaluer ..."></h:outputText>
 							<p:selectOneMenu id="candidature" required="true"
 								requiredMessage="champ obligatoire" style="width:300px"
 								value="#{evaluationBean.selectedCandidatureId}">
 								<f:selectItem itemLabel="Choisir Candidature" itemValue="" />
 								<f:selectItems value="#{candidatureBean.candidatures}"
 									var="candidature" itemValue="#{candidature.candidatureId}"
-									itemLabel="id: #{candidature.candidatureId} date: #{candidature.candidatureDate} etat: #{candidature.etat} score: #{candidature.score}" />
-							</p:selectOneMenu>
+									itemLabel=" #{candidature.user.name}" />
+							</p:selectOneMenu>	
+							<h:message for="EntretienPhysique" style="color:red" />				
+							<!--   
+							<h:outputText value="Date de l'Entretien"></h:outputText>
+							<p:selectOneMenu id="EntretienPhysique" required="true"
+								requiredMessage="champ obligatoire" style="width:300px"
+								value="#{evaluationBean.selectedEntretienPhysiqueId}">
+								<f:selectItem itemLabel="Date Entretien" itemValue="" />
+								<f:selectItems value="#{EntretienPhysiqueBean.entretienPhysique}"
+									var="EntretienPhysique" itemValue="#{EntretienPhysique.entretienPhysiqueId}"
+									itemLabel=" #{EntretienPhysique.dateEntretien}" />
+									 
+									<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss.SSS Z" />			
+							</p:selectOneMenu> 		
 							<h:message for="candidature" style="color:red" />
-							<br></br>
+							-->
+							<br>
+							</br>							
 							<h:outputText value="Description"></h:outputText>
 							<p:inputTextarea id="description" name="description" type="text"
 								required="true" requiredMessage="champ obligatoire"
@@ -31,11 +46,20 @@
 							<h:message for="description" style="color:red" />
 							<h:outputText value=""></h:outputText>
 							<h:outputText value=""></h:outputText>
-							<!-- 		<p:commandButton id="bb" name="bb" style="margin-bottom: 10px;"
+							 
+                       <p:growl>
+  			  <p:autoUpdate />
+				</p:growl>
+                         Note 
+ 
+   			 <p:knob max="10" step="1"   value="#{evaluationBean.noteEval}"/>
+			 
+                       
+							<p:commandButton id="bb" name="bb" style="margin-bottom: 10px;"
 								value="Ajouter Evaluation" 
 								action="#{evaluationBean.ajouterEval()}" />
 							<h:outputText value=""></h:outputText>
-							<h:outputText value=""></h:outputText> -->
+							<h:outputText value=""></h:outputText>
 						</h:panelGrid>
 					</p:panel>
 				</p:tab>
@@ -69,9 +93,9 @@
 							<h:outputText value=""></h:outputText>
 							<h:outputText value=""></h:outputText>
 							<h:outputText value=""></h:outputText>
-							<a href="http://localhost:9080/PI_Dev-web/listEval.jsf"
+							<!--  <a href="http://localhost:9080/PI_Dev-web/listEval.jsf"
 								onclick="http://localhost:9080/PI_Dev-web/listEval.jsf">Aller
-								à la Liste des évaluations...</a>
+								à la Liste des évaluations...</a>-->
 						</h:panelGrid>
 					</p:panel>
 					<p:panel h:header="List Critères">
@@ -109,6 +133,7 @@
 						<p:commandButton value="Submit" action="#{evaluationBean.save()}"/>
 					</p:panel>
 				</p:tab>
+				 
 			</p:wizard>
 		</h:form>
 		<br></br>

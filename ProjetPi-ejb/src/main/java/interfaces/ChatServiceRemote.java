@@ -17,7 +17,7 @@ public interface ChatServiceRemote {
 	public User getUser(int id);
 	 ArrayList<User> getUsrs(int id);
 	 public void deleteChatId(int id) ;
-	 void updateChat(Chat e);
+	 String updateChat(Chat e);
 	 ArrayList<Chat> getDisc(int id);
 	 ArrayList<Chat> getchat(int idR, int idS);
 	 void upVue(int id);

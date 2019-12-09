@@ -1254,11 +1254,11 @@ body {
 									src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
 
 								<div class="meta">
-<h:form>
-									<p class="name">
-										<h:commandLink value="#{user.firstName}"
-											action="#{chatBean.OneDisc(user.userId)}" />
-									</p>
+									<h:form id="one">
+										<p class="name">
+											<h:commandLink value="#{user.firstName}"
+												action="#{chatBean.OneDisc(user.userId)}" />
+										</p>
 									</h:form>
 
 									<p class="preview">You just got LITT up, Mike.</p>
@@ -1304,7 +1304,6 @@ body {
 				<ul>
 					<ui:repeat value="#{chatBean.disc}" var="chat" varStatus="status">
 
-						<h:form>
 							<h:panelGroup
 								rendered="#{chatBean.idconnect == chat.user2.userId }">
 								<li class="sent"><img
@@ -1319,40 +1318,49 @@ body {
 									<button class="btn btn-xs btn-link " type="button"
 										data-toggle="dropdown">
 
-										<h:outputText value="... " />
+										<h:commandButton value="..." />
 
 									</button>
 
 
 
-									<ul class="dropdown-menu" style=" border-radius: 10%;">
-
+									<ul class="dropdown-menu" style="border-radius: 10%;">
+															<h:form id="two">
 										<li><h:inputText value="#{chatBean.modifier}"
 												required="true" id="hkhhkt" a:placeholder="#{chat.contenu}">
 											</h:inputText>
 
 											<button class="submit" style="background-color: #435f7a">
-												<h:commandLink
+												<h:commandLink update=":one :two :three :four :five"
 													style="background-color:#435f7a; width:140px; height:30px"
-													action="#{chatBean.update(chat.chatId)}">
+													action="#{chatBean.update(chat.chatId,chat.vue)}">
 													<i class="fa fa-edit" aria-hidden="true"
 														style="color: white" />
 												</h:commandLink>
-																							</button>
-												</li>
+											</button>
+											</li>
+												<h:panelGroup rendered="#{chatBean.testM eq 'nonM' }">
+												<li><h:outputText value="modification invalide" style="color:red"/></li>
 
-										<li style="background-color: #435f7a">
+											</h:panelGroup>
+						</h:form>
+
+										<h:form id="three">
+
+											<h:panelGroup rendered="#{chatBean.testSu eq 'late' }">
+												<li><h:outputText value="suppression invalide" style="color:red"/></li>
+
+											</h:panelGroup>
+											<li style="background-color: #435f7a;height: 25px">
+											<h:commandLink
+													value="supprimer" action="#{chatBean.delete(chat.chatId)}" />
+											</li>
 										
-
-												<h:commandLink value="supprimer"
-													action="#{chatBean.delete(chat.chatId)}" />
-										</li>
+											</h:form>
 
 
 
-
-									</ul>
-									</li>
+									</ul></li>
 
 							</h:panelGroup>
 							<h:panelGroup
@@ -1371,38 +1379,40 @@ body {
 
 							</h:panelGroup>
 
-						</h:form>
 
 					</ui:repeat>
 
 
 				</ul>
 
-				
+
 
 
 
 			</div>
 
 			<div class="message-input" style="padding-top: 10px">
-			<div style="padding-left:150px; height: 40px; display:inline-block;text-align: center;" > 
-			<h:form>
-			<ui:repeat value="#{chatBean.propo}" var="prop" varStatus="status">
-								
-								<button class="submit" style="height:30px ;width:150px; border-color: #435f7a;border-radius: 20%;background-color: #f5f5f5">
+				<div
+					style="padding-left: 150px; height: 40px; display: inline-block; text-align: center;">
+					<h:form id="four">
+						<ui:repeat value="#{chatBean.propo}" var="prop" varStatus="status">
 
-							<h:commandLink action="#{chatBean.addP(chatBean.receiver, prop.word)}">
+							<button class="submit"
+								style="height: 30px; width: 150px; border-color: #435f7a; border-radius: 20%; background-color: #f5f5f5">
 
-								<h:outputText value="#{prop.word }" />
-							</h:commandLink>
+								<h:commandLink
+									action="#{chatBean.addP(chatBean.receiver, prop.word)}">
 
-						</button>
-				
-				</ui:repeat>
-				</h:form>
-			 </div>
-			
-				<h:form>
+									<h:outputText value="#{prop.word }" />
+								</h:commandLink>
+
+							</button>
+
+						</ui:repeat>
+					</h:form>
+				</div>
+
+				<h:form id="five">
 					<h:message for="ad" style="color:red"></h:message>
 					<h:panelGroup rendered="#{chatBean.reponse eq 'refus' }">
 						<p style="color: red">Veuillez ne pas envoyer des gros mots :)
@@ -1436,7 +1446,8 @@ body {
 
 		</div>
 	</div>
-</body><script
+</body>
+<script
 	src="//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js" />
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" />
 <script>

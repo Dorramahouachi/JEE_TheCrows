@@ -5,6 +5,10 @@ import model.Chat;
 import model.User;
 import model.Word;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -72,42 +76,34 @@ public class ChatService implements ChatServiceRemote {
 		return p;
 
 	}
-	
 
 	@Override
 	public ArrayList<Chat> dropList(int id) {
 		ArrayList<Chat> p;
-		TypedQuery<Chat> query = em.createQuery(
-				"select  c  from Chat c  where c.user1.userId=:id order by c.dateSend asc ",
-				Chat.class);
+		TypedQuery<Chat> query = em
+				.createQuery("select  c  from Chat c  where c.user1.userId=:id order by c.dateSend asc ", Chat.class);
 		query.setParameter("id", id);
 
 		p = (ArrayList<Chat>) query.getResultList();
-		
-		System.out.println("p = "+p);
+
+		System.out.println("p = " + p);
 		ArrayList<User> u;
-		TypedQuery<User> queryu = em.createQuery(
-				"select  c  from User c  where c.userId !=:id ",
-				User.class);
+		TypedQuery<User> queryu = em.createQuery("select  c  from User c  where c.userId !=:id ", User.class);
 		queryu.setParameter("id", id);
 
-
 		u = (ArrayList<User>) queryu.getResultList();
-		System.out.println("u = "+u);
+		System.out.println("u = " + u);
 
 		ArrayList<Chat> mo = new ArrayList<>();
 
-		Chat ch=null ;
-		for(int j=0 ; j<u.size();j++)
-		{
+		Chat ch = null;
+		for (int j = 0; j < u.size(); j++) {
 			mo.add(ch);
-		for(int i=0 ; i< p.size();i++)
-		{
-			
-			if(p.get(i).getUser2().getUserId()==u.get(j).getUserId())
-			{
-				mo.set(j,p.get(i));
-			}
+			for (int i = 0; i < p.size(); i++) {
+
+				if (p.get(i).getUser2().getUserId() == u.get(j).getUserId()) {
+					mo.set(j, p.get(i));
+				}
 			}
 		}
 
@@ -157,21 +153,29 @@ public class ChatService implements ChatServiceRemote {
 		query.setParameter("id", id);
 		query.executeUpdate();
 		System.out.println("iddd " + id);
+		
+		
+		
+		
 	}
 
-	public void deleteChatId1(int id) {
-		Chat c = em.find(Chat.class, id);
-
-		em.remove(c);
-	}
+	
 
 	@Override
-	public void updateChat(Chat e) {
+	public String updateChat(Chat e) {
 		Chat x = new Chat();
 		x = em.find(Chat.class, e.getChatId());
 		x.setContenu(e.getContenu());
-		em.merge(x);
-		System.out.println("contenu" + e.getContenu());
+		
+		if(e.getVue()==0)
+		{
+			em.merge(x);
+			return "mod";
+		}
+		else {
+			return "nonM";
+		}
+		
 
 	}
 
@@ -206,7 +210,7 @@ public class ChatService implements ChatServiceRemote {
 	public ArrayList<Word> getProp(int ids, int idr) {
 		// je recupere le message
 		TypedQuery<String> query = em.createQuery(
-				"select  c.contenu from Chat c where c.user1.userId=:idr and c.user2.userId=:ids  order by c.dateSend desc",
+				"select  c.contenu from Chat c where c.user1.userId=:idr and c.user2.userId=:ids  order by c.dateSend asc",
 				String.class);
 		query.setParameter("idr", idr);
 		query.setParameter("ids", ids);
@@ -285,5 +289,60 @@ public class ChatService implements ChatServiceRemote {
 
 	}
 
+
+	
+	
+	public String deleteChatId1(int id) {
+		/*Chat c = em.find(Chat.class, id);
+
+		em.remove(c);*/
+		Chat c = em.find(Chat.class, id);
+
+		LocalDateTime now = LocalDateTime.now();
+		System.out.println("min now " + now.getMinute());
+		System.out.println("min date " + c.getDateSend().getMinutes());
+		long diff = now.getMinute() - c.getDateSend().getMinutes();
+		System.out.println("dif min ="+diff);
+		// here
+		
+		//test
+		SimpleDateFormat ss = new SimpleDateFormat("dd");
+	    System.out.println("days date "+ss.format(c.getDateSend()));
+		System.out.println("days of now "+now.getDayOfMonth());
+
+	    int d = Integer.parseInt( ss.format(c.getDateSend()));
+		System.out.println("d= " + d);
+
+	    long days = (now.getDayOfMonth() - d) ;
+
+		//end test 
+		System.out.println("days diff = " + days);
+		// end
+		// here
+		long month = (now.getMonthValue() - c.getDateSend().getMonth()) - 1;
+		System.out.println("month = " + month);
+		// end
+		if (month > 1) {
+		
+			return "late";
+		} else {
+			if (days > 1) {
+				
+
+				return "late";
+			} else {
+				if (diff > 10) {
+
+
+					return "late";
+				}
+				else {
+					em.remove(c);
+					return "ok";}
+			}
+		}
+
+	}
+	
 
 }

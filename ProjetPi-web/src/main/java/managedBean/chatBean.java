@@ -39,10 +39,38 @@ public class chatBean implements Serializable {
 	private String nomR ;
 	private int receiver ;
 	private List<Chat> drop ; 
+	private String testSu ;
+	private int cht;
+	private String testM ;
+	
 	
 
+	public String getTestM() {
+		return testM;
+	}
+
+	public void setTestM(String testM) {
+		this.testM = testM;
+	}
+
+	public int getCht() {
+		return cht;
+	}
+
+	public void setCht(int cht) {
+		this.cht = cht;
+	}
 
 	
+
+	public String getTestSu() {
+		return testSu;
+	}
+
+	public void setTestSu(String testSu) {
+		this.testSu = testSu;
+	}
+
 	public List<Chat> getDrop() {
 		return drop;
 	}
@@ -205,39 +233,49 @@ public class chatBean implements Serializable {
 
 	}
 	
-	
+
+	public String delete(int id) {
+		String ps =ms.deleteChatId1(id);
+		if (ps.equals("late")) {
+			setTestSu("late");
+			return "/pages/chat/messageries.xhtml?face-redirect=true";
+		} else {
+			return "/pages/chat/messageries.xhtml?face-redirect=true";
+
+		}
+
+		}
+
+	public String update(int id, int v) {
+		Chat e = new Chat();
+		e.setChatId(id);
+		e.setVue(v);
+		e.setContenu(modifier);
+		String md =ms.updateChat(e);
+		if (md.equals("nonM")) {
+			setTestM("nonM");
+			return getTestM() ; 
+		} else {
+			return getTestM() ; 
+
+		}
+		
+
+	}
 	public String addP(int idrev, String cont) {
 
 		LoginBean lb = new LoginBean();
-
 		Chat m = new Chat();
 		m.setContenu(cont);
 		User r =ms.getUser(idrev);
 		m.setUser1(r);
 		m.setUser2(lb.getUuser());
-
 		String rep = ms.envoyerMessage(m);
-
-		
 			return "/pages/chat/messageries.xhtml?face-redirect=true";
-
-		
-
 	}
+	
 
-	public void update(int id) {
-		Chat e = new Chat();
-		e.setChatId(id);
-		e.setContenu(modifier);
-		ms.updateChat(e);
-
-	}
-
-	public void delete(int id) {
-		ms.deleteChatId1(id);
-		System.out.println("id chat = " + id);
-
-	}
+	
 
 	public void getUsrs() {
 		LoginBean lb = new LoginBean();
@@ -250,6 +288,7 @@ public class chatBean implements Serializable {
 	}
 
 	public String aff(int id, int idc) {
+
 		ms.upVue(idc);
 		LoginBean lb = new LoginBean();
 
@@ -261,6 +300,8 @@ public class chatBean implements Serializable {
 		return "/pages/chat/temp.xhtml?face-redirect=true";
 
 	}
+	
+	
 
 	public String OneDisc(int id) {
 		LoginBean lb = new LoginBean();
@@ -280,6 +321,7 @@ public class chatBean implements Serializable {
 		nomR=ms.getRecei(ids);
 		receiver=ms.getidRecei(ids);
 
+
 	}
 
 	public void jdida(int id) {
@@ -293,6 +335,7 @@ public class chatBean implements Serializable {
 		users = ms.getUsrs(1);
 		this.idconnect=lb.getUuser().getUserId();
 		drop=ms.dropList(lb.getUuser().getUserId());
+		
 
 
 	}

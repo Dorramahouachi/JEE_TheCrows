@@ -13,7 +13,7 @@ import model.Claim;
 public interface ClaimServiceRemote {
 	public Claim ajouterclaim(Claim claim);
     public void DeleteClaim(Claim claim);
-	public void UpdateClaim(Claim employe);
+	public void UpdateClaim(Claim claim);
 	 public int getnbpost();
 
 	public List<Claim> getAllClaim();

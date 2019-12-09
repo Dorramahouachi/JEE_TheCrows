@@ -7,7 +7,7 @@
    <meta charset="utf-8"/>
       
      <meta charset="utf-8"/>
-    <title>taraji</title>
+    <title>esprit</title>
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
      
@@ -52,7 +52,7 @@
 		
 		<h:column>
 			<f:facet name="header">Update Claim</f:facet>		
-				<h:commandButton value="Update  "  actionListener="#{ReclamationBean.removeClaim(c)}" styleClass="btn-small green darken-4" >	
+				<h:commandButton value="Update  "  actionListener="#{ReclamationBean.updateClaim(c)}" styleClass="btn-small green darken-4" >	
 				</h:commandButton>
 
 		</h:column>
@@ -93,6 +93,60 @@
   });
  </script>
     	   </h:form>
+    	   <div class="valign-wrapper" id="login-page">
+	
+	<div class="container">
+	
+	<div class="center-align">
+	
+	<div class="row">
+	
+	
+	<div class="card col s6 offset-s3">
+	
+	<div class="card-content ">
+	
+<div class="left-align">
+
+<h:form id="login-form">
+<p:growl autoUpdate="true"/>
+<div class="row">
+<div class="col s12 input-field">
+<h:inputText   value="#{ReclamationBean.name}" id="name" required="true" requiredMessage="Name is required" />
+<h:outputLabel for="name" value="name" />
+</div>
+
+
+
+<div class="col s12 input-field">
+<h:inputText   value="#{ReclamationBean.description}" id="description" required="true" />
+<h:outputLabel for="description" value="description" />
+</div>
+
+
+<div class="col s12 input-field">
+<h:outputText for="validuntil" value="Valid Until" />
+ <input type="date" value="#{ReclamationBean.dateClaim}" />
+</div>
+
+
+
+
+<h:commandButton action="#{ReclamationBean.addClaim()}" value="Update" styleClass="btn  centered " disabled="#{ReclamationBean.formDisplayed}"/>
+
+
+</div>
+
+</h:form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+   
     
 </ui:define>
       

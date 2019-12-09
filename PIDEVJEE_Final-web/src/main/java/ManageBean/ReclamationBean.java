@@ -98,6 +98,16 @@ else {
      	
 		
 		}
+		
+		public void updateClaim(Claim claim)
+		{ claimservice.UpdateClaim(claim);
+     	listClaims = claimservice.getAllClaim();
+     	formDisplayed = true;
+     	
+		
+		}
+		
+		
 		public Date getDateClaim() {
 			return dateClaim;
 		}

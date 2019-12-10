@@ -11,7 +11,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import model.Evaluation;
+import model.Userz;
 import services.impl.EvaluationService;
+import services.impl.UserService;
 
 @ManagedBean(name="PieChartData")
 @ApplicationScoped
@@ -26,20 +28,22 @@ public class PieChartData implements Serializable {
 
 	@EJB
 	EvaluationService evaluationService;
-	
+	@EJB
+	UserService users;
 	private List<Evaluation> evaluations;
 
 	private static List<KeyValue> pieDataList;
-	 
+	 private static List<Userz> userlist;
 
 	public  List<KeyValue> getPieDataList() {
 		pieDataList = new ArrayList<PieChartData.KeyValue>();
 		evaluations =  evaluationService.getAllEvaluations();
-		
-			System.out.println(evaluationService.getAllEvaluations());
-			for(Evaluation e : evaluations) {
-				String fullName = e.getReceiver().getFirstname() + " " + e.getReceiver().getLastname();
-				pieDataList.add(new KeyValue(fullName, Float.toString(e.getGlobalNote())));
+		userlist = users.getAllUsers();
+			System.out.println("hhhihi"+ userlist);
+			for(Userz e : userlist) {
+//				String fullName = e.getReceiver().getFirstname() + " " + e.getReceiver().getLastname();
+				pieDataList.add(new KeyValue(e.getRole().toString(), e.getPhoneNumber()));
+				
 			}
 		
 		return pieDataList;

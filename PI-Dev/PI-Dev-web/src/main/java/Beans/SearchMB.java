@@ -1,4 +1,4 @@
-package Beans;
+ package Beans;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
@@ -16,6 +16,7 @@ import services.CandidatServiceRemote;
 import services.CandidatureServiceRemote;
 import services.OfferServiceRemote;
 
+@javax.faces.bean.SessionScoped
 @ManagedBean(name="searchMB")
 @ApplicationException
 public class SearchMB {
@@ -209,13 +210,18 @@ public class SearchMB {
 		this.reference = reference;
 	}
 	
-	public String apply() {
-		metier1.AddCandidature(1, 1);
+	public String apply(int OfferId) {
+		metier1.AddCandidature(OfferId, 1);
 		return "success";
 	}
 	
 	public String ignore(int OfferId) {
 		metier1.RemoveCandidature(OfferId);
+		return "success";
+	}
+	
+	public String TopJob() {
+		metier.getTopJob();
 		return "success";
 	}
 }

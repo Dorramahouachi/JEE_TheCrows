@@ -26,13 +26,6 @@ public class entrepriseService implements entrepriseServiceRemote{
 	public Entrepris getOne(int id) {
 		Entrepris can = em.createQuery("Select e from Entrepris e where e.entrepriseId=:id",Entrepris.class).setParameter("id", id).getSingleResult();
 		return can;
-		
-		
-		/*TypedQuery<Entrepris> query = em.createQuery("select u from Entrepris u WHERE e.entrepriseId=:id", Entrepris.class); 
-		query.setParameter("idUser", idUser); 
-		u=query.getSingleResult();*/
-		
-		
 	}
 
 }

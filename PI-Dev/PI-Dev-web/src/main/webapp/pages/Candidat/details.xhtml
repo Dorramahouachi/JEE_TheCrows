@@ -113,16 +113,32 @@
 		</div>
 	</div>
 	</section>	
-	
 				<h:form>
+				<c:set var = "salary" value="0" />	
+				<c:forEach var="c" items="#{searchEntrepriseMB.listSub}" varStatus="status" >
+					<c:if test = "#{c.user.userId == 1}">
+						<c:if test="#{c.entrepris.entrepriseId == searchEntrepriseMB.e.entrepriseId}">
+							<c:set var = "salary" value="1" />
+						</c:if>
+					</c:if>
+				</c:forEach>
 				<div class="single-widget protfolio-widget">
 					<img src="../javax.faces.resource/img/pages/f1.jpg" alt=""></img><br></br>
 							<p>
-								<h:outputText value="#{searchEntrepriseMB.e.name}"></h:outputText><br></br>
-								<h:outputText value="#{searchEntrepriseMB.e.country}"></h:outputText>
+								<h1><h:outputText value="#{searchEntrepriseMB.e.name}"></h:outputText></h1><br></br>
+								<h1><h:outputText value="#{searchEntrepriseMB.e.entrepriseId}"></h:outputText></h1><br></br>
+								<span class="lnr lnr-map"><h:outputText value="#{searchEntrepriseMB.e.country}"></h:outputText></span><br></br>
+								<br></br>
+								<span><h:outputText value="#{searchEntrepriseMB.e.description}"></h:outputText></span><br></br>
+								<br></br>
+								<h:outputText value="#{searchEntrepriseMB.getNumberFollows(searchEntrepriseMB.e.entrepriseId)} Followers"></h:outputText>
 							</p>
-							<h:commandButton action="#" value = "Follow"></h:commandButton>								
-							
+							<c:if test = "${salary == 0}">
+								<h:commandButton action="#{searchEntrepriseMB.follow(searchEntrepriseMB.e.entrepriseId)}" value = "Follow"></h:commandButton>															
+ 							</c:if>
+ 							<c:if test = "${salary == 1}">
+								<h:commandButton action="#{searchEntrepriseMB.unfollow(searchEntrepriseMB.e.entrepriseId)}" value = "Unfollow"></h:commandButton>															
+ 							</c:if>
 						<ul>
 							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -209,24 +225,7 @@
 
 					<h6 class="mb-20">Instragram Feed</h6>
 
-					<ul class="instafeed d-flex flex-wrap">
-
-						<li><img src="img/i1.jpg" alt="" /></li>
-
-						<li><img src="img/i2.jpg" alt="" /></li>
-
-						<li><img src="img/i3.jpg" alt="" /></li>
-
-						<li><img src="img/i4.jpg" alt="" /></li>
-
-						<li><img src="img/i5.jpg" alt="" /></li>
-
-						<li><img src="img/i6.jpg" alt="" /></li>
-
-						<li><img src="img/i7.jpg" alt="" /></li>
-
-						<li><img src="img/i8.jpg" alt="" /></li>
-					</ul>
+					
 				</div>
 			</div>
 		</div>

@@ -37,7 +37,7 @@
 									</c:if>
 								</c:forEach>
 								<c:if test = "${salary == 0}">
-									<h:commandButton action="#{searchMB.apply()}" value="APLLY" ></h:commandButton>	
+									<h:commandButton action="#{searchMB.apply(v.offerId)}" value="APLLY" ></h:commandButton>	
 								</c:if>
 								<c:if test = "${salary == 1}">
 									<h:commandButton action="#{searchMB.ignore(v.offerId)}" value="IGNORE" ></h:commandButton>

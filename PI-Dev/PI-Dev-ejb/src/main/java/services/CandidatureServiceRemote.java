@@ -12,4 +12,5 @@ public interface CandidatureServiceRemote {
 	public void RemoveCandidature(int idOffer);
 	public List<Candidature> getAll();
 	public Candidature getOne(int id);
+	
 }

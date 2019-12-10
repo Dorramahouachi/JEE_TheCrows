@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import models.Candidature;
 import models.Offer;
 
 @Stateless
@@ -41,5 +42,17 @@ public class OfferService implements OfferServiceRemote {
 	public void RemoveCandidature(int idOffer) {
 		em.createQuery("DELETE FROM Candidature c WHERE c.OfferId=:idOffer").setParameter("idOffer", idOffer).executeUpdate();
 	}
+	@Override
+	public Offer getTopJob() {
+		Offer o = new Offer();
+		//TypedQuery<Candidature> query = em.createQuery("Select c from Candidature c ORDERBY c.offre.offreId Desc", Candidature.class);
+		TypedQuery<Candidature> query = em.createQuery("SELECT OfferId COUNT(OfferId) AS value_occurrence  FROM Candidature GROUP BY OfferId "
+				+ "ORDER BY value_occurrence DESC LIMIT 1;", Candidature.class);
+		Candidature c = new Candidature();
+		c = query.getSingleResult();
+		System.out.println(c.getOffer().getOfferId());
+		return o;
+	}
+	
 
 }

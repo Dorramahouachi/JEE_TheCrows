@@ -21,7 +21,6 @@ public class CandidatureService implements CandidatureServiceRemote{
 	EntityManager em;
 	@Override
 	public void AddCandidature(int idOffer, int idUser) {
-		System.out.println("hhhhhhhhhhhhhhhhh");
 		Offer o = new Offer();
 		User u = new User();
 		TypedQuery<User> query = em.createQuery("select u from User u WHERE u.userId=:idUser", User.class); 

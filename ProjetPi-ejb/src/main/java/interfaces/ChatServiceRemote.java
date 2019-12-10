@@ -17,7 +17,7 @@ public interface ChatServiceRemote {
 	public User getUser(int id);
 	 ArrayList<User> getUsrs(int id);
 	 public void deleteChatId(int id) ;
-	 String updateChat(Chat e);
+	 void updateChat(Chat e);
 	 ArrayList<Chat> getDisc(int id);
 	 ArrayList<Chat> getchat(int idR, int idS);
 	 void upVue(int id);
@@ -25,6 +25,7 @@ public interface ChatServiceRemote {
 	 String getRecei ( int idr);
 	 int getidRecei ( int idr);
 	 ArrayList<Chat> dropList(int id );
+	 void view ( int ids , int idr);
 
 
 

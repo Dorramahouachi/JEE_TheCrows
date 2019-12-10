@@ -42,8 +42,18 @@ public class chatBean implements Serializable {
 	private String testSu ;
 	private int cht;
 	private String testM ;
+	private int img ; 
 	
 	
+	
+
+	public int getImg() {
+		return img;
+	}
+
+	public void setImg(int img) {
+		this.img = img;
+	}
 
 	public String getTestM() {
 		return testM;
@@ -251,13 +261,14 @@ public class chatBean implements Serializable {
 		e.setChatId(id);
 		e.setVue(v);
 		e.setContenu(modifier);
-		String md =ms.updateChat(e);
-		if (md.equals("nonM")) {
+		if(v==0)
+		{	
+		ms.updateChat(e);
+		return "ok";
+		}
+		else {
 			setTestM("nonM");
-			return getTestM() ; 
-		} else {
-			return getTestM() ; 
-
+			return "nonM";
 		}
 		
 
@@ -296,7 +307,7 @@ public class chatBean implements Serializable {
 		propo = ms.getProp(id,lb.getUuser().getUserId());
 		nomR=ms.getRecei(id);
 		receiver=ms.getidRecei(id);
-
+this.img=id;
 		return "/pages/chat/temp.xhtml?face-redirect=true";
 
 	}
@@ -310,6 +321,7 @@ public class chatBean implements Serializable {
 		propo = ms.getProp(id,lb.getUuser().getUserId());
 		nomR=ms.getRecei(id);
 		receiver=ms.getidRecei(id);
+		ms.view(id, lb.getUuser().getUserId());
 
 		return "/pages/chat/temp.xhtml?face-redirect=true";
 
@@ -332,7 +344,7 @@ public class chatBean implements Serializable {
 	public void init() {
 		LoginBean lb = new LoginBean();
 		chats = ms.getall(lb.getUuser().getUserId(), 0);
-		users = ms.getUsrs(1);
+		users = ms.getUsrs(lb.getUuser().getUserId());
 		this.idconnect=lb.getUuser().getUserId();
 		drop=ms.dropList(lb.getUuser().getUserId());
 		

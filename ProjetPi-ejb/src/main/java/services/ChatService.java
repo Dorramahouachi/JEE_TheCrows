@@ -76,12 +76,12 @@ public class ChatService implements ChatServiceRemote {
 		return p;
 
 	}
-
+// la condition a verifier 
 	@Override
 	public ArrayList<Chat> dropList(int id) {
 		ArrayList<Chat> p;
 		TypedQuery<Chat> query = em
-				.createQuery("select  c  from Chat c  where c.user1.userId=:id order by c.dateSend asc ", Chat.class);
+				.createQuery("select  c  from Chat c  where c.user1.userId=:id  order by c.dateSend asc ", Chat.class);
 		query.setParameter("id", id);
 
 		p = (ArrayList<Chat>) query.getResultList();
@@ -162,20 +162,14 @@ public class ChatService implements ChatServiceRemote {
 	
 
 	@Override
-	public String updateChat(Chat e) {
+	public void updateChat(Chat e) {
 		Chat x = new Chat();
 		x = em.find(Chat.class, e.getChatId());
 		x.setContenu(e.getContenu());
 		
-		if(e.getVue()==0)
-		{
-			em.merge(x);
-			return "mod";
-		}
-		else {
-			return "nonM";
-		}
 		
+			em.merge(x);
+	
 
 	}
 
@@ -210,7 +204,7 @@ public class ChatService implements ChatServiceRemote {
 	public ArrayList<Word> getProp(int ids, int idr) {
 		// je recupere le message
 		TypedQuery<String> query = em.createQuery(
-				"select  c.contenu from Chat c where c.user1.userId=:idr and c.user2.userId=:ids  order by c.dateSend asc",
+				"select  c.contenu from Chat c where c.user1.userId=:idr and c.user2.userId=:ids  order by c.dateSend desc",
 				String.class);
 		query.setParameter("idr", idr);
 		query.setParameter("ids", ids);
@@ -225,6 +219,7 @@ public class ChatService implements ChatServiceRemote {
 		ArrayList<Word> p = new ArrayList<>();
 
 		for (int x = 0; x < splited.length; x++) {
+			// je recupere le type du mot mel table word
 			TypedQuery<String> query4 = em.createQuery("select  w.type from Word w where w.word=:mot", String.class);
 			query4.setParameter("mot", splited[x]);
 			List<String> types = new ArrayList<>();
@@ -232,14 +227,7 @@ public class ChatService implements ChatServiceRemote {
 			types = query4.getResultList();
 			System.out.println("splitted = " + splited[x]);
 			System.out.println("type du mot du mgs = " + types);
-
-			// la liste des mgs de meme types
-			// s7y7a ama comm pour le test
-			/*
-			 * TypedQuery<String> queryt =
-			 * em.createQuery("select b.word from Word b where b.type=:type ",
-			 * String.class);
-			 */
+			//je recupere les mot de meme liste 
 			TypedQuery<Word> queryt = em.createQuery("select  b from Word b where b.type=:type ", Word.class);
 			queryt.setParameter("type", types);
 
@@ -251,14 +239,21 @@ public class ChatService implements ChatServiceRemote {
 			p = (ArrayList<Word>) queryt.getResultList();
 
 		}
-		int j;
+		
+		if(p.size()!=0)
+		{int j;
 		ArrayList<Word> mo = new ArrayList<>();
 
 		for (j = 0; j < 3; j++) {
 			mo.add(p.get(j));
 		}
-
+	
 		return mo;
+
+		}
+		ArrayList<Word> vi = new ArrayList<>();
+		return vi ; 
+
 
 	}
 
@@ -342,6 +337,31 @@ public class ChatService implements ChatServiceRemote {
 			}
 		}
 
+	}
+
+	@Override
+	public void view(int ids, int idr) {
+
+		TypedQuery<Chat> query =em.createQuery(
+		"select c from Chat c  where c.user1.userId=:idR and c.user2.userId=:idS", Chat.class	);
+			query.setParameter("idR", idr);
+			query.setParameter("idS", ids);
+		
+		List<Chat> ls = new ArrayList<>();
+
+		ls = query.getResultList();
+		System.out.println("ls = "+ls);
+		for ( int i=0 ; i<ls.size();i++)
+		{
+			Chat x = new Chat();
+			x = em.find(Chat.class, ls.get(i).getChatId());
+			x.setVue(1);
+			
+			
+				em.merge(x);
+			
+		}
+		
 	}
 	
 

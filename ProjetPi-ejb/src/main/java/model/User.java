@@ -3,7 +3,6 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
 
 
 /**
@@ -37,6 +36,8 @@ public class User implements Serializable {
 	@Column(name="FirstName")
 	private String firstName;
 
+	private String image;
+
 	@Column(name="IsActive")
 	private boolean isActive;
 
@@ -48,34 +49,6 @@ public class User implements Serializable {
 
 	@Column(name="Username")
 	private String username;
-
-	//bi-directional many-to-one association to Chat
-	@OneToMany(mappedBy="user1")
-	private List<Chat> chats1;
-
-	//bi-directional many-to-one association to Chat
-	@OneToMany(mappedBy="user2")
-	private List<Chat> chats2;
-
-	//bi-directional many-to-one association to Contact
-	@OneToMany(mappedBy="user")
-	private List<Contact> contacts;
-
-	//bi-directional many-to-one association to Entrepris
-	@OneToMany(mappedBy="user")
-	private List<Entrepris> entreprises;
-
-	//bi-directional many-to-one association to Post
-	@OneToMany(mappedBy="user")
-	private List<Post> posts;
-
-	//bi-directional many-to-one association to ReactPost
-	@OneToMany(mappedBy="user")
-	private List<ReactPost> reactPosts;
-
-	//bi-directional many-to-one association to Subscribe
-	@OneToMany(mappedBy="user")
-	private List<Subscribe> subscribes;
 
 	public User() {
 	}
@@ -136,6 +109,14 @@ public class User implements Serializable {
 		this.firstName = firstName;
 	}
 
+	public String getImage() {
+		return this.image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public boolean getIsActive() {
 		return this.isActive;
 	}
@@ -175,168 +156,6 @@ public class User implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
-	public List<Chat> getChats1() {
-		return this.chats1;
-	}
-
-	public void setChats1(List<Chat> chats1) {
-		this.chats1 = chats1;
-	}
-
-	public Chat addChats1(Chat chats1) {
-		getChats1().add(chats1);
-		chats1.setUser1(this);
-
-		return chats1;
-	}
-
-	public Chat removeChats1(Chat chats1) {
-		getChats1().remove(chats1);
-		chats1.setUser1(null);
-
-		return chats1;
-	}
-
-	public List<Chat> getChats2() {
-		return this.chats2;
-	}
-
-	public void setChats2(List<Chat> chats2) {
-		this.chats2 = chats2;
-	}
-
-	public Chat addChats2(Chat chats2) {
-		getChats2().add(chats2);
-		chats2.setUser2(this);
-
-		return chats2;
-	}
-
-	public Chat removeChats2(Chat chats2) {
-		getChats2().remove(chats2);
-		chats2.setUser2(null);
-
-		return chats2;
-	}
-
-	public List<Contact> getContacts() {
-		return this.contacts;
-	}
-
-	public void setContacts(List<Contact> contacts) {
-		this.contacts = contacts;
-	}
-
-	public Contact addContact(Contact contact) {
-		getContacts().add(contact);
-		contact.setUser(this);
-
-		return contact;
-	}
-
-	public Contact removeContact(Contact contact) {
-		getContacts().remove(contact);
-		contact.setUser(null);
-
-		return contact;
-	}
-
-	public List<Entrepris> getEntreprises() {
-		return this.entreprises;
-	}
-
-	public void setEntreprises(List<Entrepris> entreprises) {
-		this.entreprises = entreprises;
-	}
-
-	public Entrepris addEntrepris(Entrepris entrepris) {
-		getEntreprises().add(entrepris);
-		entrepris.setUser(this);
-
-		return entrepris;
-	}
-
-	public Entrepris removeEntrepris(Entrepris entrepris) {
-		getEntreprises().remove(entrepris);
-		entrepris.setUser(null);
-
-		return entrepris;
-	}
-
-	public List<Post> getPosts() {
-		return this.posts;
-	}
-
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
-	}
-
-	public Post addPost(Post post) {
-		getPosts().add(post);
-		post.setUser(this);
-
-		return post;
-	}
-
-	public Post removePost(Post post) {
-		getPosts().remove(post);
-		post.setUser(null);
-
-		return post;
-	}
-
-	public List<ReactPost> getReactPosts() {
-		return this.reactPosts;
-	}
-
-	public void setReactPosts(List<ReactPost> reactPosts) {
-		this.reactPosts = reactPosts;
-	}
-
-	public ReactPost addReactPost(ReactPost reactPost) {
-		getReactPosts().add(reactPost);
-		reactPost.setUser(this);
-
-		return reactPost;
-	}
-
-	public ReactPost removeReactPost(ReactPost reactPost) {
-		getReactPosts().remove(reactPost);
-		reactPost.setUser(null);
-
-		return reactPost;
-	}
-
-	public List<Subscribe> getSubscribes() {
-		return this.subscribes;
-	}
-
-	public void setSubscribes(List<Subscribe> subscribes) {
-		this.subscribes = subscribes;
-	}
-
-	public Subscribe addSubscribe(Subscribe subscribe) {
-		getSubscribes().add(subscribe);
-		subscribe.setUser(this);
-
-		return subscribe;
-	}
-
-	public Subscribe removeSubscribe(Subscribe subscribe) {
-		getSubscribes().remove(subscribe);
-		subscribe.setUser(null);
-
-		return subscribe;
-	}
-
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", firstName=" + firstName + ", lastname=" + lastname + ", username="
-				+ username + "]";
-	}
-	
-	
 	
 
 }

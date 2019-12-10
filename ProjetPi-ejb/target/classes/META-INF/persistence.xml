@@ -26,6 +26,7 @@
       <!-- The datasource is deployed as <EAR>/META-INF/ProjetPi-ds.xml, you
          can find it in the source at ear/src/main/application/META-INF/ProjetPi-ds.xml -->
       <jta-data-source>java:jboss/sqlserver/ds</jta-data-source>
+      <class>model.User</class>
       
       <properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />

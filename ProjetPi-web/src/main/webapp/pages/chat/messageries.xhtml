@@ -66,72 +66,95 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <body>
-	<header id="header" style="background-color:#222222" >
-	 <h:outputText value="#{loginBean.login}"></h:outputText>
-	<div class="container" >
+	<header id="header" style="background-color:#222222; height:70px">
 
-		<div class="row align-items-center justify-content-between d-flex">
+	<div class="row align-items-center justify-content-between d-flex">
 
-			<div id="logo">
-				<a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
-			</div>
-			<nav id="nav-menu-container" style="padding-left: 100px">
 
-			<ul class="nav-menu">
+		<nav id="nav-menu-container" style="padding-left: 100px">
+		<div style="height: 20px"></div>
+		<ul class="nav-menu">
+			<li><a href="index.html"><img
+					src="../javax.faces.resource/img/logo.png" alt="" title=""
+					style="padding-left: 20px" /></a></li>
+			<li style="padding-right: 370px">
 
-				<li style="padding-right: 370px">
-
-					<button class="btn btn-xs btn-link " type="button"
-						data-toggle="dropdown">
-						<i class="fa fa-envelope" style="color: white; font-size: 25px" />
-						<span class="badge badge-notify" style="font-size: 15px;"><p
-								style="color: white">
-								<h:outputText value="#{chatBean.chats.size()}" />
-							</p></span>
-					</button>
-<h:form>
+				<button class="btn btn-xs btn-link " type="button"
+					data-toggle="dropdown">
+					<i class="fa fa-envelope" style="color: white; font-size: 25px" />
+					<span class="badge badge-notify" style="font-size: 15px;">
+					<p		style="color: white">
+							<h:outputText value="#{chatBean.chats.size()}" />
+						</p></span>
+				</button> 
+				
+				
+				<h:form>
 					<ul class="dropdown-menu">
-						<ui:repeat value="#{chatBean.drop}" var="drop" varStatus="status">
+						<ui:repeat value="#{chatBean.users}" var="user">
 
-							<li><h:commandLink
-										value="#{drop.contenu}" action="#{chatBean.aff(drop.user2.userId,drop.chatId)}" /> </li>
-							
-						</ui:repeat>
-
-					</ul></h:form>
-				</li>
-				<li><a href="">Forum</a></li>
-				<li><a href="">Candidat</a></li>
-				<li><a href="">Job</a></li>
-
-				<li class="menu-has-children"><a href="">Pages</a>
-
-					<ul>
-
-						<li><a href="elements.html">elements</a></li>
-
-						<li><a href="search.html">search</a></li>
-
-						<li><a href="single.html">single</a></li>
-					</ul></li>
-
-				<li><a class="ticker-btn" href="#">Signup</a></li>
-
-				<li><a class="ticker-btn" href="#">Login</a></li>
+							<ui:repeat value="#{chatBean.drop}" var="drop" varStatus="status">
 
 
 
-
-			</ul>
+								<h:panelGroup rendered="#{user.userId == drop.user2.userId }">
+									<div>
+									<div style="float:left; ">
+									
+									<img
+										src="../javax.faces.resource/img/#{user.userId}.jpg" alt="" style="float:left;width: 35px;height: 35px; border-radius: 20px"/>
+										</div>
+																			<li style="padding-left:45px ;height: 45px	">
+										
+										<h:commandLink value="#{drop.contenu}"  
+											action="#{chatBean.aff(drop.user2.userId,drop.chatId)}" />
+											</li>
+								
+	</div>
+			
+			</h:panelGroup>
 
 
 
 
 
+			</ui:repeat>
+			</ui:repeat>
 
-			</nav>
-			<!-- #nav-menu-container -->
-		</div>
+		</ul>
+		</h:form>
+		</li>
+		<li><a href="">Forum</a></li>
+		<li><a href="">Candidat</a></li>
+		<li><a href="">Job</a></li>
+
+		<li class="menu-has-children"><a href="">Pages</a>
+
+			<ul>
+
+				<li><a href="elements.html">elements</a></li>
+
+				<li><a href="search.html">search</a></li>
+
+				<li><a href="single.html">single</a></li>
+			</ul></li>
+
+		<li><a class="ticker-btn" href="#">Signup</a></li>
+
+		<li><a class="ticker-btn" href="#">Login</a></li>
+
+
+
+
+		</ul>
+
+
+
+
+
+
+		</nav>
+		<!-- #nav-menu-container -->
 	</div>
 	</header>
 	<!-- #header -->

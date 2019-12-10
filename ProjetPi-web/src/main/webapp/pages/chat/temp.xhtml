@@ -1149,169 +1149,190 @@ body {
 </style>
 <body>
 
-	<header id="header" style="background-color:#222222;height:60px" >
+	<header id="header" style="background-color:#222222;height:60px">
 
-<div
-	class="container">
+	<div class="container">
 
-	<div class="row align-items-center justify-content-between d-flex" style="padding-top: 20px">
+		<div class="row align-items-center justify-content-between d-flex"
+			style="padding-top: 20px; padding-right: 335px">
 
-		<div id="logo">
-			<a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
+			<div id="logo">
+				<a href="index.html"><img
+					src="../javax.faces.resource/img/logo.png" alt="" title="" /></a>
+			</div>
+			<nav>
+
+			<ul class="nav-menu">
+
+				<li></li>
+
+				<li><a href="">Forum</a></li>
+				<li><a href="">Candidat</a></li>
+				<li><a href="">Job</a></li>
+
+				<li class="menu-has-children"><a href="">Pages</a>
+
+					<ul>
+
+						<li><a href="elements.html">elements</a></li>
+
+						<li><a href="search.html">search</a></li>
+
+						<li><a href="single.html">single</a></li>
+					</ul></li>
+
+				<li><a class="ticker-btn" href="#">Signup</a></li>
+
+				<li><a class="ticker-btn" href="#">Login</a></li>
+
+
+
+
+			</ul>
+
+
+
+
+
+
+			</nav>
+
+			<!-- #nav-menu-container -->
 		</div>
-		<nav>
 
-		<ul class="nav-menu">
-
-
-			<li><a href="">Forum</a></li>
-			<li><a href="">Candidat</a></li>
-			<li><a href="">Job</a></li>
-
-			<li class="menu-has-children"><a href="">Pages</a>
-
-				<ul>
-
-					<li><a href="elements.html">elements</a></li>
-
-					<li><a href="search.html">search</a></li>
-
-					<li><a href="single.html">single</a></li>
-				</ul></li>
-
-			<li><a class="ticker-btn" href="#">Signup</a></li>
-
-			<li><a class="ticker-btn" href="#">Login</a></li>
-
-
-
-
-		</ul>
-
-
-
-
-
-
-		</nav>
-
-		<!-- #nav-menu-container -->
 	</div>
+	</header>
 
-</div>
-</header>
-
-<div style="padding-left: 80px">
+	<div style="padding-left: 80px">
 
 
-	<div id="frame" >
+		<div id="frame">
 
-		<div id="sidepanel">
+			<div id="sidepanel">
 
-			<div id="profile">
+				<div id="profile">
 
-				<div class="wrap">
-					<img id="profile-img"
-						src="http://emilcarlsson.se/assets/mikeross.png" class="online"
-						alt="" />
+					<div class="wrap">
+						<img id="profile-img" src="../javax.faces.resource/img/#{chatBean.idconnect}.jpg"
+							class="online" alt="" />
 
-					<p>
-						<h:outputText value="#{loginBean.login}"></h:outputText>
-					</p>
-					<i class="fa fa-chevron-down expand-button" aria-hidden="true" />
+						<p>
+							<h:outputText value="#{loginBean.login}"></h:outputText>
+						</p>
+						<i class="fa fa-chevron-down expand-button" aria-hidden="true" />
 
 
 
-					<div id="expanded">
-						<label for="twitter"><i class="fa fa-facebook fa-fw"
-							aria-hidden="true" /></label> <input name="twitter" type="text"
-							value="mikeross" /> <label for="twitter"><i
-							class="fa fa-twitter fa-fw" aria-hidden="true" /></label> <input
-							name="twitter" type="text" value="ross81" /> <label
-							for="twitter"><i class="fa fa-instagram fa-fw"
-							aria-hidden="true" /></label> <input name="twitter" type="text"
-							value="mike.ross" />
+						<div id="expanded">
+							<label for="twitter"><i class="fa fa-facebook fa-fw"
+								aria-hidden="true" /></label> <input name="twitter" type="text"
+								value="mikeross" /> <label for="twitter"><i
+								class="fa fa-twitter fa-fw" aria-hidden="true" /></label> <input
+								name="twitter" type="text" value="ross81" /> <label
+								for="twitter"><i class="fa fa-instagram fa-fw"
+								aria-hidden="true" /></label> <input name="twitter" type="text"
+								value="mike.ross" />
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div id="search">
-				<label for=""><i class="fa fa-search" aria-hidden="true" /></label>
-				<input type="text" placeholder="Search contacts..." />
-			</div>
+				<div  style="background-color: #435f7a ; height: 10px">
+					<label for="">	</label>
+				</div>
 
-			<div id="contacts">
+				<div id="contacts">
 
-				<ul>
-					<ui:repeat value="#{chatBean.users}" var="user">
+					<ul>
+						<ui:repeat value="#{chatBean.users}" var="user">
+							<ui:repeat value="#{chatBean.drop}" var="drop">
+								<h:panelGroup rendered="#{user.userId == drop.user2.userId }">
+									<li class="contact">
 
-						<li class="contact">
+										<div class="wrap">
 
-							<div class="wrap">
-								<span class="contact-status online" /> <img
-									src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+											<span class="contact-status online" /> <img
+												src="../javax.faces.resource/img/#{user.userId}.jpg" alt="" />
 
-								<div class="meta">
-									<h:form id="one">
-										<p class="name">
-											<h:commandLink value="#{user.firstName}"
-												action="#{chatBean.OneDisc(user.userId)}" />
-										</p>
-									</h:form>
-
-									<p class="preview">You just got LITT up, Mike.</p>
-								</div>
-							</div>
-						</li>
-					</ui:repeat>
+											<div class="meta">
+												<h:form id="one">
+													<p class="name">
 
 
 
-				</ul>
-			</div>
 
-			<div id="bottom-bar">
-				<button id="addcontact">
-					<i class="fa fa-user-plus fa-fw" aria-hidden="true" /> <span>Add
-						contact</span>
-				</button>
-				<button id="settings">
-					<i class="fa fa-cog fa-fw" aria-hidden="true" /> <span>Settings</span>
-				</button>
-			</div>
-		</div>
+														<h:commandLink value="#{user.firstName}" update=" :four "
+															action="#{chatBean.OneDisc(user.userId)}" />
+													</p>
+													<p class="preview">
+														<h:outputText value="#{drop.contenu}" />
 
-		<div class="content">
+													</p>
 
-			<div class="contact-profile">
-				<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
 
-				<p>
-					<h:outputText value="#{chatBean.nomR}" />
-				</p>
+												</h:form>
 
-				<div class="social-media">
-					<i class="fa fa-facebook" aria-hidden="true" /> <i
-						class="fa fa-twitter" aria-hidden="true" /> <i
-						class="fa fa-instagram" aria-hidden="true" />
+
+
+											</div>
+
+
+										</div>
+
+									</li>
+								</h:panelGroup>
+
+							</ui:repeat>
+
+						</ui:repeat>
+
+
+					</ul>
+				</div>
+
+				<div id="bottom-bar">
+					<button id="addcontact">
+						<i class="fa fa-user-plus fa-fw" aria-hidden="true" /> <span>Add
+							contact</span>
+					</button>
+					<button id="settings">
+						<i class="fa fa-cog fa-fw" aria-hidden="true" /> <span>Settings</span>
+					</button>
 				</div>
 			</div>
 
-			<div class="messages">
+			<div class="content">
 
-				<ul>
-					<ui:repeat value="#{chatBean.disc}" var="chat" varStatus="status">
+				<div class="contact-profile">
+					<img src="../javax.faces.resource/img/#{chatBean.img}.jpg" alt="" />
+
+					<p>
+						<h:outputText value="#{chatBean.nomR}" />
+					</p>
+
+					<div class="social-media">
+						<i class="fa fa-facebook" aria-hidden="true" /> <i
+							class="fa fa-twitter" aria-hidden="true" /> <i
+							class="fa fa-instagram" aria-hidden="true" />
+					</div>
+				</div>
+
+				<div class="messages">
+
+					<ul>
+						<ui:repeat value="#{chatBean.disc}" var="chat" varStatus="status">
 
 							<h:panelGroup
 								rendered="#{chatBean.idconnect == chat.user2.userId }">
 								<li class="sent"><img
-									src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+									src="../javax.faces.resource/img/#{chatBean.idconnect}.jpg" alt="" />
 
 
 									<p>
 										<h:outputText value="#{chat.contenu}" />
 										<br />
-										<h:outputText value="#{chat.dateSend}" />
+										<h:outputText value="#{chat.dateSend}">
+											<f:convertDateTime type="date" pattern="dd MMMM yyyy" />
+										</h:outputText>
 									</p>
 									<button class="btn btn-xs btn-link " type="button"
 										data-toggle="dropdown">
@@ -1323,42 +1344,44 @@ body {
 
 
 									<ul class="dropdown-menu" style="border-radius: 10%;">
-															<h:form id="two">
-										<li><h:inputText value="#{chatBean.modifier}"
-												required="true" id="hkhhkt" a:placeholder="#{chat.contenu}">
-											</h:inputText>
+										<h:form id="two">
+											<li><h:inputText value="#{chatBean.modifier}"
+													required="true" id="hkhhkt" a:placeholder="#{chat.contenu}">
+												</h:inputText>
 
-											<button class="submit" style="background-color: #435f7a">
-												<h:commandLink update=":one :two :three :four :five"
-													style="background-color:#435f7a; width:140px; height:30px"
-													action="#{chatBean.update(chat.chatId,chat.vue)}">
-													<i class="fa fa-edit" aria-hidden="true"
-														style="color: white" />
-												</h:commandLink>
-											</button>
-											</li>
-												<h:panelGroup rendered="#{chatBean.testM eq 'nonM' }">
-												<li><h:outputText value="modification invalide" style="color:red"/></li>
+												<button class="submit" style="background-color: #435f7a">
+													<h:commandLink update=":one :two :three :four :five"
+														style="background-color:#435f7a; width:140px; height:30px"
+														action="#{chatBean.update(chat.chatId,chat.vue)}">
+														<i class="fa fa-edit" aria-hidden="true"
+															style="color: white" />
+													</h:commandLink>
+												</button></li>
+											<h:panelGroup rendered="#{chatBean.testM eq 'nonM' }">
+												<li><h:outputText value="modification invalide"
+														style="color:red" /></li>
 
 											</h:panelGroup>
-						</h:form>
+										</h:form>
 
 										<h:form id="three">
 
 											<h:panelGroup rendered="#{chatBean.testSu eq 'late' }">
-												<li><h:outputText value="suppression invalide" style="color:red"/></li>
+												<li><h:outputText value="suppression invalide"
+														style="color:red" /></li>
 
 											</h:panelGroup>
-											<li style="background-color: #435f7a; height:30px">
-											<h:commandLink update=":one :two :three :four :five"
-												 action="#{chatBean.delete(chat.chatId)}" >
-												 <div style="background-color:#435f7a;height: 10px"></div>
-												<h:outputText style="color:white; padding-left:60px;padding-top:60px;"	value="supprimer" />
-												
-												</h:commandLink>
-											</li>
-										
-											</h:form>
+											<li style="background-color: #435f7a; height: 30px"><h:commandLink
+													update=":one :two :three :four :five"
+													action="#{chatBean.delete(chat.chatId)}">
+													<div style="background-color: #435f7a; height: 10px"></div>
+													<h:outputText
+														style="color:white; padding-left:60px;padding-top:60px;"
+														value="supprimer" />
+
+												</h:commandLink></li>
+
+										</h:form>
 
 
 
@@ -1368,7 +1391,7 @@ body {
 							<h:panelGroup
 								rendered="#{chatBean.idconnect != chat.user2.userId }">
 								<li class="replies"><img
-									src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+									src="../javax.faces.resource/img/#{chat.user2.userId}.jpg" alt="" />
 
 
 									<p>
@@ -1382,77 +1405,78 @@ body {
 							</h:panelGroup>
 
 
-					</ui:repeat>
+						</ui:repeat>
 
 
-				</ul>
+					</ul>
 
 
 
 
 
-			</div>
+				</div>
 
-			<div class="message-input" style="padding-top: 10px">
-				<div
-					style="padding-left: 150px; height: 40px; display: inline-block; text-align: center;">
-					<h:form id="four">
-						<ui:repeat value="#{chatBean.propo}" var="prop" varStatus="status">
+				<div class="message-input" style="padding-top: 10px">
+					<div
+						style="padding-left: 150px; height: 40px; display: inline-block; text-align: center;">
+						<h:form id="four">
+							<ui:repeat value="#{chatBean.propo}" var="prop"
+								varStatus="status">
 								<button class="submit"
-								style="height: 30px; width: 150px; border-radius: 20px; background-color:  #435f7a;">
+									style="height: 30px; width: 150px; border-radius: 20px; background-color: #435f7a;">
 
-								<h:commandLink
-									action="#{chatBean.addP(chatBean.receiver, prop.word)}">
+									<h:commandLink
+										action="#{chatBean.addP(chatBean.receiver, prop.word)}">
 
-									<h:outputText style="color:white" value="#{prop.word }" />
+										<h:outputText style="color:white" value="#{prop.word }" />
+									</h:commandLink>
+
+								</button>
+
+
+
+
+
+							</ui:repeat>
+						</h:form>
+					</div>
+
+					<h:form id="five">
+						<h:message for="ad" style="color:red"></h:message>
+						<h:panelGroup rendered="#{chatBean.reponse eq 'refus' }">
+							<p style="color: red">Veuillez ne pas envoyer des gros mots
+								:)</p>
+						</h:panelGroup>
+						<div class="wrap">
+							<h:inputText style="width:760px" value="#{chatBean.contenu}"
+								id="ad" required="true"
+								a:placeholder="ecrire votre message ici . . ."
+								requiredMessage="Veuillez ecrire quelque chose :) "
+								validatorMessage="le message doit etre de longueur entre 3 et 150 ">
+								<f:validateLength minimum="3" maximum="150"></f:validateLength>
+
+							</h:inputText>
+
+
+							<button class="submit" style="width: 80px">
+
+								<h:commandLink action="#{chatBean.add(chatBean.receiver)}"
+									update=":one :two :three :four :five" style="width:80px">
+
+									<i class="fa fa-paper-plane" aria-hidden="true" />
 								</h:commandLink>
 
 							</button>
-
-
-
-							
-
-						</ui:repeat>
+						</div>
 					</h:form>
+
 				</div>
 
-				<h:form id="five">
-					<h:message for="ad" style="color:red"></h:message>
-					<h:panelGroup rendered="#{chatBean.reponse eq 'refus' }">
-						<p style="color: red">Veuillez ne pas envoyer des gros mots :)
-						</p>
-					</h:panelGroup>
-					<div class="wrap">
-						<h:inputText style="width:760px" value="#{chatBean.contenu}"
-							id="ad" required="true"
-							a:placeholder="ecrire votre message ici . . ."
-							requiredMessage="Veuillez ecrire quelque chose :) "
-							validatorMessage="le message doit etre de longueur entre 3 et 8 ">
-							<f:validateLength minimum="3" maximum="150"></f:validateLength>
-
-						</h:inputText>
-
-
-						<button class="submit" style="width: 80px">
-
-							<h:commandLink action="#{chatBean.add(chatBean.receiver)}"
-								update=":one :two :three :four :five" style="width:80px">
-
-								<i class="fa fa-paper-plane" aria-hidden="true" />
-							</h:commandLink>
-
-						</button>
-					</div>
-				</h:form>
 
 			</div>
-
-
 		</div>
-	</div>
 
-</div>
+	</div>
 </body>
 <script
 	src="//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js" />

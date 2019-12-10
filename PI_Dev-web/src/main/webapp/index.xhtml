@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+<h1>Table candidatures
+</h1>
+		<div class="ui-datatable-tablewrapper">
+			<div class="card card-w-title">
+				<div id="j_idt31:j_idt83"
+					class="ui-datatable ui-widget ui-datatable-reflow">			
+					<div class="ui-datatable-header ui-widget-header ui-corner-top">
+						</div>
+					<div class="ui-datatable-tablewrapper">
+						<table role="grid">
+							<thead id="j_idt31:j_idt83_head">
+								<tr role="row">
+									<th id="j_idt31:j_idt83:j_idt85"
+										class="ui-state-default ui-sortable-column"
+										role="columnheader"
+										aria-label="Id: activate to sort column ascending" scope="col"
+										tabindex="0" aria-sort="other"><span
+										class="ui-column-title">Nom de l'utilisateur</span><span
+										class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span></th>
+										<th id="j_idt31:j_idt83:j_idt85"
+										class="ui-state-default ui-sortable-column"
+										role="columnheader"
+										aria-label="Id: activate to sort column ascending" scope="col"
+										tabindex="0" aria-sort="other"><span
+										class="ui-column-title">Date</span><span
+										class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span></th>
+									<th id="j_idt31:j_idt83:j_idt85"
+										class="ui-state-default ui-sortable-column"
+										role="columnheader"
+										aria-label="Id: activate to sort column ascending" scope="col"
+										tabindex="0" aria-sort="other"><span
+										class="ui-column-title">Etat</span><span
+										class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span></th>
+									<th id="j_idt31:j_idt83:j_idt85"
+										class="ui-state-default ui-sortable-column"
+										role="columnheader"
+										aria-label="Id: activate to sort column ascending" scope="col"
+										tabindex="0" aria-sort="other"><span
+										class="ui-column-title">Score</span><span
+										class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span></th>
+									
+
+								</tr>
+							</thead>
+							<tbody id="j_idt31:j_idt83_data"
+								class="ui-datatable-data ui-widget-content" tabindex="0">
+
+								<tr data-ri="9" data-rk="84de704c"
+									class="ui-widget-content ui-datatable-odd ui-datatable-selectable"
+									role="row" aria-selected="false">
+									<h:form>
+										<h:dataTable role="grid" value="#{candidatureBean.candidatures}"
+											var="can" border="0">
+											<h:column class="ui-state-default ui-sortable-column">
+												<h:outputText value="#{can.user.name}" />
+											</h:column>
+											<h:column class="ui-state-default ui-sortable-column">
+												<h:outputText value="#{can.candidatureDate}" />
+											</h:column>
+
+											<h:column class="ui-state-default ui-sortable-column">
+												<h:outputText value="#{can.etat}" />
+											</h:column>
+											
+											<h:column class="ui-state-default ui-sortable-column">
+												<h:outputText value="#{can.score}" />
+											</h:column>
+											
+										</h:dataTable>
+									</h:form>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+	</div>
+	</div>
+	</div>
+	</ui:define>
+	</ui:composition>

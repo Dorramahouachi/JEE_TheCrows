@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+
+xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-
+instance"
+
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+>
+
+<persistence-unit name="imputation-ejb"
+>
+
+<jta-data-source>java:/sqlserver/ds</jta-data-source>
+<class>model.Answer</class>
+<class>model.Calendrier</class>
+<class>model.Candidature</class>
+<class>model.Chat</class>
+<class>model.Comment</class>
+<class>model.Contact</class>
+<class>model.Entrepris</class>
+<class>model.EntretienEnLigne</class>
+<class>model.EntretienPhysique</class>
+<class>model.Post</class>
+<class>model.Question</class>
+<class>model.ReactComment</class>
+<class>model.ReactPost</class>
+<class>model.User</class>
+<class>model.__MigrationHistory</class>
+<class>model.__MigrationHistoryPK</class>
+<class>model.Subscribe</class>
+<class>model.Critere</class>
+<class>model.Evaluation</class>
+<class>model.Sysdiagram</class>
+
+
+
+<properties>
+
+<property name="hibernate.show_sql" value="true" />
+<property name="hibernate.format_sql" value="true" />
+</properties>
+</persistence-unit>
+</persistence>

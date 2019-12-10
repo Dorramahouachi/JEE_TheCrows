@@ -39,10 +39,10 @@ public class PieChartData implements Serializable {
 		pieDataList = new ArrayList<PieChartData.KeyValue>();
 		evaluations =  evaluationService.getAllEvaluations();
 		userlist = users.getAllUsers();
-			System.out.println("hhhihi"+ userlist);
+		//	System.out.println("hhhihi"+ userlist);
 			for(Userz e : userlist) {
 //				String fullName = e.getReceiver().getFirstname() + " " + e.getReceiver().getLastname();
-				pieDataList.add(new KeyValue(e.getRole().toString(), e.getPhoneNumber()));
+				pieDataList.add(new KeyValue(e.getFirstname(), e.getPhoneNumber()));
 				
 			}
 		

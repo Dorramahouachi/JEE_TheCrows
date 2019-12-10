@@ -68,7 +68,7 @@ public class MyEvaluationsBean implements Serializable {
 		Evaluation evaluation = new Evaluation();
 		for (Evaluation e : getEvaluations()) {
 			System.out.println("type evaluation" + e.getType());
-			if(e.getType() == EvaluationType.Hierarchical_Evaluation ) {
+			if(e.getType() == EvaluationType.Auto_Evaluation ) {
 				evaluation = e;
 			}
 			else {
@@ -103,7 +103,7 @@ public class MyEvaluationsBean implements Serializable {
 		SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 		Date date = new Date(System.currentTimeMillis());
 		
-		Evaluation ev = new Evaluation(EvaluationType.Self_Assessment, description, date, loginBean.getLoggedUser(),myEvaluation.getSender(),myNewEvaluationCriterias);
+		Evaluation ev = new Evaluation(EvaluationType.Auto_Evaluation, description, date, loginBean.getLoggedUser(),myEvaluation.getSender(),myNewEvaluationCriterias);
 		evaluationService.addEvalation(ev);
 		return "listeEvaluations?faces-redirect=true";
 	}

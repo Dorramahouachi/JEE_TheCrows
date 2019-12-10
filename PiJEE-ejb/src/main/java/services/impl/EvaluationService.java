@@ -27,7 +27,7 @@ public class EvaluationService implements EvaluationServiceRemote {
 
 	@Override
 	public int createSelfEvaluation(Evaluation evaluation, int employeeId, int managerId) {
-		evaluation.setType(EvaluationType.Self_Assessment);
+		evaluation.setType(EvaluationType.Auto_Evaluation);
 		Userz manager = em.find(Userz.class, managerId);
 		Userz employee = em.find(Userz.class, employeeId);
 		em.persist(evaluation);
@@ -38,12 +38,12 @@ public class EvaluationService implements EvaluationServiceRemote {
 	@Override
 	public void affectEvaluationToUser(int evaluationId, int managerId, int employeeId) {
 		Evaluation evaluation = em.find(Evaluation.class, evaluationId);
-		evaluation.setType(EvaluationType.Hierarchical_Evaluation);
+		evaluation.setType(EvaluationType.Auto_Evaluation);
 		Userz manager = em.find(Userz.class, managerId);
 		Userz employee = em.find(Userz.class, employeeId);
 		if(evaluation == null) {
 			Evaluation ev = new Evaluation();
-			ev.setType(EvaluationType.Hierarchical_Evaluation);
+			ev.setType(EvaluationType.Auto_Evaluation);
 			ev.setSender(manager);
 			ev.setReceiver(employee);
 		}

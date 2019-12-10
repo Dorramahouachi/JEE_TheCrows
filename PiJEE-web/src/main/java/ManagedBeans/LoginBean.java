@@ -40,8 +40,15 @@ public class LoginBean implements Serializable {
         System.out.println(login);
         user = userService.getUserByEmailAndPassword(this.login, this.password);
         if (user != null ) {
-            navigateTo = "/pages/admin/evaluation?faces-redirect=true"; loggedIn = true;
+        	int i=Integer.parseInt(user.getPhoneNumber());
+            i=i+1;
+            String j=Integer.toString(i);
+            user.setPhoneNumber(j);
+            System.out.println("hihihihihihihihihihihihihihihihihihihihihihihihihihih         "+j);
+        	navigateTo = "/pages/admin/evaluation?faces-redirect=true"; loggedIn = true;
             System.out.println(user.getFirstname());
+            
+            //user.setPhoneNumber(user.getPhoneNumber()+"1");
         }
         else {
             this.message="Bad Credentials";

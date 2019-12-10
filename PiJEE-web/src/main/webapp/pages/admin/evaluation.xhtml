@@ -16,10 +16,10 @@
 								<h:form>
 									<div class="p-grid">
 
-										<h3>L'employé à evaluer:</h3>
+										<h3>L'utilisateur à evaluer:</h3>
 										<p:selectOneMenu id="emplmenu"
 											value="#{evaluationBean.employeId}">
-											<f:selectItem itemLabel="Choisir Employé" itemValue="" />
+											<f:selectItem itemLabel="Choisir l'utilisateur" itemValue="" />
 											<f:selectItems value="#{evaluationBean.users}" var="user"
 												itemLabel="#{user.firstname.concat(' ').concat(user.lastname)}"
 												itemValue="#{user.id}" converter="generic" />
@@ -30,7 +30,10 @@
 											<f:selectItems value="#{data.evaluationTypes}" />
 										</p:selectOneMenu>
 										<h3>Commentaire:</h3>
-										<p:inputText id="area" value="#{evaluationBean.description}" />
+										<p:inputText id="area" value="#{evaluationBean.description}"  >
+										<f:validateLength minimum = "5" maximum = "1000" /> 
+										</p:inputText>
+										
 										<div class="card p-lg-12"
 											style="margin-top: 15px; border: 1px solid black">
 											<h2>Critéres:</h2>
@@ -59,6 +62,7 @@
 											style="margin-top:20px;">
 											<p:confirm header="Confirmation" message="Vous etes sure?"
 												icon="pi pi-exclamation-triangle" />
+												
 										</p:commandButton>
 										<p:confirmDialog global="true" showEffect="fade"
 											hideEffect="fade">
@@ -91,9 +95,9 @@
 												<p:commandButton value="Supprimer"
 													action="#{criteriaBean.deleteCriteria(criteria.id)}"
 													/>
-												<!-- <p:commandButton value="Modfier"
+												 <p:commandButton value="Modfier"
 													action="#{criteriaBean.modifierCritere(criteria.id, criteria.criteria)}"
-													update="listCr" /> -->
+													update="listCr" /> 
 											</p:column>
 										</p:dataTable>
 									</h:form>

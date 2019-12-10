@@ -21,6 +21,15 @@ public class Claim implements Serializable {
 		this.description = description;
 		this.name = name;
 	}
+	public Claim( int ClaimId, String name,Date dateClaim, String description) {
+		super();
+		
+		this.dateClaim = dateClaim;
+		this.description = description;
+		this.name = name;
+		this.claimId=ClaimId;
+	}
+
 
 	private static final long serialVersionUID = 1L;
 
@@ -28,10 +37,12 @@ public class Claim implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ClaimId")
 	private int claimId;
+	
 
 	
 	@Column(name="DateClaim")
 	private Date dateClaim;
+	//private java.sql.Date day;
 
 	@Column(name="Description")
 	private String description;

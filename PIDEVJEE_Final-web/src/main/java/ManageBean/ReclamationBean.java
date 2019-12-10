@@ -31,6 +31,13 @@ public class ReclamationBean implements Serializable {
 	private List<Claim> claim;
 	private int userId;
 	private int val=0;
+	private int claimIdtobeupdated;
+	public int getClaimIdtobeupdated() {
+		return claimIdtobeupdated;
+	}
+	public void setClaimIdtobeupdated(int claimIdtobeupdated) {
+		this.claimIdtobeupdated = claimIdtobeupdated;
+	}
 	private boolean formDisplayed = false;
 	private boolean formDis1 = false ;
 	private List<Claim> listClaims = new ArrayList<Claim>();
@@ -44,6 +51,7 @@ public class ReclamationBean implements Serializable {
 	  @PostConstruct
 		public void init(){
 	    	System.out.println("*****uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+	     	listClaims = claimservice.getAllClaim();
 
 	    	setListClaims(claimservice.getAllClaim());
 	    //	setListe(cvServiceLocal.findAllSkills());
@@ -99,14 +107,67 @@ else {
 		
 		}
 		
-		public void updateClaim(Claim claim)
-		{ claimservice.UpdateClaim(claim);
+		/**public void updateClaim(Claim claim)
+		{ 
+			System.out.println("*kkkkkk"+ claim.getClaimId());
+			name=claim.getName();
+description= claim.getDescription();
+dateClaim=claim.getDateClaim();
+System.out.println("*naaaaaaaaaaaaaame"+ claim.getClaimId());
+System.out.println("*description"+ claim.getClaimId());
+System.out.println("*dateClaim"+ claim.getClaimId());
+
+			//claimservice.UpdateClaim(claim);
      	listClaims = claimservice.getAllClaim();
      	formDisplayed = true;
      	
 		
 		}
 		
+		public void update1Claim(Claim claim)
+		{ 
+			claim.setName(name);
+			claim.setDescription(description);
+			claim.setDateClaim(dateClaim);
+			claim.setClaimId(claimIdtobeupdated);
+
+			//PromotionService.updatePromotion(new Promotion(PromotionIdToBeUpdate,title, promotiontype, promotionunit, createdate, validuntil, product));
+			claimservice.UpdateClaim(claim);
+			System.out.println("*id"+ claim.getClaimId());
+			System.out.println("*Newdescription"+ claim.getDescription());
+			System.out.println("*NewdateClaim"+ claim.getDateClaim());
+			System.out.println("*Newdeqscription"+ claim.getDescription());
+
+     	listClaims = claimservice.getAllClaim();
+     	formDisplayed = true;
+     	
+		
+		}*/
+
+
+		public String updateclaim(Claim c)
+		{ 
+			this.setName(c.getName());
+			this.setDescription(c.getDescription());
+			this.setDateClaim(c.getDateClaim());
+			System.out.println("*daaaaaaaaate"+c.getDateClaim());
+
+
+	
+	     this.setClaimIdtobeupdated(c.getClaimId());
+	     	listClaims = claimservice.getAllClaim();
+
+		return "/Pages/Claim/Modifier?faces-redirect=true";
+		
+		}
+		public String mettreAjour(){
+
+			claimservice.UpdateClaim(new Claim(claimIdtobeupdated,name, dateClaim, description));
+	     	listClaims = claimservice.getAllClaim();
+
+			return "/Pages/Claim/AllClaims?faces-redirect=true";
+			}
+
 		
 		public Date getDateClaim() {
 			return dateClaim;
